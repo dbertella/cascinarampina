@@ -22,7 +22,7 @@ export default function Home({ allPosts: { edges } }: any) {
       {heroPost && (
         <HeroPost
           title={heroPost.title}
-          coverImage={heroPost.featuredImage.node}
+          coverImage={heroPost.featuredImage?.node}
           date={heroPost.date}
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}

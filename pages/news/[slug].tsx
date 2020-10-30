@@ -35,7 +35,7 @@ export default function Post({ post, posts }: any) {
             </Head>
             <PostHeader
               title={post.title}
-              coverImage={post.featuredImage.node}
+              coverImage={post.featuredImage?.node}
               date={post.date}
               categories={post.categories}
             />
@@ -72,7 +72,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }: Post) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }: Post) => `/news/${node.slug}`) || [],
     fallback: true,
   };
 }

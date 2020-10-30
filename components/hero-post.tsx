@@ -5,13 +5,19 @@ import { MediaImage } from "types";
 
 type Props = {
   title: string;
-  coverImage: MediaImage;
+  coverImage?: MediaImage;
   date: string;
   excerpt: string;
   slug: string;
 };
 
-export default function HeroPost({ title, coverImage, date, excerpt, slug }: Props) {
+export default function HeroPost({
+  title,
+  coverImage,
+  date,
+  excerpt,
+  slug,
+}: Props) {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -20,7 +26,7 @@ export default function HeroPost({ title, coverImage, date, excerpt, slug }: Pro
       <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link as={`/posts/${slug}`} href="/posts/[slug]">
+            <Link as={`/news/${slug}`} href="/news/[slug]">
               <a
                 className="hover:underline"
                 dangerouslySetInnerHTML={{ __html: title }}

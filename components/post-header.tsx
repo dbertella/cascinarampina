@@ -6,7 +6,7 @@ import { MediaImage } from "types";
 
 type Props = {
   title: string;
-  coverImage: MediaImage;
+  coverImage?: MediaImage;
   date: string;
   categories: string[];
 };
