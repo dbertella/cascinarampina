@@ -107,6 +107,12 @@ audio {
   width: 100%;
 }
 
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
 .aligncenter {
   text-align: center;
 }
