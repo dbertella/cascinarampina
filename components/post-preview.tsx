@@ -25,7 +25,7 @@ export default function PostPreview({
 
       <Styled.h3>
         <Link href={`/news/${slug}`} passHref>
-          <UiLink dangerouslySetInnerHTML={{ __html: title }}></UiLink>
+          <UiLink sx={{ color: "text"}} dangerouslySetInnerHTML={{ __html: title }}></UiLink>
         </Link>
       </Styled.h3>
       <Text>

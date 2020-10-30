@@ -38,8 +38,8 @@ export default function Post({ post, posts }: any) {
               categories={post.categories}
             />
             <PostBody content={post.content} />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
           </Box>
+          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </>
       )}
     </Layout>

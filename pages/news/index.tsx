@@ -25,8 +25,8 @@ export default function Home({ allPosts: { edges } }: any) {
             excerpt={heroPost.excerpt}
           />
         )}
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Box>
+      {morePosts.length > 0 && <MoreStories posts={morePosts} />}
     </Layout>
   );
 }

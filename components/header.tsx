@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <Box
       sx={{
-        boxShadow: (t) => `0 0 25px ${t.colors.primaryTransaprent}`,
+        boxShadow: (t) => `0 0 25px ${t.colors.primaryTransparent}`,
       }}
     >
       <Flex sx={{ justifyContent: "center" }}>

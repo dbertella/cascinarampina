@@ -23,9 +23,25 @@ export default {
     primary: "#95c11fff",
     secondary: "#78c3fbff",
     muted: "#98838fff",
-    primaryTransaprent: "#95c11f33",
-    secondaryTransaprent: "#78c3fb87",
-    mutedTransaprent: "#98838f87",
+    coffee: "#FFAA5Aff",
+    backgroundTransparent: "#fafafa33",
+    primaryTransparent: "#95c11f33",
+    secondaryTransparent: "#78c3fb87",
+    mutedTransparent: "#98838f87",
+  },
+  cards: {
+    primary: {
+      padding: 2,
+      borderRadius: 4,
+      bg: 'backgroundTransparent',
+      boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)",
+    },
+    compact: {
+      padding: 1,
+      borderRadius: 2,
+      border: "1px solid",
+      borderColor: "muted",
+    },
   },
   styles: {
     root: {
