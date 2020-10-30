@@ -34,7 +34,7 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const data = await getPageFromSlug("homepage");
+  const data = await getPageFromSlug("dove-siamo");
   return {
     props: { data },
   };

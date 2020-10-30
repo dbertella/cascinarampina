@@ -1,14 +1,14 @@
-import Footer from "./_footer";
+import Footer from "./footer";
 import Meta from "./meta";
 import { FC } from "react";
+import Header from "./header";
 
 const Layout: FC = ({ children }) => {
   return (
     <>
       <Meta />
-      <div className="min-h-screen">
-        <main>{children}</main>
-      </div>
+      <Header />
+      <main>{children}</main>
       <Footer />
     </>
   );

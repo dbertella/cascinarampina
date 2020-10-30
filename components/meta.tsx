@@ -35,6 +35,7 @@ export default function Meta() {
         name="description"
         content="Azienda Agricola Cascina Rampina a Monticello Brianza"
       />
+
       {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
     </Head>
   );

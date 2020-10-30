@@ -74,16 +74,7 @@ export async function getAllPostsForHome(preview?: boolean) {
             featuredImage {
               node {
                 sourceUrl
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
+                altText
               }
             }
           }
@@ -133,6 +124,7 @@ export async function getPostAndMorePosts(
       featuredImage {
         node {
           sourceUrl
+          altText
         }
       }
       author {
@@ -214,6 +206,54 @@ export async function getPostAndMorePosts(
   );
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop();
+
+  return data;
+}
+
+export async function getPageFromSlug(slug: string) {
+  const data = await fetchAPI(
+    `
+    fragment PageFields on Page {
+      title
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+    }
+    query PageBySlug($id: ID!, $idType: PageIdType!) {
+      page(id: $id, idType: $idType) {
+        ...PageFields
+        content
+      }
+      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+                altText
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        id: slug,
+        idType: "URI",
+      },
+    }
+  );
 
   return data;
 }

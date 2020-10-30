@@ -2,13 +2,12 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import PostBody from "components/post-body";
 import MoreStories from "components/more-stories";
-import Header from "components/header";
 import PostHeader from "components/post-header";
-import SectionSeparator from "components/section-separator";
 import Layout from "components/layout";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api";
 import PostTitle from "components/post-title";
 import Head from "next/head";
+import { Box } from "theme-ui";
 
 export default function Post({ post, posts }: any) {
   const router = useRouter();
@@ -20,12 +19,11 @@ export default function Post({ post, posts }: any) {
 
   return (
     <Layout>
-      <Header />
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
-          <article>
+          <Box as="article" variant="styles.container">
             <Head>
               <title>{post.title} | Azienda Agricola Cascina Rampina</title>
               <meta
@@ -40,17 +38,19 @@ export default function Post({ post, posts }: any) {
               categories={post.categories}
             />
             <PostBody content={post.content} />
-          </article>
-
-          <SectionSeparator />
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          </Box>
         </>
       )}
     </Layout>
   );
 }
 
-export async function getStaticProps({ params, preview = false, previewData }: any) {
+export async function getStaticProps({
+  params,
+  preview = false,
+  previewData,
+}: any) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
 
   return {

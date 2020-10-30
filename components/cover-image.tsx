@@ -1,24 +1,23 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { Image } from "theme-ui";
 import { MediaImage } from "types";
 
 type Props = {
-  title: ReactNode;
+  title: string;
   coverImage?: MediaImage;
   slug?: string;
 };
 
 export default function CoverImage({ title, coverImage, slug }: Props) {
-  const image = <img src={coverImage?.sourceUrl} />;
-  return (
-    <div>
-      {slug ? (
-        <Link as={`/news/${slug}`} href="/news/[slug]">
-          <a aria-label={String(title)}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
+  if (!coverImage?.sourceUrl) {
+    return null;
+  }
+  const image = <Image src={coverImage?.sourceUrl} alt={title} />;
+  return slug ? (
+    <Link href={`/news/${slug}`}>
+      <a aria-label={title}>{image}</a>
+    </Link>
+  ) : (
+    image
   );
 }

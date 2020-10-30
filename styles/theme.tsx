@@ -1,4 +1,5 @@
 export default {
+  breakpoints: ["40em", "52em", "64em"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
@@ -17,17 +18,26 @@ export default {
     heading: 1.125,
   },
   colors: {
-    text: "#000",
-    background: "#fff",
-    primary: "#07c",
-    secondary: "#30c",
-    muted: "#f6f6f6",
+    text: "#464E47",
+    background: "#fafafa",
+    primary: "#95c11fff",
+    secondary: "#78c3fbff",
+    muted: "#98838fff",
+    primaryTransaprent: "#95c11f33",
+    secondaryTransaprent: "#78c3fb87",
+    mutedTransaprent: "#98838f87",
   },
   styles: {
     root: {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      bg: "background",
+    },
+    container: {
+      maxWidth: 1200,
+      margin: "0 auto",
+      p: 2,
     },
     h1: {
       color: "text",

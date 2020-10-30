@@ -2,6 +2,7 @@ import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import { MediaImage } from "types";
+import { Card, Styled, Link as UiLink, Text } from "theme-ui";
 
 type Props = {
   title: string;
@@ -19,25 +20,18 @@ export default function PostPreview({
   slug,
 }: Props) {
   return (
-    <div>
-      <div className="mb-5">
-        <CoverImage title={title} coverImage={coverImage} slug={slug} />
-      </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/news/${slug}`} href="/news/[slug]">
-          <a
-            className="hover:underline"
-            dangerouslySetInnerHTML={{ __html: title }}
-          ></a>
+    <Card>
+      <CoverImage title={title} coverImage={coverImage} slug={slug} />
+
+      <Styled.h3>
+        <Link href={`/news/${slug}`} passHref>
+          <UiLink dangerouslySetInnerHTML={{ __html: title }}></UiLink>
         </Link>
-      </h3>
-      <div className="text-lg mb-4">
+      </Styled.h3>
+      <Text>
         <Date dateString={date} />
-      </div>
-      <div
-        className="text-lg leading-relaxed mb-4"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
-      />
-    </div>
+      </Text>
+      <Text dangerouslySetInnerHTML={{ __html: excerpt }} />
+    </Card>
   );
 }
