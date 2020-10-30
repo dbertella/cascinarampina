@@ -1,16 +1,17 @@
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
-import Link from 'next/link'
+import Date from "./date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
+import { MediaImage } from "types";
 
-export default function HeroPost({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}) {
+type Props = {
+  title: string;
+  coverImage: MediaImage;
+  date: string;
+  excerpt: string;
+  slug: string;
+};
+
+export default function HeroPost({ title, coverImage, date, excerpt, slug }: Props) {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -35,9 +36,8 @@ export default function HeroPost({
             className="text-lg leading-relaxed mb-4"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
-          <Avatar author={author} />
         </div>
       </div>
     </section>
-  )
+  );
 }

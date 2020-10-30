@@ -6,11 +6,11 @@ import { getAllPostsForHome } from "../lib/api";
 import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 
-export default function Home({ allPosts: { edges }, preview }) {
+export default function Home({ allPosts: { edges } }: any) {
   const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
   return (
-    <div >
+    <div>
       <Head>
         <title>Azienda Agricola Cascina Rampina</title>
         <link rel="icon" href="/favicon.ico" />
@@ -24,7 +24,6 @@ export default function Home({ allPosts: { edges }, preview }) {
           title={heroPost.title}
           coverImage={heroPost.featuredImage.node}
           date={heroPost.date}
-          author={heroPost.author.node}
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
