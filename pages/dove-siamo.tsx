@@ -27,8 +27,8 @@ export default function Home({
       <Box variant="styles.container">
         <PageHeader title={page.title} coverImage={page.featuredImage?.node} />
         <PostBody content={page.content} />
-        {edges.length > 0 && <MoreStories posts={edges} />}
       </Box>
+      {edges.length > 0 && <MoreStories posts={edges} />}
     </Layout>
   );
 }

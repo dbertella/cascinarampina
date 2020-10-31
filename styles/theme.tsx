@@ -21,19 +21,18 @@ export default {
     text: "#464E47",
     background: "#fafafa",
     primary: "#95c11fff",
-    secondary: "#78c3fbff",
-    muted: "#98838fff",
-    coffee: "#FFAA5Aff",
-    backgroundTransparent: "#fafafa33",
+    secondary: "#114810ff",
+    muted: "#e6e6f0ff",
+    backgroundTransparent: "#fafafaaa",
     primaryTransparent: "#95c11f33",
-    secondaryTransparent: "#78c3fb87",
-    mutedTransparent: "#98838f87",
+    secondaryTransparent: "#11481087",
+    mutedTransparent: "##e6e6f087",
   },
   cards: {
     primary: {
       padding: 2,
       borderRadius: 4,
-      bg: 'backgroundTransparent',
+      bg: "backgroundTransparent",
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)",
     },
     compact: {
@@ -49,6 +48,7 @@ export default {
       lineHeight: "body",
       fontWeight: "body",
       bg: "background",
+      overflowX: "hidden",
     },
     container: {
       maxWidth: 1200,

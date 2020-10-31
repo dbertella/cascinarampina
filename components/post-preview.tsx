@@ -2,7 +2,7 @@ import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import { MediaImage } from "types";
-import { Card, Styled, Link as UiLink, Text } from "theme-ui";
+import { Card, Styled, Link as UiLink, Text, Box } from "theme-ui";
 
 type Props = {
   title: string;
@@ -21,16 +21,31 @@ export default function PostPreview({
 }: Props) {
   return (
     <Card>
-      <CoverImage title={title} coverImage={coverImage} slug={slug} />
+      <Box sx={{ position: "relative" }}>
+        <Text
+          sx={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            p: 1,
+            fontSize: 0,
+            bg: "muted",
+          }}
+        >
+          <Date dateString={date} />
+        </Text>
+        <CoverImage title={title} coverImage={coverImage} slug={slug} />
+      </Box>
 
       <Styled.h3>
         <Link href={`/news/${slug}`} passHref>
-          <UiLink sx={{ color: "text"}} dangerouslySetInnerHTML={{ __html: title }}></UiLink>
+          <UiLink
+            sx={{ color: "text" }}
+            dangerouslySetInnerHTML={{ __html: title }}
+          ></UiLink>
         </Link>
       </Styled.h3>
-      <Text>
-        <Date dateString={date} />
-      </Text>
+
       <Text dangerouslySetInnerHTML={{ __html: excerpt }} />
     </Card>
   );
