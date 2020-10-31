@@ -1,0 +1,790 @@
+/*
+Theme Name: Cascina Rampina
+Description: Child theme for the Simply Delicious theme 
+Author: Factorio.us collective
+Template: Simply Delicious
+Theme URI: http://mmminimal.com/wordpress-theme
+*/
+
+/* Please note this theme's color scheme is found in styles/light.css */
+/* We plan to release the dark version in June sometime */
+
+/* Yahoo Style Reset Code licensed under the BSD License: http://developer.yahoo.com/yui/license.html version: 2.8.1 */
+html {
+  color: #000;
+  background: #fff;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var,
+optgroup {
+  font-style: inherit;
+  font-weight: inherit;
+}
+del,
+ins {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: "";
+}
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+sup {
+  vertical-align: baseline;
+}
+sub {
+  vertical-align: baseline;
+}
+legend {
+  color: #000;
+}
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+input,
+button,
+textarea,
+select {
+  *font-size: 100%;
+}
+
+/* Global Styles */
+
+html,
+ul,
+li {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font-family: Georgia, Arial;
+  font-size: 13px;
+  letter-spacing: -0.1px;
+  line-height: 18px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-image: url("/img/exclusive_paper.png");
+}
+body {
+  font-family: Georgia, sans serif;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a img {
+  border: none;
+}
+img.alignright {
+  padding: 0 0 20px 30px;
+  float: right;
+}
+img.alignleft {
+  padding: 0 30px 20px 0;
+  float: left;
+}
+.post-single .entry .aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.relative {
+  position: relative;
+}
+p {
+  margin-bottom: 20px;
+  letter-spacing: -0.1px;
+  color: #444;
+  font-size: 13px;
+}
+b,
+strong {
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+}
+h1 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  line-height: 24px;
+  background-color: #95c11f;
+}
+h2 {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  line-height: 16px;
+  font-weight: bold;
+}
+h3 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+  line-height: 20px;
+  font-weight: normal;
+  text-decoration: none;
+  background-color: #95c11f;
+}
+h4,
+h5,
+h6 {
+  margin: 0 0 10px 0;
+}
+blockquote {
+  color: #babecb;
+  font-family: Georgia, Arial;
+  font-size: 24px;
+  letter-spacing: -0.1px;
+  font-style: italic;
+  line-height: 24px;
+  padding: 0 0 0 20px;
+  margin: 40px 0 40px 20px;
+  border-left: 0px dotted #babecb;
+}
+ol,
+ul {
+  margin: 0 0 20px 25px;
+}
+ol li {
+  list-style-type: decimal;
+  padding: 0 0 10px 0;
+}
+ul li {
+  list-style-type: circle;
+  padding: 0 0 5px 5px;
+}
+i,
+em {
+  font-style: italic;
+}
+hr {
+  border: none;
+  border-bottom: 0px dotted #cfd2dc;
+  margin: 20px 0;
+}
+del {
+  text-decoration: line-through;
+}
+
+@font-face {
+  font-family: Cascinarampina;
+  src: url("/cascinarampina.ttf");
+}
+body {
+  font-family: Georgia, sans serif;
+}
+/* Main Containers */
+
+#container {
+  width: 640px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 30px 0 0px 0;
+}
+
+#header {
+  text-align: center;
+  font-family: Georgia, sans serif;
+}
+#logo {
+  margin-bottom: 25px;
+}
+#logo h1 {
+  font-family: "Cascinarampina", Droid Serif, arial, serif;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 0 10px 0;
+  font-size: 30px;
+  letter-spacing: -0.4px;
+}
+.slogan {
+  font-style: italic;
+}
+
+#navigation {
+  margin: 0 0 44px 0;
+  padding: 0;
+  z-index: 30;
+}
+#navigation li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+#navigation li a {
+  display: block;
+  margin: 0;
+  padding: 0px 0px;
+  font-weight: normal;
+}
+#navigation li a:hover {
+  border: none;
+}
+#navigation li ul {
+  position: absolute;
+  left: 30px;
+  top: 33px;
+  visibility: hidden;
+  margin: 10px 0 0 0;
+  padding: 20px;
+  background: url("/img/tasti_menu/dropdown_prodotti.png") top left;
+  border: none;
+  z-index: 1000;
+}
+#navigation li ul li {
+  float: none;
+  display: inline;
+}
+#navigation li ul li a {
+  position: relative;
+  display: block;
+  margin: 0;
+  font-size: 17px;
+  text-transform: none;
+  font-style: none;
+  padding: 15px 3px;
+  width: auto;
+  white-space: nowrap;
+  text-align: left;
+  text-decoration: none;
+  color: #000;
+  border: none;
+  border-bottom: 0px dotted #666;
+}
+#navigation li ul li a:hover {
+  color: black;
+  background-color: #95c11f;
+  border: none;
+}
+#navigation li ul ul,
+#navigation li ul ul {
+  display: none;
+}
+#content {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#icons {
+  width: 640px;
+  margin: 10px 0 20px 0;
+  text-align: center;
+}
+#icons a {
+  margin: 0 4px;
+  opacity: 0.5;
+}
+#icons a:hover {
+  opacity: 1;
+}
+
+#footer {
+  font-family: Georgia, sans serif;
+  font-size: 13px;
+  height: 15px;
+  margin: 0px 0 0px 1px;
+  text-align: center;
+  font-size: 9px;
+  clear: both;
+
+  bottom: 0;
+}
+
+/* Home page only */
+
+#featured {
+  margin: 0 0 40px 0;
+  padding: 0;
+  border: none;
+  border-bottom: 0px #babecb dotted;
+}
+#featured img {
+  max-width: 640px;
+  margin: 3px 0 10px 0;
+  height: auto;
+}
+#featured h3 {
+  float: left;
+}
+#featured .featured-cat {
+  float: right;
+}
+#featured .featured-cat a {
+}
+#featured .featured-cat a:hover {
+  color: #a5a8b2;
+}
+#featured .featured-info {
+  clear: both;
+  font-size: 13px;
+  margin: 20px 0 20px 0;
+  font-style: italic;
+}
+
+/* Post Thumbnails found on home, single and archives  */
+
+#posts img {
+  position: relative;
+  border: 0;
+}
+
+#posts {
+  width: 600px;
+  font-size: 18px;
+  line-height: 16px;
+  padding: 0px 0px 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#posts .post {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 12px 0 12px 0;
+  font-style: italic;
+  color: #888;
+}
+#posts .post_box {
+  clear: both;
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 60px 0 60px 0;
+  font-style: italic;
+  color: #888;
+}
+#posts .post-thumb {
+  width: 190px;
+  height: 120px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+#posts .post-thumb .caption {
+  display: block;
+  width: 190px;
+  height: 120px;
+  background: url("img/post-view.png");
+  position: relative;
+  display: none;
+  cursor: pointer;
+}
+#posts .post-thumb .caption a {
+  display: block;
+  width: 190px;
+  height: 120px;
+}
+#posts .post-info {
+  display: block;
+  width: 190px;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+#posts .post-info h3 {
+  margin: 10px 0 5px 0;
+  font-size: 14px;
+  line-height: 16px;
+}
+#posts .post-category a {
+  font-size: 13px;
+  line-height: 16px;
+}
+#posts .post-category a:hover {
+  text-decoration: none;
+}
+
+/* Archives  */
+
+#browsing {
+  border: none;
+  border-top: 0px #babecb dotted;
+  padding-top: 10px;
+  margin: 10px 0 0 0;
+  font-style: italic;
+  font-size: 13px;
+}
+#browsing a {
+}
+#browsing a:hover {
+  text-decoration: none;
+}
+#browsing .browse-nav {
+  width: 640px;
+}
+#browsing .browse-left {
+  float: left;
+  width: 20%;
+  text-align: left;
+}
+#browsing .browse-mid {
+  float: left;
+  width: 60%;
+  text-align: center;
+}
+#browsing .browse-right {
+  float: left;
+  width: 20%;
+  text-align: right;
+}
+#browsing .pagenavi {
+  margin: 0 0 20px 0;
+  padding: 5px 1px 5px;
+  float: left;
+  width: 98%;
+}
+#browsing .pagenavi a {
+  padding: 4px 6px;
+  text-decoration: none;
+}
+#browsing .pagenavi span.pages {
+  padding: 4px 6px;
+  font-weight: bold;
+}
+#browsing .pagenavi span.current {
+  padding: 4px 6px;
+  font-weight: bold;
+}
+#browsing .pagenavi span.expand {
+  padding: 4px 6px;
+}
+
+/* Content */
+
+#content h1 {
+  font-family: "Cascinarampina", Droid Serif, arial, serif;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: -0.25;
+}
+
+/* Single Pages */
+
+.post-page {
+  padding: 0 0 0 0;
+  border-bottom: 0px #babecb dotted;
+  margin: 0 0 40px 0;
+}
+
+/* Single Posts */
+
+.post-single {
+  padding: 0 0 20px 0;
+}
+.post-featured-image {
+  margin-bottom: 10px;
+}
+.post-single-details {
+  height: 14px;
+  margin: 0 0 20px 0;
+}
+.cat,
+.date {
+  display: inline;
+}
+.twitter-share-button {
+  float: right;
+  height: 10px;
+  margin: 0 -14px 0 0;
+}
+.post-single .entry {
+  padding: 0 0 15px 0;
+  margin: 0 0 20px 0;
+  border-bottom: 0px #ccc dotted;
+}
+.post-single .entry img {
+  max-width: 640px;
+  height: auto;
+  margin: 0 0 5px 0;
+}
+.post-single .entry .wp-caption-text {
+  font-size: 11px;
+  text-align: center;
+  margin: -5px 0 20px 0;
+  padding: 0;
+  height: 20px;
+  max-width: 650px;
+}
+.tags a,
+.custom-links a,
+.custom-title a {
+  clear: both;
+  border: none;
+}
+.tags a {
+  text-transform: lowercase;
+}
+h3.maylike {
+  margin: 0 0 20px 0;
+}
+
+/* Floating Pagination */
+
+.prevPagi a,
+.nextPagi a {
+  background: url("img/pagi-arrows.png") left top no-repeat;
+  position: fixed;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  text-indent: -1000em;
+  outline: none;
+}
+.prevPagi a {
+  left: 30px;
+}
+.prevPagi a:hover {
+  background-position: 0 -60px;
+}
+.nextPagi a {
+  background-position: -60px 0;
+  right: 30px;
+}
+.nextPagi a:hover {
+  background-position: -60px -60px;
+}
+
+/* Blog Comments */
+
+#comments {
+  border: none;
+  margin: 0 0 0 0;
+}
+#comments h2 {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0 0 20px 0;
+  font-weight: normal;
+}
+
+#commentary {
+  border-top: 0px #babecb dotted;
+  padding: 20px 0 0 0;
+}
+#commentary .comment {
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+#commentary .comment-text {
+  width: 600px;
+  padding: 20px 20px 5px 20px;
+  border-top: 1px solid #e7e8ed;
+  background: #f8f9fe;
+  font-style: italic;
+}
+#commentary .comment-author {
+  text-align: right;
+  display: block;
+  width: 640px;
+  font-size: 14px;
+  padding: 10px 0 0 0;
+  margin: 0 0 2px 0;
+  background: url("img/comment-arrow.gif") right top no-repeat;
+}
+#commentary .comment-date {
+  text-align: right;
+  display: block;
+  width: 640px;
+  font-size: 11px;
+}
+
+#leave-comment {
+  margin: 20px 0;
+  border-top: 0px #babecb dotted;
+  padding: 20px 0 0 0;
+}
+#leave-comment input,
+textarea {
+  padding: 15px;
+  border: none;
+  border-top: 1px solid #e7e8ed;
+  background: #f8f9fe;
+  color: #a5a8b2;
+  font-style: italic;
+}
+#leave-comment input {
+  width: 170px;
+  margin: 0 0 20px 0;
+}
+#leave-comment textarea {
+  width: 610px;
+}
+#leave-comment label {
+  font-size: 10px;
+  color: #999;
+}
+#leave-comment .comment-field {
+  width: 200px;
+  float: left;
+  margin: 0 20px 0 0;
+}
+#leave-comment .website {
+  margin-right: 0;
+}
+#leave-comment .comment-field-message {
+  margin: 0;
+}
+#leave-comment #submit {
+  float: right;
+  width: 112px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+#leave-comment .comment-subscribe {
+  width: 450px;
+  float: left;
+}
+
+#menu_negozio {
+  width: 162px;
+  height: 52px;
+  padding: 0px;
+  margin-right: -4px !important;
+  background: url(/img/tasti_menu/tasto-negozio.png) no-repeat top left;
+}
+
+#menu_negozio:hover {
+  background-position: bottom right;
+}
+
+#menu_prodotti {
+  width: 162px;
+  height: 52px;
+  padding: 0px;
+  margin-left: -3px !important;
+  margin-right: -1px !important;
+  background: url(/img/tasti_menu/tasto-prodotti.png) no-repeat top left;
+}
+
+#menu_prodotti:hover {
+  background-position: bottom right;
+  cursor: default;
+}
+
+#menu_chisiamo {
+  width: 161px;
+  height: 52px;
+  padding: 0px;
+  margin-left: -4px !important;
+  background: url(/img/tasti_menu/tasto-chisiamo.png) no-repeat top left;
+}
+
+#menu_chisiamo:hover {
+  background-position: bottom left;
+}
+
+.Prodotto {
+  text-transform: capitalize;
+  font-family: "Cascinarampina", "Georgia", serif;
+  font-size: 200%;
+  color: black;
+}
+
+.share {
+  padding-left: 30px;
+}
+
+#footer a {
+  font-family: Georgia, sans serif;
+  font-size: 12px;
+  color: #bbb;
+}
+
+#footer a:hover {
+  color: #888;
+}
+
+.post-single .entry .aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Misc */
+
+.OD5 {
+  color: #ff0033;
+}

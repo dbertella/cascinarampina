@@ -1,0 +1,35 @@
+/* mmminimal light scheme consisting of 3 main colors*/
+
+/* Color 1: Lightest */
+
+.cheeky, .slogan, #featured .featured-cat a, #posts .post-category a, .post-single .tags, .custom-links, .custom-title, #footer, #commentary .comment-date a,
+#leave-comment .comment-subscribe, #browsing a
+{color: #babecb; font-weight: normal;}
+
+/* Color 2: Medium */
+
+body, #navigation li a, #posts .post-category a:hover
+{color: #a5a8b2;}
+
+/* Color 3: Darkest */
+
+h1, h2, h3, h4, a, #navigation li a:hover, .cat, .date, #commentary .comment-author, #browsing a:hover, .pagenavi span.current, .post-single-details,
+.tags a, .custom-links a, .custom-title  a
+{color: #444751;}
+
+/* Link styles */
+
+.entry p a, .featured-info a {color: #a5a8b2; border: none; border-bottom: 0px dotted #444751}
+.entry p a:hover, .featured-info a:hover {color: #444751; border: none; border-bottom: 0px solid #444751}
+.entry p a:visited {border-bottom: 0px dotted #babecb;}
+
+/* Dotted Underline Link */
+
+.cat a:hover, p a:hover, .tags a:hover, .custom-links a:hover, .custom-title  a:hover
+{border: none; border-bottom: 1px dotted #444751;}
+
+/* Text select */
+
+a:focus	{background:#444751; color: #FFF; }
+::-moz-selection{background: #444751; color: #FFF; !important}
+::selection {background: #444751; color: #FFF; !important}
