@@ -49,7 +49,7 @@ const Icon: FC = (props) => {
   );
 };
 
-const ELEMENT_NUMBER = 10;
+const ELEMENT_NUMBER = 13;
 const patterns = [...Array(ELEMENT_NUMBER).keys()];
 type PatternProps = {
   index: number;
