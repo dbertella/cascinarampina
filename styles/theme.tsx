@@ -26,7 +26,7 @@ export default {
     backgroundTransparent: "#fafafaaa",
     primaryTransparent: "#95c11f33",
     secondaryTransparent: "#11481087",
-    mutedTransparent: "#e6e6f087",
+    mutedTransparent: "#e6e6f0aa",
   },
   cards: {
     primary: {
@@ -53,7 +53,7 @@ export default {
     container: {
       maxWidth: 1200,
       margin: "0 auto",
-      px: 4,
+      px: [2, 4],
     },
     h1: {
       color: "text",
@@ -132,6 +132,11 @@ export default {
     },
     img: {
       maxWidth: "100%",
+      width: "auto",
+      height: "auto",
+    },
+    audio: {
+      width: "100%",
     },
   },
 };

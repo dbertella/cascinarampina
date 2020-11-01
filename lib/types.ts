@@ -6,7 +6,6 @@ export type PostList = {
   featuredImage: {
     node: {
       sourceUrl: string;
-      altText: string;
     };
   };
 };
@@ -23,13 +22,16 @@ export type PageFields = {
   featuredImage: {
     node: {
       sourceUrl: string;
-      altText: string;
     };
   };
   children?: {
-    edges: {
-      node: {
-        slug: string;
+    nodes: {
+      slug: string;
+      id: string;
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+        };
       };
     }[];
   };

@@ -89,7 +89,6 @@ export async function getAllPostsForHome(preview?: boolean) {
             featuredImage {
               node {
                 sourceUrl(size: LARGE)
-                altText
               }
             }
           }
@@ -139,7 +138,6 @@ export async function getPostAndMorePosts(
       featuredImage {
         node {
           sourceUrl(size: LARGE)
-          altText
         }
       }
       author {
@@ -235,7 +233,6 @@ export async function getPageByUri(slug: string) {
       featuredImage {
         node {
           sourceUrl(size: LARGE)
-          altText
         }
       }
     }
@@ -254,7 +251,6 @@ export async function getPageByUri(slug: string) {
             featuredImage {
               node {
                 sourceUrl(size: LARGE)
-                altText
               }
             }
           }
@@ -283,7 +279,6 @@ export async function getPageAndChildrensByUri(slug: string) {
       featuredImage {
         node {
           sourceUrl(size: LARGE)
-          altText
         }
       }
     }
@@ -292,9 +287,15 @@ export async function getPageAndChildrensByUri(slug: string) {
         ...PageFields
         content
         children {
-          edges {
-            node {
-              slug
+          nodes {
+            slug
+            ... on Page {
+              id
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
             }
           }
         }
@@ -309,7 +310,6 @@ export async function getPageAndChildrensByUri(slug: string) {
             featuredImage {
               node {
                 sourceUrl(size: LARGE)
-                altText
               }
             }
           }
