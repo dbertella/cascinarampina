@@ -29,8 +29,8 @@ export const Page: FC<PageProps> = ({
       <meta property="og:image" content={page.featuredImage?.node?.sourceUrl} />
     </Head>
 
+    <PageHeader title={page.title} coverImage={page.featuredImage?.node} />
     <Box variant="styles.container">
-      <PageHeader title={page.title} coverImage={page.featuredImage?.node} />
       <PostBody content={page.content} />
       {children}
     </Box>
