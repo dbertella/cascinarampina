@@ -25,8 +25,20 @@ export default function Header() {
         <Link href="/dove-siamo" passHref>
           <NavLink p={2}>Dove Siamo</NavLink>
         </Link>
-        <Link href="/dove-siamo" passHref>
+        <Link href="/chi-siamo" passHref>
+          <NavLink p={2}>Chi Siamo</NavLink>
+        </Link>
+        <Link href="/cosa-facciamo" passHref>
+          <NavLink p={2}>Cosa Facciamo</NavLink>
+        </Link>
+        <Link href="/contatti" passHref>
           <NavLink p={2}>Contatti</NavLink>
+        </Link>
+        <Link href="/prodotti" passHref>
+          <NavLink p={2}>Prodotti</NavLink>
+        </Link>
+        <Link href="/faq" passHref>
+          <NavLink p={2}>FAQs </NavLink>
         </Link>
 
         <Link href="/news" passHref>

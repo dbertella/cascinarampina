@@ -1,5 +1,5 @@
 export default {
-  breakpoints: ["40em", "52em", "64em"],
+  breakpoints: ["478px", "764px", "64em"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
@@ -26,7 +26,7 @@ export default {
     backgroundTransparent: "#fafafaaa",
     primaryTransparent: "#95c11f33",
     secondaryTransparent: "#11481087",
-    mutedTransparent: "##e6e6f087",
+    mutedTransparent: "#e6e6f087",
   },
   cards: {
     primary: {
@@ -53,7 +53,7 @@ export default {
     container: {
       maxWidth: 1200,
       margin: "0 auto",
-      p: 2,
+      px: 4,
     },
     h1: {
       color: "text",

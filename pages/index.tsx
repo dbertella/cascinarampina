@@ -1,40 +1,14 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { Box, jsx } from "theme-ui";
-import Head from "next/head";
-import { getPageFromSlug } from "lib/api";
-import MoreStories from "components/more-stories";
-import Layout from "components/layout";
-import PostBody from "components/post-body";
-import PageHeader from "components/page-header";
+import { Page, PageProps } from "components/page";
+import { getPageByUri } from "lib/api";
+import { FC } from "react";
 
-export default function Home({
-  data: {
-    page,
-    posts: { edges },
-  },
-}: any) {
-  return (
-    <Layout>
-      <Head>
-        <title>{page.title} | Azienda Agricola Cascina Rampina</title>
-        <meta
-          property="og:image"
-          content={page.featuredImage?.node?.sourceUrl}
-        />
-      </Head>
+const Home: FC<PageProps> = (props) => <Page {...props} />;
 
-      <Box variant="styles.container">
-        <PageHeader title={page.title} coverImage={page.featuredImage?.node} />
-        <PostBody content={page.content} />
-      </Box>
-      {edges.length > 0 && <MoreStories posts={edges} />}
-    </Layout>
-  );
-}
+export default Home;
 
 export async function getStaticProps() {
-  const data = await getPageFromSlug("homepage");
+  const data = await getPageByUri("homepage");
+  console.info("homepage done");
   return {
     props: { data },
   };

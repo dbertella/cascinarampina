@@ -11,7 +11,12 @@ export default function MoreStories({ posts }: any) {
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <Box
-      sx={{ bg: "muted", p: 4, position: "relative", overflow: "hidden" }}
+      sx={{
+        bg: "muted",
+        py: 4,
+        position: "relative",
+        overflow: "hidden",
+      }}
       ref={ref}
     >
       <DynamicComponentWithNoSSR parentRef={ref} />
@@ -22,7 +27,7 @@ export default function MoreStories({ posts }: any) {
         sx={{ position: "relative", zIndex: 1 }}
       >
         <Heading as="h2" sx={{ mb: 3 }}>
-          Ultime News
+          Cosa sta succedendo
         </Heading>
         <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
           {posts.map(({ node }: any) => (

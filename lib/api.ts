@@ -60,6 +60,21 @@ export async function getAllPostsWithSlug() {
   return data?.posts;
 }
 
+export async function getAllPagesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      pages(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  return data?.pages;
+}
+
 export async function getAllPostsForHome(preview?: boolean) {
   const data = await fetchAPI(
     `
@@ -73,7 +88,7 @@ export async function getAllPostsForHome(preview?: boolean) {
             date
             featuredImage {
               node {
-                sourceUrl
+                sourceUrl(size: LARGE)
                 altText
               }
             }
@@ -123,7 +138,7 @@ export async function getPostAndMorePosts(
       date
       featuredImage {
         node {
-          sourceUrl
+          sourceUrl(size: LARGE)
           altText
         }
       }
@@ -210,7 +225,7 @@ export async function getPostAndMorePosts(
   return data;
 }
 
-export async function getPageFromSlug(slug: string) {
+export async function getPageByUri(slug: string) {
   const data = await fetchAPI(
     `
     fragment PageFields on Page {
@@ -219,7 +234,7 @@ export async function getPageFromSlug(slug: string) {
       date
       featuredImage {
         node {
-          sourceUrl
+          sourceUrl(size: LARGE)
           altText
         }
       }
@@ -238,7 +253,62 @@ export async function getPageFromSlug(slug: string) {
             date
             featuredImage {
               node {
-                sourceUrl
+                sourceUrl(size: LARGE)
+                altText
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        id: slug,
+        idType: "URI",
+      },
+    }
+  );
+
+  return data;
+}
+
+export async function getPageAndChildrensByUri(slug: string) {
+  const data = await fetchAPI(
+    `
+    fragment PageFields on Page {
+      title
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl(size: LARGE)
+          altText
+        }
+      }
+    }
+    query PageBySlug($id: ID!, $idType: PageIdType!) {
+      page(id: $id, idType: $idType) {
+        ...PageFields
+        content
+        children {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl(size: LARGE)
                 altText
               }
             }

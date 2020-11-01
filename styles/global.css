@@ -1,4 +1,7 @@
-@font-face { font-family: Cascinarampina; src: url('/cascinarampina.ttf'); } 
+@font-face {
+  font-family: Cascinarampina;
+  src: url("/cascinarampina.ttf");
+}
 
 p,
 ul,
@@ -117,4 +120,43 @@ img {
 
 .aligncenter {
   text-align: center;
+}
+
+.blocks-gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blocks-gallery-item {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.blocks-gallery-item img {
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 764px) {
+  .blocks-gallery-grid {
+    flex-flow: row wrap;
+  }
+
+  .blocks-gallery-item:first-child {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 478px) {
+  .blocks-gallery-grid {
+    display: block;
+  }
+
+  .blocks-gallery-item {
+    margin: 20px 0;
+  }
 }
