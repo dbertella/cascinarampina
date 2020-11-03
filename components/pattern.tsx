@@ -1,9 +1,14 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { Fragment, MutableRefObject, useEffect, useState } from "react";
+import {
+  Fragment,
+  MutableRefObject,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { Box } from "theme-ui";
-import { Apple } from "./icons/Apple";
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
@@ -17,9 +22,10 @@ type PatternProps = {
     width: number;
     height: number;
   };
+  children: (index: number) => ReactNode;
 };
 
-export const Pattern = ({ index, parentSize }: PatternProps) => {
+export const Pattern = ({ index, parentSize, children }: PatternProps) => {
   const patternSection = parentSize.width / ELEMENT_NUMBER;
   const size = getRandomInt(20, patternSection);
   const top = getRandomInt(0, parentSize.height - size);
@@ -40,15 +46,17 @@ export const Pattern = ({ index, parentSize }: PatternProps) => {
         zIndex: 0,
       }}
     >
-      <Apple sx={{ fill: index === 7 ? "primary" : "background" }} />
+      {children(index)}
     </Box>
   );
 };
 
 const Patterns = ({
   parentRef,
+  children,
 }: {
   parentRef: MutableRefObject<HTMLDivElement | null>;
+  children: (index: number) => ReactNode;
 }) => {
   const [parentSize, setParentSize] = useState({
     width: 0,
@@ -69,7 +77,9 @@ const Patterns = ({
   return (
     <Fragment>
       {patterns.map((key) => (
-        <Pattern key={key} index={key} parentSize={parentSize} />
+        <Pattern key={key} index={key} parentSize={parentSize}>
+          {children}
+        </Pattern>
       ))}
     </Fragment>
   );

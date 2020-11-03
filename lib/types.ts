@@ -1,4 +1,4 @@
-export type PostList = {
+type PostListItem = {
   title: string;
   excerpt: string;
   slug: string;
@@ -10,7 +10,21 @@ export type PostList = {
   };
 };
 
-export type PostFields = PostList & {
+type MediaImage = {
+  id: string;
+  uri: string;
+  title: string;
+  srcSet: string;
+  sourceUrl: string;
+};
+
+export type PostList = {
+  edges: {
+    node: PostListItem;
+  }[];
+};
+
+export type PostFields = PostListItem & {
   content: string;
 };
 
@@ -34,5 +48,36 @@ export type PageFields = {
         };
       };
     }[];
+  };
+};
+
+export type ProductFields = {
+  id: string;
+  name: string;
+  productId: string;
+  averageRating: string;
+  slug: string;
+  description: string;
+  image: MediaImage;
+  price: string;
+  onSale: boolean;
+  type: string;
+  productCategories: {
+    edges: CateogryListItem[];
+  };
+};
+
+export type CateogryListItem = {
+  node: {
+    name: string;
+    slug: string;
+    image: {
+      sourceUrl: string;
+    };
+    products: {
+      edges: {
+        node: ProductFields;
+      }[];
+    };
   };
 };

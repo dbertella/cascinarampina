@@ -5,14 +5,14 @@ import Head from "next/head";
 import MoreStories from "components/more-stories";
 import Layout from "components/layout";
 import PostBody from "components/post-body";
-import PageHeader from "components/page-header";
+import { ImageHeader } from "components/image-header";
 import { PageFields, PostList } from "lib/types";
 import { FC } from "react";
 
 export type PageProps = {
   data: {
     page: PageFields;
-    posts: { edges: { node: PostList }[] };
+    posts: PostList;
   };
 };
 
@@ -29,7 +29,7 @@ export const Page: FC<PageProps> = ({
       <meta property="og:image" content={page.featuredImage?.node?.sourceUrl} />
     </Head>
 
-    <PageHeader title={page.title} coverImage={page.featuredImage?.node} />
+    <ImageHeader title={page.title} coverImage={page.featuredImage?.node} />
     <Box variant="styles.container">
       <PostBody content={page.content} />
       {children}

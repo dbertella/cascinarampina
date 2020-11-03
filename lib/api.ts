@@ -1,6 +1,8 @@
+import { PostList } from "./types";
+
 const API_URL = process.env.WORDPRESS_API_URL ?? "/";
 
-async function fetchAPI(query: string, options?: { variables: object }) {
+export async function fetchAPI(query: string, options?: { variables: object }) {
   const headers = { "Content-Type": "application/json" };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
@@ -31,13 +33,14 @@ async function fetchAPI(query: string, options?: { variables: object }) {
 export async function getPreviewPost(id: string, idType = "DATABASE_ID") {
   const data = await fetchAPI(
     `
-    query PreviewPost($id: ID!, $idType: PostIdType!) {
-      post(id: $id, idType: $idType) {
-        databaseId
-        slug
-        status
+      query PreviewPost($id: ID!, $idType: PostIdType!) {
+        post(id: $id, idType: $idType) {
+          databaseId
+          slug
+          status
+        }
       }
-    }`,
+    `,
     {
       variables: { id, idType },
     }
@@ -60,42 +63,27 @@ export async function getAllPostsWithSlug() {
   return data?.posts;
 }
 
-export async function getAllPagesWithSlug() {
-  const data = await fetchAPI(`
-    {
-      pages(first: 10000) {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  `);
-  return data?.pages;
-}
-
 export async function getAllPostsForHome(preview?: boolean) {
   const data = await fetchAPI(
     `
-    query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl(size: LARGE)
+      query AllPosts {
+        posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              slug
+              date
+              featuredImage {
+                node {
+                  sourceUrl(size: LARGE)
+                }
               }
             }
           }
         }
       }
-    }
-  `,
+    `,
     {
       variables: {
         onlyEnabled: !preview,
@@ -122,79 +110,58 @@ export async function getPostAndMorePosts(
   const isRevision = isSamePost && postPreview?.status === "publish";
   const data = await fetchAPI(
     `
-    fragment AuthorFields on User {
-      name
-      firstName
-      lastName
-      avatar {
-        url
-      }
-    }
-    fragment PostFields on Post {
-      title
-      excerpt
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl(size: LARGE)
+      fragment AuthorFields on User {
+        name
+        firstName
+        lastName
+        avatar {
+          url
         }
       }
-      author {
-        node {
-          ...AuthorFields
-        }
-      }
-      categories {
-        edges {
+      fragment PostFields on Post {
+        title
+        excerpt
+        slug
+        date
+        featuredImage {
           node {
-            name
+            sourceUrl(size: LARGE)
           }
         }
-      }
-      tags {
-        edges {
+        author {
           node {
-            name
+            ...AuthorFields
           }
         }
-      }
-    }
-    query PostBySlug($id: ID!, $idType: PostIdType!) {
-      post(id: $id, idType: $idType) {
-        ...PostFields
-        content
-        ${
-          // Only some of the fields of a revision are considered as there are some inconsistencies
-          isRevision
-            ? `
-        revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
+        categories {
           edges {
             node {
-              title
-              excerpt
-              content
-              author {
-                node {
-                  ...AuthorFields
-                }
-              }
+              name
             }
           }
         }
-        `
-            : ""
-        }
-      }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            ...PostFields
+        tags {
+          edges {
+            node {
+              name
+            }
           }
         }
       }
-    }
-  `,
+      query PostBySlug($id: ID!, $idType: PostIdType!) {
+        post(id: $id, idType: $idType) {
+          ...PostFields
+          content
+        }
+        posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              ...PostFields
+            }
+          }
+        }
+      }
+    `,
     {
       variables: {
         id: isDraft ? postPreview.id : slug,
@@ -215,7 +182,7 @@ export async function getPostAndMorePosts(
 
   // Filter out the main post
   data.posts.edges = data.posts.edges.filter(
-    ({ node }: any) => node.slug !== slug
+    ({ node }: PostList["edges"][0]) => node.slug !== slug
   );
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop();
@@ -226,38 +193,38 @@ export async function getPostAndMorePosts(
 export async function getPageByUri(slug: string) {
   const data = await fetchAPI(
     `
-    fragment PageFields on Page {
-      title
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl(size: LARGE)
+      fragment PageFields on Page {
+        title
+        slug
+        date
+        featuredImage {
+          node {
+            sourceUrl(size: LARGE)
+          }
         }
       }
-    }
-    query PageBySlug($id: ID!, $idType: PageIdType!) {
-      page(id: $id, idType: $idType) {
-        ...PageFields
-        content
-      }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl(size: LARGE)
+      query PageBySlug($id: ID!, $idType: PageIdType!) {
+        page(id: $id, idType: $idType) {
+          ...PageFields
+          content
+        }
+        posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              slug
+              date
+              featuredImage {
+                node {
+                  sourceUrl(size: LARGE)
+                }
               }
             }
           }
         }
       }
-    }
-  `,
+    `,
     {
       variables: {
         id: slug,
@@ -272,51 +239,51 @@ export async function getPageByUri(slug: string) {
 export async function getPageAndChildrensByUri(slug: string) {
   const data = await fetchAPI(
     `
-    fragment PageFields on Page {
-      title
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl(size: LARGE)
+      fragment PageFields on Page {
+        title
+        slug
+        date
+        featuredImage {
+          node {
+            sourceUrl(size: LARGE)
+          }
         }
       }
-    }
-    query PageBySlug($id: ID!, $idType: PageIdType!) {
-      page(id: $id, idType: $idType) {
-        ...PageFields
-        content
-        children {
-          nodes {
-            slug
-            ... on Page {
-              id
+      query PageBySlug($id: ID!, $idType: PageIdType!) {
+        page(id: $id, idType: $idType) {
+          ...PageFields
+          content
+          children {
+            nodes {
+              slug
+              ... on Page {
+                id
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+        }
+        posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              slug
+              date
               featuredImage {
                 node {
-                  sourceUrl
+                  sourceUrl(size: LARGE)
                 }
               }
             }
           }
         }
       }
-      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl(size: LARGE)
-              }
-            }
-          }
-        }
-      }
-    }
-  `,
+    `,
     {
       variables: {
         id: slug,

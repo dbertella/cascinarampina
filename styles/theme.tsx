@@ -27,6 +27,8 @@ export default {
     primaryTransparent: "#95c11f33",
     secondaryTransparent: "#11481087",
     mutedTransparent: "#e6e6f0aa",
+    darkGrey: "#787878",
+    lightGrey: "#ababab",
   },
   cards: {
     primary: {

@@ -1,14 +1,20 @@
 import { Grid, Box, Heading } from "theme-ui";
 import dynamic from "next/dynamic";
-import PostPreview from "./post-preview";
 import { useRef } from "react";
-import { Apple } from "./icons/Apple";
+import { ProductFields } from "lib/types";
+import { ProductPreview } from "./product-preview";
+import { VeggieBox } from "../icons/VeggieBox";
 
-const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
+const DynamicComponentWithNoSSR = dynamic(() => import("../pattern"), {
   ssr: false,
 });
 
-export default function MoreStories({ posts }: any) {
+export function MoreProducts({
+  products,
+}: {
+  products: { node: ProductFields }[];
+}) {
+  console.log(products);
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <Box
@@ -22,7 +28,7 @@ export default function MoreStories({ posts }: any) {
     >
       <DynamicComponentWithNoSSR parentRef={ref}>
         {(index: number) => (
-          <Apple sx={{ fill: index === 7 ? "primary" : "background" }} />
+          <VeggieBox sx={{ fill: index === 7 ? "secondary" : "background" }} />
         )}
       </DynamicComponentWithNoSSR>
 
@@ -32,17 +38,16 @@ export default function MoreStories({ posts }: any) {
         sx={{ position: "relative", zIndex: 1 }}
       >
         <Heading as="h2" sx={{ mb: 3 }}>
-          Cosa sta succedendo
+          Ti proponiamo anche
         </Heading>
         <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
-          {posts.map(({ node }: any) => (
-            <PostPreview
+          {products.map(({ node }: any) => (
+            <ProductPreview
               key={node.slug}
-              title={node.title}
-              coverImage={node.featuredImage?.node}
-              date={node.date}
+              title={node.name}
+              coverImage={node.image}
+              price={node.price}
               slug={node.slug}
-              excerpt={node.excerpt}
             />
           ))}
         </Grid>

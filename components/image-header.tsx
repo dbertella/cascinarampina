@@ -6,7 +6,7 @@ type Props = {
   coverImage?: MediaImage;
 };
 
-export default function PostHeader({ title, coverImage }: Props) {
+export function ImageHeader({ title, coverImage }: Props) {
   return (
     <Flex
       sx={{

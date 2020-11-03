@@ -1,20 +1,29 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "theme-ui";
+import { CateogryListItem } from "lib/types";
+import Link from "next/link";
+import { jsx, Link as UiLink } from "theme-ui";
 
-export default function Categories({ categories }: any) {
+export default function Categories({
+  categories,
+}: {
+  categories: { edges: CateogryListItem[] };
+}) {
   return (
-    <span sx={{ ml: 1 }}>
-      Categoria
-      {categories.edges.length > 0 ? (
-        categories.edges.map((category: any) => (
-          <span key={category.node.name} sx={{ ml: 1 }}>
-            {category.node.name}
-          </span>
-        ))
-      ) : (
-        <span sx={{ ml: 1 }}>{categories.edges.node.name}</span>
-      )}
+    <span>
+      <span sx={{ mr: 1, color: "lightGrey" }}>Categoria</span>
+      {categories.edges.length > 0
+        ? categories.edges.map((category: any) => (
+            <Link
+              key={category.node.slug}
+              href={`/product-categories/${category.node.slug}`}
+              sx={{ ml: 3 }}
+              passHref
+            >
+              <UiLink>{category.node.name}</UiLink>
+            </Link>
+          ))
+        : null}
     </span>
   );
 }
