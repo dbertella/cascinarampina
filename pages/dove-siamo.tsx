@@ -1,8 +1,7 @@
 import { Page, PageProps } from "components/page";
 import { getPageByUri } from "lib/api";
-import { FC } from "react";
 
-const DefaultPage: FC<PageProps> = (props) => <Page {...props} />;
+const DefaultPage = (props: PageProps) => <Page {...props} />;
 
 export default DefaultPage;
 

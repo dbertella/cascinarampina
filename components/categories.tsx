@@ -12,18 +12,16 @@ export default function Categories({
   return (
     <span>
       <span sx={{ mr: 1, color: "lightGrey" }}>Categoria</span>
-      {categories.edges.length > 0
-        ? categories.edges.map((category: any) => (
-            <Link
-              key={category.node.slug}
-              href={`/categoria-prodotto/${category.node.slug}`}
-              sx={{ ml: 3 }}
-              passHref
-            >
-              <UiLink>{category.node.name}</UiLink>
-            </Link>
-          ))
-        : null}
+      {(categories?.edges ?? []).map((category) => (
+        <Link
+          key={category.node.slug}
+          href={`/categoria-prodotto/${category.node.slug}`}
+          sx={{ ml: 3 }}
+          passHref
+        >
+          <UiLink>{category.node.name}</UiLink>
+        </Link>
+      ))}
     </span>
   );
 }
