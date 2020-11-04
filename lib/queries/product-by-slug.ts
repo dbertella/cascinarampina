@@ -48,6 +48,7 @@ export async function getProductBySlug(slug: string) {
           id
           averageRating
           description
+          shortDescription
           type
           ...ProductFields
           productTypes {

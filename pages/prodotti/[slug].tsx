@@ -4,7 +4,7 @@ import PostBody from "components/post-body";
 import Layout from "components/layout";
 import PostTitle from "components/post-title";
 import Head from "next/head";
-import { Box, Grid, Image } from "theme-ui";
+import { Box, Grid, Image, Text } from "theme-ui";
 import { getProductBySlug } from "lib";
 import { Button } from "theme-ui";
 import { GetServerSideProps } from "next";
@@ -54,7 +54,10 @@ export default function Product({ product }: { product: ProductSingle }) {
               <Box>
                 <Categories categories={product.productCategories} />
               </Box>
-              <PostBody content={product.description} />
+              <PostBody content={product.shortDescription} />
+              <Text sx={{ color: "lightGrey", fontSize: 1 }}>
+                <PostBody content={product.description} />
+              </Text>
               <ProductPrice
                 price={product.price}
                 type={product.type}

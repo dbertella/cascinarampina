@@ -70,6 +70,7 @@ export type ProductSingle = {
   averageRating: string;
   slug: string;
   description: string;
+  shortDescription: string;
   image: MediaImage;
   price: string;
   onSale: boolean;
