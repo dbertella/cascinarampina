@@ -1,6 +1,6 @@
 import { PostList, PostSingle } from "./types";
 
-const API_URL = process.env.WORDPRESS_API_URL ?? "/";
+const API_URL = process.env.WORDPRESS_API_URL ?? "http://dummy.it";
 
 export async function fetchAPI(query: string, options?: { variables: object }) {
   const headers = { "Content-Type": "application/json" };
