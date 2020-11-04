@@ -53,7 +53,7 @@ export async function getProductCategory(slug: string) {
           sourceUrl
           srcSet
         }
-        products(first: 5) {
+        products(first: 1000) {
           edges {
             cursor
             node {

@@ -3,9 +3,10 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: 'Cascinarampina, "Helvetica Neue", sans-serif',
+      '"Encode Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: '"Encode Sans", sans-serif',
     monospace: "Menlo, monospace",
+    cascinarampina: "Cascinarampina, cursive",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {

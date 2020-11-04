@@ -23,16 +23,23 @@ export default function Footer() {
           </Text>
           <Text>Via Donatello, 5</Text>
           <Text>Monticello brianza, lecco</Text>
+          <Link
+            rel="noreferrer noopener"
+            href="https://wa.me/393246960519"
+            target="_blank"
+          >
+            +39 324 696 0519
+          </Link>
         </Box>
         <Box>
           <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>
-            Orari del negozio:
+            Orari di apertura del nostro punto vendita:
           </Text>
           <Text>
-            <strong>martedì</strong> dalle 14 alle 19
+            <strong>Martedì</strong> dalle 14 alle 19
           </Text>
           <Text>
-            <strong>sabato</strong> dalle 9 alle 12
+            <strong>Sabato</strong> dalle 9 alle 12
           </Text>
         </Box>
         <Box>

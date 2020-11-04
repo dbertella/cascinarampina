@@ -43,7 +43,9 @@ export default function Product({
           />
 
           <Box as="article" variant="styles.container">
-            <PostBody content={productCategory.description} />
+            <Box sx={{ maxWidth: "40em", py: 5 }}>
+              <PostBody content={productCategory.description} />
+            </Box>
           </Box>
           {productCategory.products.edges.length > 0 && (
             <MoreProducts products={productCategory.products.edges} />

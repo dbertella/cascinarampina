@@ -10,7 +10,12 @@ export default class extends Document {
   render() {
     return (
       <Html lang="it">
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+          ></link>
+        </Head>
         <body>
           <InitializeColorMode />
           <Main />

@@ -1,7 +1,8 @@
 import Date from "./date";
-import CoverImage from "./cover-image";
 import Link from "next/link";
 import { MediaImage } from "types";
+import { ImageHeader } from "./image-header";
+import { Box, Heading, Link as Uilink, Text } from "theme-ui";
 
 type Props = {
   title: string;
@@ -19,35 +20,28 @@ export default function HeroPost({
   slug,
 }: Props) {
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage
-          title={title}
-          coverImage={coverImage}
-          href={`/news/${slug}`}
+    <Box variant="styles.container">
+      <ImageHeader title={title} coverImage={coverImage} />
+      <Box sx={{ py: 5 }}>
+        <Heading as="h3">
+          <Link href={`/news/${slug}`} passHref>
+            <Uilink dangerouslySetInnerHTML={{ __html: title }} />
+          </Link>
+        </Heading>
+        <Text
+          sx={{
+            p: 1,
+            fontSize: 0,
+            color: "darkGrey",
+          }}
+        >
+          <Date dateString={date} />
+        </Text>
+        <Box
+          sx={{ maxWidth: "40em" }}
+          dangerouslySetInnerHTML={{ __html: excerpt }}
         />
-      </div>
-      <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link href={`/news/${slug}`}>
-              <a
-                className="hover:underline"
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-            </Link>
-          </h3>
-          <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
-          </div>
-        </div>
-        <div>
-          <div
-            className="text-lg leading-relaxed mb-4"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
-          />
-        </div>
-      </div>
-    </section>
+      </Box>
+    </Box>
   );
 }

@@ -31,10 +31,12 @@ export function ImageHeader({ title, coverImage }: Props) {
       <Heading
         as="h1"
         sx={{
-          p: 1,
+          py: 1,
+          px: 3,
+          fontSize: 6,
           textTransform: "uppercase",
-          bg: "primary",
-          color: "background",
+          bg: "backgroundTransparent",
+          fontFamily: "cascinarampina",
         }}
       >
         {title}
