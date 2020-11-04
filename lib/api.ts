@@ -127,6 +127,7 @@ export async function getPostAndMorePosts(slug: string) {
           edges {
             node {
               name
+              slug
             }
           }
         }
