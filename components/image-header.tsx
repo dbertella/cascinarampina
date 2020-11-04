@@ -1,5 +1,6 @@
 import { MediaImage } from "types";
 import { Flex, Heading, Image } from "theme-ui";
+import { PLACEHOLDER_IMAGE } from "lib";
 
 type Props = {
   title: string;
@@ -25,7 +26,7 @@ export function ImageHeader({ title, coverImage }: Props) {
           objectFit: "cover",
           verticalAlign: "bottom",
         }}
-        src={coverImage?.sourceUrl}
+        src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
       />
       <Heading
         as="h1"

@@ -13,8 +13,7 @@ import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
 import Categories from "components/categories";
 import { ProductPrice } from "components/products/Price";
-
-
+import { PLACEHOLDER_IMAGE } from "lib";
 
 export default function Product({ product }: { product: ProductSingle }) {
   const router = useRouter();
@@ -50,7 +49,7 @@ export default function Product({ product }: { product: ProductSingle }) {
             variant="styles.container"
             py={5}
           >
-            <Image src={product.image.sourceUrl} />
+            <Image src={product?.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
             <Box>
               <Box>
                 <Categories categories={product.productCategories} />

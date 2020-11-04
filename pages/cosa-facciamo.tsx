@@ -1,4 +1,5 @@
 import { Page, PageProps } from "components/page";
+import { PLACEHOLDER_IMAGE } from "lib";
 import { getPageAndChildrensByUri } from "lib/api";
 import Link from "next/link";
 import { Grid, Image, Text, Link as UiLink } from "theme-ui";
@@ -28,7 +29,7 @@ const CosaFacciamo = (props: PageProps) => {
                   objectFit: "cover",
                   verticalAlign: "bottom",
                 }}
-                src={featuredImage?.node?.sourceUrl}
+                src={featuredImage?.node?.sourceUrl ?? PLACEHOLDER_IMAGE}
               />
               <Text
                 sx={{

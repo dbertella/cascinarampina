@@ -61,7 +61,7 @@ export type ProductListItem = {
   slug: string;
   price: string;
   image: MediaImage;
-}
+};
 
 export type ProductSingle = {
   id: string;
@@ -79,13 +79,30 @@ export type ProductSingle = {
   };
 };
 
+export type CateogrySingle = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  image: {
+    id: string;
+    sourceUrl: string;
+    srcSet: string;
+  };
+  products: {
+    edges: {
+      node: ProductListItem;
+    }[];
+  };
+};
+
 export type CateogryListItem = {
   node: {
-    id: string
+    id: string;
     name: string;
     slug: string;
     image: {
-      id: string
+      id: string;
       sourceUrl: string;
       srcSet: string;
     };

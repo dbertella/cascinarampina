@@ -7,6 +7,12 @@ export async function getProductBySlug(slug: string) {
   const data: { product: ProductSingle } = await fetchAPI(
     `
       fragment ProductFields on Product {
+        name
+        slug
+        image {
+          sourceUrl(size: LARGE)
+          srcSet
+        }
         ... on SimpleProduct {
           onSale
           price
@@ -41,17 +47,8 @@ export async function getProductBySlug(slug: string) {
         product(id: $id, idType: SLUG) {
           id
           averageRating
-          slug
           description
           type
-          image {
-            id
-            uri
-            title
-            srcSet
-            sourceUrl
-          }
-          name
           ...ProductFields
           productTypes {
             edges {
@@ -82,12 +79,6 @@ export async function getProductBySlug(slug: string) {
                 products(first: 10) {
                   edges {
                     node {
-                      name
-                      slug
-                      image {
-                        sourceUrl(size: LARGE)
-                        srcSet
-                      }
                       ...ProductFields
                     }
                   }

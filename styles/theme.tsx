@@ -54,7 +54,8 @@ export default {
     },
     container: {
       maxWidth: 1200,
-      margin: "0 auto",
+      my: 2,
+      mx: "auto",
       px: [2, 4],
     },
     h1: {

@@ -39,7 +39,10 @@ export function MoreProducts({
         <Heading as="h2" sx={{ mb: 3 }}>
           Ti proponiamo anche
         </Heading>
-        <Grid columns={["1fr 1fr", "1fr 1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]} gap={2}>
+        <Grid
+          columns={["1fr 1fr", "1fr 1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]}
+          gap={2}
+        >
           {products.map(({ node }) => (
             <ProductPreview
               key={node.slug}

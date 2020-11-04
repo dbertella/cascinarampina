@@ -1,5 +1,5 @@
 import Layout from "components/layout";
-import { getProductCategories } from "lib";
+import { getProductCategories, PLACEHOLDER_IMAGE } from "lib";
 import { CateogryListItem } from "lib/types";
 import Head from "next/head";
 import Link from "next/link";
@@ -44,7 +44,7 @@ const Products = ({
                   objectFit: "cover",
                   verticalAlign: "bottom",
                 }}
-                src={image?.sourceUrl}
+                src={image?.sourceUrl ?? PLACEHOLDER_IMAGE}
               />
               <Text
                 sx={{
