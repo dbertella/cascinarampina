@@ -1,4 +1,4 @@
-import { PostList } from "./types";
+import { PostList, PostSingle } from "./types";
 
 const API_URL = process.env.WORDPRESS_API_URL ?? "/";
 
@@ -77,6 +77,7 @@ export async function getAllPostsForHome(preview?: boolean) {
               featuredImage {
                 node {
                   sourceUrl(size: LARGE)
+                  srcSet
                 }
               }
             }
@@ -95,20 +96,8 @@ export async function getAllPostsForHome(preview?: boolean) {
   return data?.posts;
 }
 
-export async function getPostAndMorePosts(
-  slug: string,
-  preview: boolean,
-  previewData: any
-) {
-  const postPreview = preview && previewData?.post;
-  // The slug may be the id of an unpublished post
-  const isId = Number.isInteger(Number(slug));
-  const isSamePost = isId
-    ? Number(slug) === postPreview.id
-    : slug === postPreview.slug;
-  const isDraft = isSamePost && postPreview?.status === "draft";
-  const isRevision = isSamePost && postPreview?.status === "publish";
-  const data = await fetchAPI(
+export async function getPostAndMorePosts(slug: string) {
+  const data: { post: PostSingle; posts: PostList } = await fetchAPI(
     `
       fragment AuthorFields on User {
         name
@@ -126,6 +115,7 @@ export async function getPostAndMorePosts(
         featuredImage {
           node {
             sourceUrl(size: LARGE)
+            srcSet
           }
         }
         author {
@@ -164,21 +154,11 @@ export async function getPostAndMorePosts(
     `,
     {
       variables: {
-        id: isDraft ? postPreview.id : slug,
-        idType: isDraft ? "DATABASE_ID" : "SLUG",
+        id: slug,
+        idType: "SLUG",
       },
     }
   );
-
-  // Draft posts may not have an slug
-  if (isDraft) data.post.slug = postPreview.id;
-  // Apply a revision (changes in a published post)
-  if (isRevision && data.post.revisions) {
-    const revision = data.post.revisions.edges[0]?.node;
-
-    if (revision) Object.assign(data.post, revision);
-    delete data.post.revisions;
-  }
 
   // Filter out the main post
   data.posts.edges = data.posts.edges.filter(
@@ -200,6 +180,7 @@ export async function getPageByUri(slug: string) {
         featuredImage {
           node {
             sourceUrl(size: LARGE)
+            srcSet
           }
         }
       }
@@ -218,6 +199,7 @@ export async function getPageByUri(slug: string) {
               featuredImage {
                 node {
                   sourceUrl(size: LARGE)
+                  srcSet
                 }
               }
             }
@@ -246,6 +228,7 @@ export async function getPageAndChildrensByUri(slug: string) {
         featuredImage {
           node {
             sourceUrl(size: LARGE)
+            srcSet
           }
         }
       }
@@ -258,9 +241,11 @@ export async function getPageAndChildrensByUri(slug: string) {
               slug
               ... on Page {
                 id
+                title
                 featuredImage {
                   node {
-                    sourceUrl
+                    sourceUrl(size: LARGE)
+                    srcSet
                   }
                 }
               }
@@ -277,6 +262,7 @@ export async function getPageAndChildrensByUri(slug: string) {
               featuredImage {
                 node {
                   sourceUrl(size: LARGE)
+                  srcSet
                 }
               }
             }

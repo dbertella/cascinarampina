@@ -6,12 +6,12 @@ import MoreStories from "components/more-stories";
 import Layout from "components/layout";
 import PostBody from "components/post-body";
 import { ImageHeader } from "components/image-header";
-import { PageFields, PostList } from "lib/types";
+import { PageSingle, PostList } from "lib/types";
 import { FC } from "react";
 
 export type PageProps = {
   data: {
-    page: PageFields;
+    page: PageSingle;
     posts: PostList;
   };
 };

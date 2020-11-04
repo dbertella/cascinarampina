@@ -1,15 +1,31 @@
-import { Page, PageProps } from "components/page";
-import { getPageAndChildrensByUri } from "lib/api";
+import Layout from "components/layout";
+import { getProductCategories } from "lib";
+import { CateogryListItem } from "lib/types";
+import Head from "next/head";
 import Link from "next/link";
 import { Grid, Image, Text, Link as UiLink } from "theme-ui";
 
-const CosaFacciamo = (props: PageProps) => {
-  const childrenPages = props.data.page?.children?.nodes ?? [];
+const Products = ({
+  productCategories,
+}: {
+  productCategories: { edges: CateogryListItem[] };
+}) => {
   return (
-    <Page {...props}>
-      <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
-        {childrenPages.map(({ slug, featuredImage, title }) => (
-          <Link key={slug} href={`/cosa-facciamo/${slug}`} passHref>
+    <Layout>
+      <Head>
+        <title>Prodotti | Azienda Agricola Cascina Rampina</title>
+        <meta
+          property="og:image"
+          content={productCategories.edges[0].node.image?.sourceUrl}
+        />
+      </Head>
+      <Grid
+        columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
+        gap={2}
+        variant="styles.container"
+      >
+        {productCategories.edges.map(({ node: { slug, image, name } }) => (
+          <Link key={slug} href={`/categoria-prodotto/${slug}`} passHref>
             <UiLink
               sx={{
                 position: "relative",
@@ -28,7 +44,7 @@ const CosaFacciamo = (props: PageProps) => {
                   objectFit: "cover",
                   verticalAlign: "bottom",
                 }}
-                src={featuredImage?.node?.sourceUrl}
+                src={image?.sourceUrl}
               />
               <Text
                 sx={{
@@ -39,22 +55,21 @@ const CosaFacciamo = (props: PageProps) => {
                   color: "background",
                 }}
               >
-                {title}
+                {name}
               </Text>
             </UiLink>
           </Link>
         ))}
       </Grid>
-    </Page>
+    </Layout>
   );
 };
 
-export default CosaFacciamo;
+export default Products;
 
 export async function getStaticProps() {
-  const data = await getPageAndChildrensByUri("cosa-facciamo");
-  console.info("cosa-facciamo done");
+  const { productCategories } = await getProductCategories();
   return {
-    props: { data },
+    props: { productCategories },
   };
 }

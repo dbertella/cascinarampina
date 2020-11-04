@@ -1,7 +1,7 @@
 import { Grid, Box, Heading } from "theme-ui";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-import { ProductFields } from "lib/types";
+import { ProductListItem } from "lib/types";
 import { ProductPreview } from "./product-preview";
 import { VeggieBox } from "../icons/VeggieBox";
 
@@ -12,9 +12,8 @@ const DynamicComponentWithNoSSR = dynamic(() => import("../pattern"), {
 export function MoreProducts({
   products,
 }: {
-  products: { node: ProductFields }[];
+  products: { node: ProductListItem }[];
 }) {
-  console.log(products);
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <Box
@@ -40,8 +39,8 @@ export function MoreProducts({
         <Heading as="h2" sx={{ mb: 3 }}>
           Ti proponiamo anche
         </Heading>
-        <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
-          {products.map(({ node }: any) => (
+        <Grid columns={["1fr 1fr", "1fr 1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]} gap={2}>
+          {products.map(({ node }) => (
             <ProductPreview
               key={node.slug}
               title={node.name}

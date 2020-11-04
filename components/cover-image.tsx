@@ -12,7 +12,6 @@ export default function CoverImage({ title, coverImage, href }: Props) {
   if (!coverImage?.sourceUrl) {
     return null;
   }
-  console.log(coverImage);
   const image = <Image src={coverImage?.sourceUrl} alt={title} />;
   return href ? (
     <Link href={href}>

@@ -31,9 +31,9 @@ export default function Home({ allPosts: { edges } }: any) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview);
+export async function getStaticProps() {
+  const allPosts = await getAllPostsForHome();
   return {
-    props: { allPosts, preview },
+    props: { allPosts },
   };
 }

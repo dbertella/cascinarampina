@@ -16,7 +16,7 @@ export default function Categories({
         ? categories.edges.map((category: any) => (
             <Link
               key={category.node.slug}
-              href={`/product-categories/${category.node.slug}`}
+              href={`/categoria-prodotto/${category.node.slug}`}
               sx={{ ml: 3 }}
               passHref
             >

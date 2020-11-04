@@ -29,12 +29,12 @@ export function ProductPreview({ title, coverImage, price, slug }: Props) {
         <CoverImage
           title={title}
           coverImage={coverImage}
-          href={`/products/${slug}`}
+          href={`/prodotti/${slug}`}
         />
       </Box>
 
       <Styled.h3>
-        <Link href={`/products/${slug}`} passHref>
+        <Link href={`/prodotti/${slug}`} passHref>
           <UiLink
             sx={{ color: "text" }}
             dangerouslySetInnerHTML={{ __html: title }}

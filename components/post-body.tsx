@@ -41,12 +41,12 @@ const sx = {
       fontSize: 0,
       bg: "mutedTransparent",
     },
-    "@media screen and (max-width: 764px)": {
+    "@media screen and (max-width: 48em)": {
       li: {
         flex: "1 1 50%",
       },
     },
-    "@media (max-width: 478px)": {
+    "@media (max-width: 30em)": {
       ul: {
         display: "block",
       },

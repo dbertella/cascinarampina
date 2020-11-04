@@ -4,17 +4,19 @@ import PostBody from "components/post-body";
 import Layout from "components/layout";
 import PostTitle from "components/post-title";
 import Head from "next/head";
-import { Box, Flex, Image } from "theme-ui";
+import { Box, Grid, Image } from "theme-ui";
 import { getProductBySlug } from "lib";
 import { Button } from "theme-ui";
 import { GetServerSideProps } from "next";
-import { ProductFields } from "lib/types";
+import { ProductSingle } from "lib/types";
 import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
 import Categories from "components/categories";
 import { ProductPrice } from "components/products/Price";
 
-export default function Product({ product }: { product: ProductFields }) {
+
+
+export default function Product({ product }: { product: ProductSingle }) {
   const router = useRouter();
 
   if (!router.isFallback && !product?.slug) {
@@ -42,9 +44,13 @@ export default function Product({ product }: { product: ProductFields }) {
             }
           />
 
-          <Flex as="article" variant="styles.container" py={5}>
+          <Grid
+            as="article"
+            columns={["auto", "1fr 2fr"]}
+            variant="styles.container"
+            py={5}
+          >
             <Image src={product.image.sourceUrl} />
-            <Box pr={5} />
             <Box>
               <Box>
                 <Categories categories={product.productCategories} />
@@ -58,7 +64,7 @@ export default function Product({ product }: { product: ProductFields }) {
               <Box pt={2} />
               <Button onClick={() => console.log(product)}>Aggiungi</Button>
             </Box>
-          </Flex>
+          </Grid>
           {otherProducts.length > 0 && (
             <MoreProducts products={otherProducts[0].edges} />
           )}
@@ -84,3 +90,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+// export async function getStaticProps({
+//   params,
+//   preview = false,
+//   previewData,
+// }: any) {
+//   const data = await getPostAndMorePosts(params.slug, preview, previewData);
+
+//   return {
+//     props: {
+//       preview,
+//       post: data.post,
+//       posts: data.posts,
+//     },
+//   };
+// }
+
+// type Post = {
+//   node: {
+//     slug: string;
+//   };
+// };
+
+// export async function getStaticPaths() {
+//   const allPosts = await getAllPostsWithSlug();
+
+//   return {
+//     paths: allPosts.edges.map(({ node }: Post) => `/news/${node.slug}`) || [],
+//     fallback: true,
+//   };
+// }
