@@ -4,39 +4,62 @@ export default function Meta() {
   return (
     <Head>
       <link
+        rel="icon"
+        href="/favicon-32x32.png?v=8bf389f29981e2432d22da0c263eb828"
+        type="image/png"
+      />
+      <link
+        rel="manifest"
+        href="/manifest.webmanifest"
+        crossOrigin="anonymous"
+      />
+      <meta name="theme-color" content="#95c11f" />
+      <link
         rel="apple-touch-icon"
-        sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        sizes="48x48"
+        href="/icons/icon-48x48.png?v=8bf389f29981e2432d22da0c263eb828"
       />
       <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        rel="apple-touch-icon"
+        sizes="72x72"
+        href="/icons/icon-72x72.png?v=8bf389f29981e2432d22da0c263eb828"
       />
       <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        rel="apple-touch-icon"
+        sizes="96x96"
+        href="/icons/icon-96x96.png?v=8bf389f29981e2432d22da0c263eb828"
       />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
       <link
-        rel="mask-icon"
-        href="/favicon/safari-pinned-tab.svg"
-        color="#000000"
+        rel="apple-touch-icon"
+        sizes="144x144"
+        href="/icons/icon-144x144.png?v=8bf389f29981e2432d22da0c263eb828"
       />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      <link
+        rel="apple-touch-icon"
+        sizes="192x192"
+        href="/icons/icon-192x192.png?v=8bf389f29981e2432d22da0c263eb828"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="256x256"
+        href="/icons/icon-256x256.png?v=8bf389f29981e2432d22da0c263eb828"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="384x384"
+        href="/icons/icon-384x384.png?v=8bf389f29981e2432d22da0c263eb828"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="512x512"
+        href="/icons/icon-512x512.png?v=8bf389f29981e2432d22da0c263eb828"
+      />
       <meta
         name="description"
         content="Azienda Agricola Cascina Rampina a Monticello Brianza"
       />
 
-      {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
+      <meta property="og:image" content="/images/logo-rampina.jpg" />
     </Head>
   );
 }
