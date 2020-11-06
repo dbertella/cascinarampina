@@ -17,6 +17,7 @@
     "lodash": "^4.17.20",
     "next": "10.0.0",
     "react": "17.0.1",
+    "react-cookie-consent": "^6.0.0",
     "react-dom": "17.0.1",
     "theme-ui": "^0.3.1"
   },
