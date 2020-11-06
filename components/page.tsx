@@ -34,6 +34,8 @@ export const Page: FC<PageProps> = ({
       <PostBody content={page.content} />
       {children}
     </Box>
-    {edges.length > 0 && <MoreStories posts={edges} />}
+    {edges.length > 0 && (
+      <MoreStories posts={edges} title="Cosa succede alla Rampina" />
+    )}
   </Layout>
 );

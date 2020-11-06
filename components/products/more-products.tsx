@@ -11,8 +11,10 @@ const DynamicComponentWithNoSSR = dynamic(() => import("../pattern"), {
 
 export function MoreProducts({
   products,
+  title,
 }: {
   products: { node: ProductListItem }[];
+  title?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   return (
@@ -37,11 +39,11 @@ export function MoreProducts({
         sx={{ position: "relative", zIndex: 1 }}
       >
         <Heading as="h2" sx={{ mb: 3 }}>
-          Ti proponiamo anche
+          {title}
         </Heading>
         <Grid
           columns={["1fr 1fr", "1fr 1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]}
-          gap={2}
+          gap={4}
         >
           {products.map(({ node }) => (
             <ProductPreview

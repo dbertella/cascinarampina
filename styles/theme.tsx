@@ -45,6 +45,33 @@ export default {
       borderColor: "muted",
     },
   },
+  buttons: {
+    primary: {
+      color: "background",
+      bg: "primary",
+      "&:hover": {
+        bg: "text",
+      },
+    },
+    secondary: {
+      color: "text",
+      bg: "background",
+      textTransform: "uppercase",
+      p: 3,
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: "text",
+      borderRadius: 0,
+      "&:focus, &:active": {
+        outline: "2px solid",
+        outlineColor: "primary",
+      },
+      "&:hover": {
+        color: "background",
+        bg: "secondary",
+      },
+    },
+  },
   styles: {
     root: {
       fontFamily: "body",

@@ -1,19 +1,24 @@
-import { MediaImage } from "types";
-import { Flex, Heading, Image } from "theme-ui";
 import { PLACEHOLDER_IMAGE } from "lib";
+import { Image, Text, Link } from "theme-ui";
+import NextLink from "next/link";
 
-type Props = {
+export const LinkToSingle = ({
+  imageSrc,
+  title,
+  href,
+}: {
+  imageSrc?: string;
   title: string;
-  coverImage?: MediaImage;
-};
-
-export function ImageHeader({ title, coverImage }: Props) {
-  return (
-    <Flex
+  href: string;
+}) => (
+  <NextLink href={href} passHref>
+    <Link
       sx={{
         position: "relative",
+        display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-end",
+        textDecoration: "none",
         height: 300,
       }}
     >
@@ -26,21 +31,21 @@ export function ImageHeader({ title, coverImage }: Props) {
           objectFit: "cover",
           verticalAlign: "bottom",
         }}
-        src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
+        src={imageSrc ?? PLACEHOLDER_IMAGE}
       />
-      <Heading
-        as="h1"
+      <Text
         sx={{
+          fontSize: 3,
           py: 1,
-          px: 3,
-          fontSize: [4, 5, 6],
+          px: 2,
+          width: "100%",
           textTransform: "uppercase",
           bg: "backgroundTransparent",
-          fontFamily: "cascinarampina",
+          color: "text",
         }}
       >
         {title}
-      </Heading>
-    </Flex>
-  );
-}
+      </Text>
+    </Link>
+  </NextLink>
+);

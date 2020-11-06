@@ -1,4 +1,4 @@
-import { getYear } from "date-fns";
+import dayjs from "dayjs";
 import { Box, Grid, Link, Text } from "theme-ui";
 
 export default function Footer() {
@@ -19,7 +19,7 @@ export default function Footer() {
       >
         <Box>
           <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>
-            © {getYear(new Date())} Azienda Agricola Cascina Rampina.
+            © {dayjs().get("year")} Azienda Agricola Cascina Rampina.
           </Text>
           <Text>Via Donatello, 5</Text>
           <Text>Monticello brianza, lecco</Text>

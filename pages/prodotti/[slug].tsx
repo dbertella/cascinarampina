@@ -68,7 +68,10 @@ export default function Product({ product }: { product: ProductSingle }) {
             </Box>
           </Grid>
           {otherProducts.length > 0 && (
-            <MoreProducts products={otherProducts[0].edges} />
+            <MoreProducts
+              products={otherProducts[0].edges}
+              title="Dalla stessa categoria"
+            />
           )}
         </>
       )}

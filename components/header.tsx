@@ -34,7 +34,7 @@ export default function Header() {
         <Link href="/contatti" passHref>
           <NavLink p={2}>Contatti</NavLink>
         </Link>
-        <Link href="/prodotti" passHref>
+        <Link href="/categorie-prodotti" passHref>
           <NavLink p={2}>Prodotti</NavLink>
         </Link>
         <Link href="/faq" passHref>

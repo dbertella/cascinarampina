@@ -78,7 +78,7 @@ export async function getStaticPaths() {
   return {
     paths:
       allPosts.edges.map(
-        ({ node }: Category) => `/categoria-prodotto/${node.slug}`
+        ({ node }: Category) => `/categorie-prodotti/${node.slug}`
       ) || [],
     fallback: true,
   };

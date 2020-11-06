@@ -2,30 +2,30 @@ import { AllProducts } from "components/all-products";
 import { ImageHeader } from "components/image-header";
 import Layout from "components/layout";
 import { LinkToSingle } from "components/LinkToSingle";
-import { getProducts } from "lib";
+import { getProductCategories } from "lib";
 import { CateogryListItem } from "lib/types";
 import { sample } from "lodash";
 import Head from "next/head";
 import Link from "next/link";
 import { Button, Grid } from "theme-ui";
 
-const Products = ({
-  products,
+const ProductCategories = ({
+  productCategories,
 }: {
-  products: { edges: CateogryListItem[] };
+  productCategories: { edges: CateogryListItem[] };
 }) => {
   return (
     <Layout>
       <Head>
-        <title>Prodotti | Azienda Agricola Cascina Rampina</title>
+        <title>Categorie di prodotti | Azienda Agricola Cascina Rampina</title>
         <meta
           property="og:image"
-          content={products.edges[0].node.image?.sourceUrl}
+          content={productCategories.edges[0].node.image?.sourceUrl}
         />
       </Head>
       <ImageHeader
-        title="Tutti i prodotti"
-        coverImage={sample(products.edges)?.node?.image}
+        title="I nostri prodotti"
+        coverImage={sample(productCategories.edges)?.node?.image}
       />
       <Grid
         columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
@@ -33,19 +33,19 @@ const Products = ({
         variant="styles.container"
         my={3}
       >
-        {products.edges.map(({ node: { slug, image, name } }) => (
+        {productCategories.edges.map(({ node: { slug, image, name } }) => (
           <LinkToSingle
             key={slug}
-            href={`/prodotti/${slug}`}
+            href={`/categorie-prodotti/${slug}`}
             imageSrc={image?.sourceUrl}
             title={name}
           />
         ))}
       </Grid>
       <AllProducts>
-        <Link href="/categorie-prodotti" passHref>
+        <Link href="/prodotti" passHref>
           <Button variant="secondary" sx={{ zIndex: 1 }}>
-            Guarda le categorie prodotti
+            Guarda tutti i prodotti
           </Button>
         </Link>
       </AllProducts>
@@ -53,11 +53,11 @@ const Products = ({
   );
 };
 
-export default Products;
+export default ProductCategories;
 
 export async function getStaticProps() {
-  const { products } = await getProducts();
+  const { productCategories } = await getProductCategories();
   return {
-    props: { products },
+    props: { productCategories },
   };
 }

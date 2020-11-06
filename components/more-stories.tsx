@@ -8,7 +8,7 @@ const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
   ssr: false,
 });
 
-export default function MoreStories({ posts }: any) {
+export default function MoreStories({ posts, title }: any) {
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <Box
@@ -32,7 +32,7 @@ export default function MoreStories({ posts }: any) {
         sx={{ position: "relative", zIndex: 1 }}
       >
         <Heading as="h2" sx={{ mb: 3 }}>
-          Cosa sta succedendo
+          {title}
         </Heading>
         <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
           {posts.map(({ node }: any) => (
