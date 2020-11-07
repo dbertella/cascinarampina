@@ -13,7 +13,7 @@ export default function Home({ allPosts: { edges } }: any) {
   return (
     <Layout>
       <Head>
-        <title>Azienda Agricola Cascina Rampina</title>
+        <title>Novità | Azienda Agricola Cascina Rampina</title>
       </Head>
       <Box variant="styles.container">
         {heroPost && (

@@ -24,6 +24,7 @@ export default {
     primary: "#95c11fff",
     secondary: "#114810ff",
     muted: "#e6e6f0ff",
+    textTransparent: "#464E4711",
     backgroundTransparent: "#fafafaaa",
     primaryTransparent: "#95c11f33",
     secondaryTransparent: "#11481087",
@@ -55,7 +56,7 @@ export default {
     },
     secondary: {
       color: "text",
-      bg: "background",
+      bg: "backgroundTransparent",
       textTransform: "uppercase",
       p: 3,
       borderWidth: 1,
@@ -63,12 +64,11 @@ export default {
       borderColor: "text",
       borderRadius: 0,
       "&:focus, &:active": {
-        outline: "2px solid",
+        outline: "1px solid",
         outlineColor: "primary",
       },
       "&:hover": {
-        color: "background",
-        bg: "secondary",
+        bg: "textTransparent",
       },
     },
   },

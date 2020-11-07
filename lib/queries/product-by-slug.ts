@@ -1,7 +1,5 @@
 import { fetchAPI } from "lib/api";
 import { ProductSingle } from "lib/types";
-import { produce } from "immer";
-import { sampleSize } from "lodash";
 
 export async function getProductBySlug(slug: string) {
   const data: { product: ProductSingle } = await fetchAPI(
@@ -68,6 +66,13 @@ export async function getProductBySlug(slug: string) {
               }
             }
           }
+          related(first: 5) {
+            edges {
+              node {
+                ...ProductFields
+              }
+            }
+          }
           productCategories {
             edges {
               node {
@@ -76,13 +81,6 @@ export async function getProductBySlug(slug: string) {
                 image {
                   sourceUrl(size: LARGE)
                   srcSet
-                }
-                products(first: 10) {
-                  edges {
-                    node {
-                      ...ProductFields
-                    }
-                  }
                 }
               }
             }
@@ -97,16 +95,5 @@ export async function getProductBySlug(slug: string) {
     }
   );
 
-  return produce(data, (draft) => {
-    // Filter out the main post
-    draft.product.productCategories.edges[0].node.products.edges = draft.product.productCategories.edges[0].node.products.edges.filter(
-      ({ node }) => node.slug !== slug
-    );
-    // If there are still 3 productCategories, remove the last one
-
-    draft.product.productCategories.edges[0].node.products.edges = sampleSize(
-      draft.product.productCategories.edges[0].node.products.edges,
-      5
-    );
-  });
+  return data;
 }

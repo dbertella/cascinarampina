@@ -78,6 +78,11 @@ export type ProductSingle = {
   productCategories: {
     edges: CateogryListItem[];
   };
+  related: {
+    edges: {
+      node: ProductListItem;
+    }[];
+  };
 };
 
 export type CateogrySingle = {

@@ -59,3 +59,18 @@ export async function getProducts() {
 
   return data;
 }
+
+export async function getAllProductsWithSlug() {
+  const data = await fetchAPI(`
+    {
+      products(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  return data?.products;
+}
