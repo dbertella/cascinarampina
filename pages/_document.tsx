@@ -15,12 +15,11 @@ export default class extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap"
             rel="stylesheet"
-          ></link>
-        </Head>
-        <body>
-          <InitializeColorMode />
-          <Main />
-          <NextScript />
+          />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -33,6 +32,11 @@ export default class extends Document {
           `,
             }}
           />
+        </Head>
+        <body>
+          <InitializeColorMode />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );
