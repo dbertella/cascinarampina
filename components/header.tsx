@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { Box, Flex, Image, NavLink } from "theme-ui";
+import { Box, Flex, Image, NavLink, Button } from "theme-ui";
+import MEDIA_QUERY from "../constants/mq.js";
+
 
 export default function Header() {
   return (
     <Box
       sx={{
+        position: 'relative',
         boxShadow: (t) => `0 0 25px ${t.colors.primaryTransparent}`,
       }}
     >
@@ -18,7 +21,22 @@ export default function Header() {
           </a>
         </Link>
       </Flex>
-      <Flex as="nav" sx={{ justifyContent: "center" }}>
+      <Flex
+        as="nav"
+        sx={{
+          justifyContent: "center",
+          [MEDIA_QUERY.mobile]: {
+            position: 'fixed',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: t => t.colors.background,
+            zIndex: 100,
+            top: 100,
+            flexDirection: 'column',
+            alignItems: 'center',
+          } 
+        }}>
         <Link href="/" passHref>
           <NavLink p={2}>Home</NavLink>
         </Link>
@@ -45,6 +63,27 @@ export default function Header() {
           <NavLink p={2}>News</NavLink>
         </Link>
       </Flex>
+      <Button
+        sx={{
+          position: 'absolute',
+          cursor: 'pointer',
+          right: 20,
+          top: 20,
+          appearance: 'none',
+          display: 'inline-block',
+          textAlign: 'center',
+          lineHeight: 'inherit',
+          textDecoration: 'none',
+          p: 2,
+          backgroundColor: t => t.colors.mutedTransparent,
+          [MEDIA_QUERY.d('min', 768)]: {
+            display: 'none'
+          }
+        }}>
+        <span className="line"></span>
+        <span className="line"></span>
+        <span className="line"></span>
+      </Button>
     </Box>
   );
 }
