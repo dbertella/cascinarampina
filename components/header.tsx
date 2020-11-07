@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { Box, Flex, Image, NavLink, Button } from "theme-ui";
+
+import React, { useState } from "react";
 import MEDIA_QUERY from "../constants/mq.js";
 
 
 export default function Header() {
+  const [isActive, setActive] = useState(false);
+  const toggleMenu = () => setActive(!isActive)
+
   return (
     <Box
       sx={{
@@ -23,6 +28,7 @@ export default function Header() {
       </Flex>
       <Flex
         as="nav"
+        className={isActive ? "d-none" : ''}
         sx={{
           justifyContent: "center",
           [MEDIA_QUERY.mobile]: {
@@ -64,6 +70,7 @@ export default function Header() {
         </Link>
       </Flex>
       <Button
+        onClick={toggleMenu}
         sx={{
           position: 'absolute',
           cursor: 'pointer',
