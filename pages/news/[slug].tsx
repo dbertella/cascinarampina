@@ -29,6 +29,7 @@ export default function Post({ post, posts }: any) {
               <meta
                 property="og:image"
                 content={post.featuredImage?.node?.sourceUrl}
+                key="feature-image"
               />
             </Head>
             <PostHeader

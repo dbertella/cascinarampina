@@ -21,6 +21,7 @@ const ProductCategories = ({
         <meta
           property="og:image"
           content={productCategories.edges[0].node.image?.sourceUrl}
+          key="feature-image"
         />
       </Head>
       <ImageHeader

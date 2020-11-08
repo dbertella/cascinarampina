@@ -35,6 +35,7 @@ export default function Product({
             <meta
               property="og:image"
               content={productCategory.image?.sourceUrl}
+              key="feature-image"
             />
           </Head>
           <ImageHeader

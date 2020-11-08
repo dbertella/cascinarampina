@@ -29,7 +29,7 @@ export default function Product({
   if (!router.isFallback && !product?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-
+  
   return (
     <Layout>
       {router.isFallback ? (
@@ -38,7 +38,11 @@ export default function Product({
         <>
           <Head>
             <title>{product.name} | Azienda Agricola Cascina Rampina</title>
-            <meta property="og:image" content={product.image?.sourceUrl} />
+            <meta
+              property="og:image"
+              content={product.image?.sourceUrl}
+              key="feature-image"
+            />
           </Head>
           <ImageHeader
             title={product.name}
@@ -53,7 +57,7 @@ export default function Product({
             variant="styles.container"
             py={5}
           >
-            <Image src={product?.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
+            <Image src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
             <Box>
               <Box>
                 <Categories categories={product.productCategories} />
