@@ -7,6 +7,10 @@
   display: flex !important;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .burger-menu .line {
   width: 20px;
   height: 3px;

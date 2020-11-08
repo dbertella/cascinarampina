@@ -7,7 +7,14 @@ import MEDIA_QUERY from "../constants/mq.js";
 
 export default function Header() {
   const [isActive, setActive] = useState(false);
-  const toggleMenu = () => setActive(!isActive)
+  const toggleMenu = () => {
+    const bodyClasses = document && document.body.classList
+    setActive(!isActive)
+
+    bodyClasses.contains('overflow-hidden')
+      ? bodyClasses.remove('overflow-hidden')
+      : bodyClasses.add('overflow-hidden');
+  }
 
   return (
     <Box
@@ -37,7 +44,7 @@ export default function Header() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: t => t.colors.background,
+            bg: 'background',
             zIndex: 100,
             top: 100,
             flexDirection: 'column',
