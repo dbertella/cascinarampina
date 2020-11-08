@@ -28,10 +28,11 @@ export default function Header() {
       </Flex>
       <Flex
         as="nav"
-        className={isActive ? "d-none" : ''}
+        className={isActive ? "d-flex" : ''}
         sx={{
           justifyContent: "center",
           [MEDIA_QUERY.mobile]: {
+            display: 'none',
             position: 'fixed',
             left: 0,
             right: 0,

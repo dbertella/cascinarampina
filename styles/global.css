@@ -3,8 +3,8 @@
   src: url("/cascinarampina.ttf");
 }
 
-.d-none {
-  display: none !important;
+.d-flex {
+  display: flex !important;
 }
 
 .burger-menu .line {
