@@ -6,3 +6,11 @@
 .d-none {
   display: none !important;
 }
+
+.burger-menu .line {
+  width: 20px;
+  height: 3px;
+  background-color: #464E47;
+  display: block;
+  margin: 5px 0;
+}
