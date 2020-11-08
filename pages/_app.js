@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
+      document?.body?.classList?.remove?.("overflow-hidden");
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {

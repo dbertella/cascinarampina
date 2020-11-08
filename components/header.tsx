@@ -1,14 +1,31 @@
 import Link from "next/link";
-import { Box, Flex, Image, NavLink } from "theme-ui";
+import { Flex, Image, NavLink, MenuButton, Box } from "theme-ui";
+
+import React, { useState } from "react";
+
+const mobileLinksStyle = {
+  fontSize: [3, null, 2],
+  my: [2, null, 0],
+  p: 2,
+};
 
 export default function Header() {
+  const [isActive, setActive] = useState(false);
+  const toggleMenu = () => {
+    document?.body?.classList?.toggle?.("overflow-hidden");
+    setActive(!isActive);
+  };
+
   return (
-    <Box
+    <Flex
       sx={{
         boxShadow: (t) => `0 0 25px ${t.colors.primaryTransparent}`,
+        flexFlow: ["row", null, "column"],
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
-      <Flex sx={{ justifyContent: "center" }}>
+      <Flex sx={{ justifyContent: "center", px: 2, zIndex: 3 }}>
         <Link href="/">
           <a aria-label="Logo Cascina Rampina">
             <Image
@@ -18,33 +35,61 @@ export default function Header() {
           </a>
         </Link>
       </Flex>
-      <Flex as="nav" sx={{ justifyContent: "center" }}>
+      <Box
+        as="nav"
+        sx={{
+          justifyContent: "center",
+          display: [isActive ? "flex" : "none", null, "flex"],
+          position: ["fixed", null, "static"],
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          bg: ["background", null, "transparent"],
+          zIndex: 2,
+          flexDirection: ["column", null, "row"],
+          alignItems: "center",
+        }}
+      >
         <Link href="/" passHref>
-          <NavLink p={2}>Home</NavLink>
+          <NavLink sx={mobileLinksStyle}>Home</NavLink>
         </Link>
         <Link href="/dove-siamo" passHref>
-          <NavLink p={2}>Dove Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Dove Siamo</NavLink>
         </Link>
         <Link href="/chi-siamo" passHref>
-          <NavLink p={2}>Chi Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Chi Siamo</NavLink>
         </Link>
         <Link href="/cosa-facciamo" passHref>
-          <NavLink p={2}>Cosa Facciamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Cosa Facciamo</NavLink>
         </Link>
         <Link href="/contatti" passHref>
-          <NavLink p={2}>Contatti</NavLink>
+          <NavLink sx={mobileLinksStyle}>Contatti</NavLink>
         </Link>
         <Link href="/categorie-prodotti" passHref>
-          <NavLink p={2}>Prodotti</NavLink>
+          <NavLink sx={mobileLinksStyle}>Prodotti</NavLink>
         </Link>
         <Link href="/faq" passHref>
-          <NavLink p={2}>FAQs </NavLink>
+          <NavLink sx={mobileLinksStyle}>FAQs </NavLink>
         </Link>
 
         <Link href="/news" passHref>
-          <NavLink p={2}>News</NavLink>
+          <NavLink sx={mobileLinksStyle}>News</NavLink>
         </Link>
-      </Flex>
-    </Box>
+      </Box>
+      <MenuButton
+        aria-label="Toggle Menu"
+        onClick={toggleMenu}
+        sx={{
+          display: ["block", null, "none"],
+          backgroundColor: "mutedTransparent",
+          mx: 2,
+          zIndex: 3,
+          ":hover": {
+            backgroundColor: "mutedTransparent",
+          },
+        }}
+      />
+    </Flex>
   );
 }
