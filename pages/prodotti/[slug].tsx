@@ -29,7 +29,7 @@ export default function Product({
   if (!router.isFallback && !product?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  
+
   return (
     <Layout>
       {router.isFallback ? (
@@ -47,6 +47,7 @@ export default function Product({
           <ImageHeader
             title={product.name}
             coverImage={
+              product.image ??
               product.productCategories.edges.map((cat) => cat.node.image)[0]
             }
           />
@@ -57,11 +58,38 @@ export default function Product({
             variant="styles.container"
             py={5}
           >
-            <Image src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
+            <Flex sx={{ justifyContent: ["center", "flex-end"] }}>
+              <Image src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
+            </Flex>
             <Box>
-              <Box>
+              <Flex
+                sx={{
+                  flexWrap: "wrap",
+                  flexDirection: ["column", null, "row"],
+                  fontSize: 1,
+                }}
+              >
                 <Categories categories={product.productCategories} />
-              </Box>
+                <Box pr={3} />
+                <Flex sx={{ flexWrap: "wrap" }}>
+                  <Text sx={{ mr: 2, color: "lightGrey" }}>Vai a:</Text>
+                  {prev && (
+                    <Link href={`/prodotti/${prev}`} passHref>
+                      <UiLink>Prodotto Precedente</UiLink>
+                    </Link>
+                  )}
+                  <Box pr={2} />
+                  {next && (
+                    <Link href={`/prodotti/${next}`} passHref>
+                      <UiLink>Prodotto Successivo</UiLink>
+                    </Link>
+                  )}
+                  <Box pr={2} />
+                  <Link href="/prodotti" passHref>
+                    <UiLink>Tutti i prodotti</UiLink>
+                  </Link>
+                </Flex>
+              </Flex>
               <PostBody content={product.shortDescription} />
               <Text sx={{ color: "lightGrey", fontSize: 1 }}>
                 <PostBody content={product.description} />
@@ -76,19 +104,6 @@ export default function Product({
               </Flex>
               <Box pt={2} />
               {/* <Button onClick={() => console.log(product)}>Aggiungi</Button> */}
-              <Flex>
-                {prev && (
-                  <Link href={`/prodotti/${prev}`} passHref>
-                    <UiLink>Prodotto Precedente</UiLink>
-                  </Link>
-                )}
-                <Box pr={1} />
-                {next && (
-                  <Link href={`/prodotti/${next}`} passHref>
-                    <UiLink>Prodotto Successivo</UiLink>
-                  </Link>
-                )}
-              </Flex>
             </Box>
           </Grid>
           {product.related.edges.length > 0 && (

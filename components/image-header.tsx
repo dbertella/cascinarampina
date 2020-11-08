@@ -33,10 +33,12 @@ export function ImageHeader({ title, coverImage }: Props) {
         sx={{
           py: 1,
           px: 3,
+          mx: 4,
           fontSize: [4, 5, 6],
           textTransform: "uppercase",
           bg: "backgroundTransparent",
           fontFamily: "cascinarampina",
+          textAlign: "center",
         }}
       >
         {title}

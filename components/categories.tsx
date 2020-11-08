@@ -11,7 +11,7 @@ export default function Categories({
 }) {
   return (
     <span>
-      <span sx={{ mr: 1, color: "lightGrey" }}>Categoria</span>
+      <span sx={{ mr: 1, color: "lightGrey" }}>Categoria:</span>
       {(categories?.edges ?? []).map((category) => (
         <Link
           key={category.node.slug}
