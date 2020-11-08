@@ -11,9 +11,14 @@ export default function Header() {
     const bodyClasses = document && document.body.classList
     setActive(!isActive)
 
-    bodyClasses.contains('overflow-hidden')
-      ? bodyClasses.remove('overflow-hidden')
-      : bodyClasses.add('overflow-hidden');
+    isActive ? bodyClasses.remove('overflow-hidden') : bodyClasses.add('overflow-hidden');
+  }
+
+  const mobileLinksStyle = {
+    [MEDIA_QUERY.mobile]: {
+      fontSize: 18, 
+      margin: 2
+    }
   }
 
   return (
@@ -52,29 +57,29 @@ export default function Header() {
           } 
         }}>
         <Link href="/" passHref>
-          <NavLink p={2}>Home</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Home</NavLink>
         </Link>
         <Link href="/dove-siamo" passHref>
-          <NavLink p={2}>Dove Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Dove Siamo</NavLink>
         </Link>
         <Link href="/chi-siamo" passHref>
-          <NavLink p={2}>Chi Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Chi Siamo</NavLink>
         </Link>
         <Link href="/cosa-facciamo" passHref>
-          <NavLink p={2}>Cosa Facciamo</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Cosa Facciamo</NavLink>
         </Link>
         <Link href="/contatti" passHref>
-          <NavLink p={2}>Contatti</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Contatti</NavLink>
         </Link>
         <Link href="/categorie-prodotti" passHref>
-          <NavLink p={2}>Prodotti</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>Prodotti</NavLink>
         </Link>
         <Link href="/faq" passHref>
-          <NavLink p={2}>FAQs </NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>FAQs </NavLink>
         </Link>
 
         <Link href="/news" passHref>
-          <NavLink p={2}>News</NavLink>
+          <NavLink sx={mobileLinksStyle} p={2}>News</NavLink>
         </Link>
       </Flex>
       <Button
