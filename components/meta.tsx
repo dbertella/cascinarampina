@@ -59,7 +59,11 @@ export default function Meta() {
         content="Azienda Agricola Cascina Rampina a Monticello Brianza LC"
       />
 
-      <meta property="og:image" content="/images/logo-rampina.jpg" />
+      <meta
+        property="og:image"
+        content="/images/logo-rampina.jpg"
+        key="feature-image"
+      />
     </Head>
   );
 }

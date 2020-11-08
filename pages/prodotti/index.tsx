@@ -21,6 +21,7 @@ const Products = ({
         <meta
           property="og:image"
           content={products.edges[0].node.image?.sourceUrl}
+          key="feature-image"
         />
       </Head>
       <ImageHeader

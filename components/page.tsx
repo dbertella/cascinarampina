@@ -26,7 +26,11 @@ export const Page: FC<PageProps> = ({
   <Layout>
     <Head>
       <title>{page.title} | Azienda Agricola Cascina Rampina</title>
-      <meta property="og:image" content={page.featuredImage?.node?.sourceUrl} />
+      <meta
+        property="og:image"
+        content={page.featuredImage?.node?.sourceUrl}
+        key="feature-image"
+      />
     </Head>
 
     <ImageHeader title={page.title} coverImage={page.featuredImage?.node} />
