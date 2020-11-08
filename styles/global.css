@@ -3,18 +3,6 @@
   src: url("/cascinarampina.ttf");
 }
 
-.d-flex {
-  display: flex !important;
-}
-
 .overflow-hidden {
   overflow: hidden;
-}
-
-.burger-menu .line {
-  width: 20px;
-  height: 3px;
-  background-color: #464E47;
-  display: block;
-  margin: 5px 0;
 }
