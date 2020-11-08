@@ -70,6 +70,7 @@ export default function Header() {
         </Link>
       </Flex>
       <Button
+        className="burger-menu"
         onClick={toggleMenu}
         sx={{
           position: 'absolute',
@@ -83,6 +84,9 @@ export default function Header() {
           textDecoration: 'none',
           p: 2,
           backgroundColor: t => t.colors.mutedTransparent,
+          ':hover': {
+            backgroundColor: t => t.colors.mutedTransparent,
+          },
           [MEDIA_QUERY.d('min', 768)]: {
             display: 'none'
           }
