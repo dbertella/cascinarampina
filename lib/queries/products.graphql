@@ -1,0 +1,130 @@
+fragment ProductListFields on Product {
+  name
+  slug
+  image {
+    sourceUrl(size: LARGE)
+    srcSet
+  }
+  ... on SimpleProduct {
+    onSale
+    price
+    id
+  }
+  ... on VariableProduct {
+    onSale
+    price
+    id
+  }
+  ... on ExternalProduct {
+    onSale
+    price
+    id
+    externalUrl
+  }
+  ... on GroupProduct {
+    products {
+      nodes {
+        ... on SimpleProduct {
+          id
+          price
+          onSale
+        }
+      }
+    }
+    id
+  }
+}
+query Products {
+  products(first: 1000) {
+    edges {
+      cursor
+      node {
+        ...ProductListFields
+      }
+    }
+  }
+}
+
+fragment ProductSingle on Product {
+  id
+  averageRating
+  description
+  shortDescription
+  type
+  productTypes {
+    edges {
+      node {
+        name
+        slug
+      }
+    }
+  }
+  productTags {
+    edges {
+      cursor
+      node {
+        name
+        slug
+      }
+    }
+  }
+  related(first: 5) {
+    edges {
+      node {
+        ...ProductListFields
+      }
+    }
+  }
+  productCategories {
+    edges {
+      node {
+        name
+        slug
+        image {
+          sourceUrl(size: LARGE)
+          srcSet
+        }
+      }
+    }
+  }
+  name
+  slug
+  image {
+    sourceUrl(size: LARGE)
+    srcSet
+  }
+  ... on SimpleProduct {
+    onSale
+    price
+    id
+  }
+  ... on VariableProduct {
+    onSale
+    price
+    id
+  }
+  ... on ExternalProduct {
+    onSale
+    price
+    id
+    externalUrl
+  }
+  ... on GroupProduct {
+    products {
+      nodes {
+        ... on SimpleProduct {
+          id
+          price
+          onSale
+        }
+      }
+    }
+    id
+  }
+}
+
+query Product($id: ID!) {
+  product(id: $id, idType: SLUG) {
+    ...ProductSingle
+  }
+}

@@ -134,7 +134,7 @@ export type CategoryListItem = {
     };
     products: {
       edges: {
-        node: ProductListItem;
+        node: ProductListFieldsFragment;
       }[];
     };
   };
