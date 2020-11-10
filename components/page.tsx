@@ -10,6 +10,7 @@ import { PageSingle, PostList } from "lib/types";
 import { FC } from "react";
 
 export type PageProps = {
+  headerSize?: number | Array<number | string | null>;
   data: {
     page: PageSingle;
     posts: PostList;
@@ -17,6 +18,7 @@ export type PageProps = {
 };
 
 export const Page: FC<PageProps> = ({
+  headerSize,
   data: {
     page,
     posts: { edges },
@@ -33,7 +35,7 @@ export const Page: FC<PageProps> = ({
       />
     </Head>
 
-    <ImageHeader title={page.title} coverImage={page.featuredImage?.node} />
+    <ImageHeader title={page.title} coverImage={page.featuredImage?.node} height={headerSize} />
     <Box variant="styles.container">
       <PostBody content={page.content} />
       {children}

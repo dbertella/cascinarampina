@@ -5,16 +5,17 @@ import { PLACEHOLDER_IMAGE } from "lib";
 type Props = {
   title: string;
   coverImage?: MediaImage;
+  height?: number | Array<number | string | null>;
 };
 
-export function ImageHeader({ title, coverImage }: Props) {
+export function ImageHeader({ title, coverImage, height = 300 }: Props) {
   return (
     <Flex
       sx={{
         position: "relative",
         justifyContent: "center",
         alignItems: "center",
-        height: 300,
+        height,
       }}
     >
       <Image

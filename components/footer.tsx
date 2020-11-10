@@ -19,10 +19,11 @@ export default function Footer() {
       >
         <Box>
           <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>
-            © {dayjs().get("year")} Azienda Agricola Cascina Rampina.
+            © {dayjs().get("year")} AZ. Agricola Cascina Rampina di Mauri
+            Fabrizio
           </Text>
-          <Text>Via Donatello, 5</Text>
-          <Text>Monticello brianza, lecco</Text>
+          <Text>CUAA: MRAFRZ83E27A818H - P.I. 03110850132</Text>
+          <Text>Sede: Via Donatello 5 a Monticello Brianza (MB) - 23876</Text>
           <Link
             rel="noreferrer noopener"
             href="https://wa.me/393246960519"
@@ -39,7 +40,7 @@ export default function Footer() {
             <strong>Martedì</strong> dalle 14 alle 19
           </Text>
           <Text>
-            <strong>Sabato</strong> dalle 9 alle 12
+            <strong>Sabato</strong> dalle 9 alle 17
           </Text>
         </Box>
         <Box>

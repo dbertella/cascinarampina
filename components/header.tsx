@@ -70,7 +70,7 @@ export default function Header() {
           <NavLink sx={mobileLinksStyle}>Prodotti</NavLink>
         </Link>
         <Link href="/faq" passHref>
-          <NavLink sx={mobileLinksStyle}>FAQs </NavLink>
+          <NavLink sx={mobileLinksStyle}>FAQ</NavLink>
         </Link>
 
         <Link href="/news" passHref>
