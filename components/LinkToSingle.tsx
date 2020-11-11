@@ -32,6 +32,7 @@ export const LinkToSingle = ({
           verticalAlign: "bottom",
         }}
         src={imageSrc ?? PLACEHOLDER_IMAGE}
+        srcSet={imageSrc?.srcSet}
       />
       <Text
         sx={{

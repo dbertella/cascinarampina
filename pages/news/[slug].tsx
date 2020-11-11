@@ -8,6 +8,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "lib";
 import PostTitle from "components/post-title";
 import Head from "next/head";
 import { Box } from "theme-ui";
+import { ImageHeader } from "components/image-header";
 
 export default function Post({ post, posts }: any) {
   const router = useRouter();
@@ -23,22 +24,22 @@ export default function Post({ post, posts }: any) {
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
-          <Box as="article" variant="styles.container">
-            <Head>
-              <title>{post.title} | Azienda Agricola Cascina Rampina</title>
-              <meta
-                property="og:image"
-                content={post.featuredImage?.node?.sourceUrl}
-                key="feature-image"
-              />
-            </Head>
-            <PostHeader
-              title={post.title}
-              coverImage={post.featuredImage?.node}
-              date={post.date}
-              categories={post.categories}
+          <Head>
+            <title>{post.title} | Azienda Agricola Cascina Rampina</title>
+            <meta
+              property="og:image"
+              content={post.featuredImage?.node?.sourceUrl}
+              key="feature-image"
             />
-            <PostBody content={post.content} />
+          </Head>
+          <ImageHeader
+            title={post.title}
+            coverImage={post.featuredImage?.node}
+          />
+          <Box as="article" variant="styles.container">
+            <Box sx={{ maxWidth: "40em", py: 5 }}>
+              <PostBody content={post.content} />
+            </Box>
           </Box>
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
         </>

@@ -58,8 +58,11 @@ export default function Product({
             variant="styles.container"
             py={5}
           >
-            <Flex sx={{ justifyContent: ["center", "flex-end"] }}>
-              <Image src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE} />
+            <Flex sx={{ justifyContent: ["center", "flex-end"], alignItems: "start" }}>
+              <Image
+                src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE}
+                srcSet={product.image?.srcSet}
+              />
             </Flex>
             <Box>
               <Flex

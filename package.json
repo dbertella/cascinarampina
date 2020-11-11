@@ -15,7 +15,7 @@
     "graphql-tag": "^2.11.0",
     "immer": "^7.0.14",
     "lodash": "^4.17.20",
-    "next": "10.0.0",
+    "next": "10.0.1",
     "react": "17.0.1",
     "react-cookie-consent": "^6.0.0",
     "react-dom": "17.0.1",

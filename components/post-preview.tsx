@@ -1,8 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
 import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import { MediaImage } from "types";
-import { Card, Styled, Link as UiLink, Text, Box } from "theme-ui";
+import { Card, Styled, Link as UiLink, Text, Box, jsx } from "theme-ui";
 
 type Props = {
   title: string;
@@ -21,7 +23,7 @@ export default function PostPreview({
 }: Props) {
   return (
     <Card>
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative", height: [150, null, 200] }}>
         <Text
           sx={{
             position: "absolute",
@@ -30,6 +32,7 @@ export default function PostPreview({
             p: 1,
             fontSize: 0,
             bg: "muted",
+            zIndex: 1,
           }}
         >
           <Date dateString={date} />
@@ -38,6 +41,13 @@ export default function PostPreview({
           title={title}
           coverImage={coverImage}
           href={`/news/${slug}`}
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            verticalAlign: "bottom",
+          }}
         />
       </Box>
 

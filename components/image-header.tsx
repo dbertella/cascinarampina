@@ -28,6 +28,7 @@ export function ImageHeader({ title, coverImage, height = 300 }: Props) {
           verticalAlign: "bottom",
         }}
         src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
+        srcSet={coverImage?.srcSet}
       />
       <Heading
         as="h1"
@@ -40,6 +41,7 @@ export function ImageHeader({ title, coverImage, height = 300 }: Props) {
           bg: "backgroundTransparent",
           fontFamily: "cascinarampina",
           textAlign: "center",
+          maxWidth: 500
         }}
       >
         {title}

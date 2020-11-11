@@ -9,9 +9,19 @@ type Props = {
   href?: string;
 };
 
-export default function CoverImage({ title, coverImage, href }: Props) {
+export default function CoverImage({
+  title,
+  coverImage,
+  href,
+  ...rest
+}: Props) {
   const image = (
-    <Image src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE} alt={title} />
+    <Image
+      src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
+      alt={title}
+      srcSet={coverImage?.srcSet}
+      {...rest}
+    />
   );
   return href ? (
     <Link href={href}>
