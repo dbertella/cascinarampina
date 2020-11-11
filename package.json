@@ -19,11 +19,13 @@
     "react": "17.0.1",
     "react-cookie-consent": "^6.0.0",
     "react-dom": "17.0.1",
+    "react-image-gallery": "^1.0.8",
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
+    "@types/react-image-gallery": "^1.0.0",
     "@types/theme-ui": "^0.3.7",
     "typescript": "^4.0.5"
   }
