@@ -34,7 +34,7 @@ export default {
   },
   cards: {
     primary: {
-      padding: 2,
+      padding: 3,
       borderRadius: 4,
       bg: "backgroundTransparent",
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)",
@@ -69,6 +69,19 @@ export default {
       },
       "&:hover": {
         bg: "textTransparent",
+      },
+    },
+    outline: {
+      color: "text",
+      bg: "transparent",
+      px: 2,
+      py: 1,
+      border: "1px solid",
+      borderColor: "text",
+      "&:hover": {
+        color: "background",
+
+        bg: "text",
       },
     },
   },

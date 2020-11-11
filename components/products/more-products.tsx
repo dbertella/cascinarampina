@@ -42,7 +42,7 @@ export function MoreProducts({
           {title}
         </Heading>
         <Grid
-          columns={["1fr 1fr", "1fr 1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]}
+          columns={["auto", "1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]}
           gap={4}
         >
           {products.map(({ node }) => (

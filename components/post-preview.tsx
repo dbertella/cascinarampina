@@ -4,7 +4,16 @@ import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import { MediaImage } from "types";
-import { Card, Styled, Link as UiLink, Text, Box, jsx } from "theme-ui";
+import {
+  Card,
+  Styled,
+  Link as UiLink,
+  Text,
+  Box,
+  jsx,
+  Button,
+  Flex,
+} from "theme-ui";
 
 type Props = {
   title: string;
@@ -22,8 +31,10 @@ export default function PostPreview({
   slug,
 }: Props) {
   return (
-    <Card>
-      <Box sx={{ position: "relative", height: [150, null, 200] }}>
+    <Card sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{ position: "relative", height: [150, null, 200], m: -3, mb: 1 }}
+      >
         <Text
           sx={{
             position: "absolute",
@@ -60,7 +71,12 @@ export default function PostPreview({
         </Link>
       </Styled.h3>
 
-      <Text dangerouslySetInnerHTML={{ __html: excerpt }} />
+      <Text sx={{ flex: 1 }} dangerouslySetInnerHTML={{ __html: excerpt }} />
+      <Flex sx={{ justifyContent: "flex-end" }}>
+        <Link href={`/news/${slug}`} passHref>
+          <Button variant="outline">Leggi di più</Button>
+        </Link>
+      </Flex>
     </Card>
   );
 }
