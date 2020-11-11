@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import PostBody from "components/post-body";
 import MoreStories from "components/more-stories";
-import PostHeader from "components/post-header";
 import Layout from "components/layout";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "lib";
 import PostTitle from "components/post-title";

@@ -38,7 +38,7 @@ const Products = ({
           <LinkToSingle
             key={slug}
             href={`/prodotti/${slug}`}
-            imageSrc={image?.sourceUrl}
+            image={image}
             title={name}
           />
         ))}

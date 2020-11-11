@@ -1,13 +1,14 @@
 import { PLACEHOLDER_IMAGE } from "lib";
 import { Image, Text, Link } from "theme-ui";
 import NextLink from "next/link";
+import { MediaImage } from "types";
 
 export const LinkToSingle = ({
-  imageSrc,
+  image,
   title,
   href,
 }: {
-  imageSrc?: string;
+  image?: MediaImage;
   title: string;
   href: string;
 }) => (
@@ -31,8 +32,8 @@ export const LinkToSingle = ({
           objectFit: "cover",
           verticalAlign: "bottom",
         }}
-        src={imageSrc ?? PLACEHOLDER_IMAGE}
-        srcSet={imageSrc?.srcSet}
+        src={image?.sourceUrl ?? PLACEHOLDER_IMAGE}
+        srcSet={image?.srcSet}
       />
       <Text
         sx={{

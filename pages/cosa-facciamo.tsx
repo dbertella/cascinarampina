@@ -12,7 +12,7 @@ const CosaFacciamo = (props: PageProps) => {
           <LinkToSingle
             key={slug}
             href={`/cosa-facciamo/${slug}`}
-            imageSrc={featuredImage?.node?.sourceUrl}
+            image={featuredImage?.node}
             title={title}
           />
         ))}
