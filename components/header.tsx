@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Flex, Image, NavLink, MenuButton, Box } from "theme-ui";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
 const mobileLinksStyle = {
   fontSize: [3, null, 2],
@@ -11,6 +12,7 @@ const mobileLinksStyle = {
 };
 
 export default function Header() {
+  const router = useRouter();
   const [isActive, setActive] = useState(false);
   const toggleMenu = () => {
     const method = isActive ? 'remove' : 'add';
@@ -18,6 +20,13 @@ export default function Header() {
 
     setActive(!isActive);
   };
+
+  useEffect(() => {
+    router.events.on("routeChangeComplete", toggleMenu);
+    return () => {
+      router.events.off("routeChangeComplete", toggleMenu);
+    };
+  }, [router.events]);
 
   return (
     <Flex
@@ -55,29 +64,29 @@ export default function Header() {
         }}
       >
         <Link href="/" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Home</NavLink>
+          <NavLink sx={mobileLinksStyle}>Home</NavLink>
         </Link>
         <Link href="/dove-siamo" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Dove Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Dove Siamo</NavLink>
         </Link>
         <Link href="/chi-siamo" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Chi Siamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Chi Siamo</NavLink>
         </Link>
         <Link href="/cosa-facciamo" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Cosa Facciamo</NavLink>
+          <NavLink sx={mobileLinksStyle}>Cosa Facciamo</NavLink>
         </Link>
         <Link href="/contatti" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Contatti</NavLink>
+          <NavLink sx={mobileLinksStyle}>Contatti</NavLink>
         </Link>
         <Link href="/categorie-prodotti" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>Prodotti</NavLink>
+          <NavLink sx={mobileLinksStyle}>Prodotti</NavLink>
         </Link>
         <Link href="/faq" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>FAQ</NavLink>
+          <NavLink sx={mobileLinksStyle}>FAQ</NavLink>
         </Link>
 
         <Link href="/news" passHref>
-          <NavLink onClick={toggleMenu} sx={mobileLinksStyle}>News</NavLink>
+          <NavLink sx={mobileLinksStyle}>News</NavLink>
         </Link>
       </Box>
       <MenuButton
