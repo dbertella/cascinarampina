@@ -12,7 +12,11 @@ const mobileLinksStyle = {
 export default function Header() {
   const [isActive, setActive] = useState(false);
   const toggleMenu = () => {
-    document?.body?.classList?.toggle?.("overflow-hidden");
+    if (isActive) {
+      document?.body?.classList?.remove?.("overflow-hidden");
+    } else {
+      document?.body?.classList?.add?.("overflow-hidden");
+    }
     setActive(!isActive);
   };
 
