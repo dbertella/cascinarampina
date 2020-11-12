@@ -22,9 +22,14 @@ export default function Header() {
   };
 
   useEffect(() => {
-    router.events.on("routeChangeComplete", toggleMenu);
+    const onRouterChange = () => {
+      setActive(!isActive)
+      document?.body?.classList?.remove?.("overflow-hidden");
+    }
+
+    router.events.on("routeChangeComplete", onRouterChange);
     return () => {
-      router.events.off("routeChangeComplete", toggleMenu);
+      router.events.off("routeChangeComplete", onRouterChange);
     };
   }, [router.events]);
 
@@ -63,29 +68,29 @@ export default function Header() {
           alignItems: "center",
         }}
       >
-        <Link href="/" passHref>
+        <Link activeClassName='active' href="/" passHref>
           <NavLink sx={mobileLinksStyle}>Home</NavLink>
         </Link>
-        <Link href="/dove-siamo" passHref>
+        <Link activeClassName='active' href="/dove-siamo" passHref>
           <NavLink sx={mobileLinksStyle}>Dove Siamo</NavLink>
         </Link>
-        <Link href="/chi-siamo" passHref>
+        <Link activeClassName='active' href="/chi-siamo" passHref>
           <NavLink sx={mobileLinksStyle}>Chi Siamo</NavLink>
         </Link>
-        <Link href="/cosa-facciamo" passHref>
+        <Link activeClassName='active' href="/cosa-facciamo" passHref>
           <NavLink sx={mobileLinksStyle}>Cosa Facciamo</NavLink>
         </Link>
-        <Link href="/contatti" passHref>
+        <Link activeClassName='active' href="/contatti" passHref>
           <NavLink sx={mobileLinksStyle}>Contatti</NavLink>
         </Link>
-        <Link href="/categorie-prodotti" passHref>
+        <Link activeClassName='active' href="/categorie-prodotti" passHref>
           <NavLink sx={mobileLinksStyle}>Prodotti</NavLink>
         </Link>
-        <Link href="/faq" passHref>
+        <Link activeClassName='active' href="/faq" passHref>
           <NavLink sx={mobileLinksStyle}>FAQ</NavLink>
         </Link>
 
-        <Link href="/news" passHref>
+        <Link activeClassName='active' href="/news" passHref>
           <NavLink sx={mobileLinksStyle}>News</NavLink>
         </Link>
       </Box>
