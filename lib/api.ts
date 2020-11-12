@@ -245,7 +245,7 @@ export async function getPageAndChildrensByUri(slug: string) {
                 title
                 featuredImage {
                   node {
-                    sourceUrl(size: LARGE)
+                    sourceUrl(size: MEDIUM)
                     srcSet
                   }
                 }

@@ -62,7 +62,6 @@ export default {
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: "text",
-      borderRadius: 0,
       "&:focus, &:active": {
         outline: "1px solid",
         outlineColor: "primary",
@@ -80,7 +79,6 @@ export default {
       borderColor: "text",
       "&:hover": {
         color: "background",
-
         bg: "text",
       },
     },
@@ -97,7 +95,7 @@ export default {
       maxWidth: 1200,
       my: 2,
       mx: "auto",
-      px: [2, 4],
+      px: [3, 4],
     },
     h1: {
       color: "text",

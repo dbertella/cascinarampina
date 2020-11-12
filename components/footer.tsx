@@ -12,7 +12,7 @@ export default function Footer() {
         as="footer"
         variant="styles.container"
         columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
-        gap={2}
+        gap={3}
         sx={{
           fontSize: 1,
         }}

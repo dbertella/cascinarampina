@@ -34,7 +34,7 @@ export default function MoreStories({ posts, title }: any) {
         <Heading as="h2" sx={{ mb: 3 }}>
           {title}
         </Heading>
-        <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={2}>
+        <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={3}>
           {posts.map(({ node }: any) => (
             <PostPreview
               key={node.slug}

@@ -43,7 +43,7 @@ export function MoreProducts({
         </Heading>
         <Grid
           columns={["auto", "1fr 1fr", "1fr 1fr 1fr  1fr 1fr"]}
-          gap={4}
+          gap={3}
         >
           {products.map(({ node }) => (
             <ProductPreview
