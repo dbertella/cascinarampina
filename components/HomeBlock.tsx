@@ -49,13 +49,10 @@ export const HomeBlock = ({
     <Flex
       sx={{
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
         flexDirection: "column",
-        p: 5,
+        p: [3, null, 5],
         width: ["100%", null, "50%"],
-        h2: {
-          textAlign: "center",
-        },
       }}
     >
       <PostBody content={content} />

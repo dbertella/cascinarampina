@@ -31,7 +31,7 @@ export async function getHomePage() {
             }
             homeGallery {
               image {
-                sourceUrl(size: LARGE)
+                sourceUrl(size: GALLERY_SIZE)
                 thumb: sourceUrl(size: THUMBNAIL)
                 srcSet
                 altText
