@@ -6,6 +6,7 @@ import { Box } from "theme-ui";
 import { MediaImage } from "types";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
+import theme from "styles/theme";
 
 type HomeBlock = {
   image: MediaImage;
@@ -33,7 +34,21 @@ const Home: FC<PageProps & HomeProps> = ({ blocks, gallery, ...rest }) => (
         />
       ))}
     </Box>
-    <Box my={5}>
+    <Box
+      my={5}
+      sx={{
+        ".image-gallery-icon": {
+          [`@media (min-width: ${theme.breakpoints[2]})`]: {
+            "&:hover": {
+              color: "primary",
+            },
+          },
+          "&:focus": {
+            outlineColor: "primary",
+          },
+        },
+      }}
+    >
       <ImageGallery items={gallery} showPlayButton={false} />
     </Box>
   </Page>
