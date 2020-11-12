@@ -22,20 +22,18 @@ type HomeProps = {
 
 const Home: FC<PageProps & HomeProps> = ({ blocks, gallery, ...rest }) => (
   <Page headerSize={[400, null, 600]} {...rest}>
-    <Box my={5}>
-      {blocks.map(({ image, text, url, ctaText }, index) => (
-        <HomeBlock
-          key={url}
-          href={url}
-          image={image}
-          content={text}
-          ctaText={ctaText}
-          even={index % 2 === 0}
-        />
-      ))}
-    </Box>
+    {blocks.map(({ image, text, url, ctaText }, index) => (
+      <HomeBlock
+        key={url}
+        href={url}
+        image={image}
+        content={text}
+        ctaText={ctaText}
+        even={index % 2 === 0}
+      />
+    ))}
     <Box
-      my={5}
+      mt={5}
       sx={{
         ".image-gallery-icon": {
           [`@media (min-width: ${theme.breakpoints[2]})`]: {

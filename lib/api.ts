@@ -166,7 +166,7 @@ export async function getPostAndMorePosts(slug: string) {
     ({ node }: PostList["edges"][0]) => node.slug !== slug
   );
   // If there are still 3 posts, remove the last one
-  if (data.posts.edges.length > 2) data.posts.edges.pop();
+  if (data.posts.edges.length > 3) data.posts.edges.pop();
 
   return data;
 }

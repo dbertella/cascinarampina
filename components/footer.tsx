@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-import { Box, Grid, Link, Text } from "theme-ui";
+import { Box, Flex, Grid, Link, NavLink, Text } from "theme-ui";
+import NextLink from "next/link";
 
 export default function Footer() {
   return (
@@ -11,7 +12,7 @@ export default function Footer() {
       <Grid
         as="footer"
         variant="styles.container"
-        columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
+        columns={["auto", "1fr 1fr", "1fr 1fr 1fr 1fr"]}
         gap={3}
         sx={{
           fontSize: 1,
@@ -43,6 +44,18 @@ export default function Footer() {
             <strong>Sabato</strong> dalle 9 alle 17
           </Text>
         </Box>
+        <Flex sx={{ flexDirection: "column" }}>
+          <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>Link Utili:</Text>
+          <NextLink href="/faq" passHref>
+            <NavLink>FAQ</NavLink>
+          </NextLink>
+          <NextLink href="/contatti" passHref>
+            <NavLink>Contatti</NavLink>
+          </NextLink>
+          <NextLink href="/news" passHref>
+            <NavLink>News</NavLink>
+          </NextLink>
+        </Flex>
         <Box>
           <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>Seguici:</Text>
           <Text>

@@ -35,9 +35,15 @@ export const Page: FC<PageProps> = ({
       />
     </Head>
 
-    <ImageHeader title={page.title} coverImage={page.featuredImage?.node} height={headerSize} />
+    <ImageHeader
+      title={page.title}
+      coverImage={page.featuredImage?.node}
+      height={headerSize}
+    />
     <Box variant="styles.container">
-      <PostBody content={page.content} />
+      <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
+        <PostBody content={page.content} />
+      </Box>
       {children}
     </Box>
     {edges.length > 0 && (

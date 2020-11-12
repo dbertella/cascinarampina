@@ -44,7 +44,7 @@ export default function Product({
           />
 
           <Box as="article" variant="styles.container">
-            <Box sx={{ maxWidth: "40em", py: 5 }}>
+            <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
               <PostBody content={productCategory.description} />
             </Box>
           </Box>

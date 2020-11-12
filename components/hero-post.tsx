@@ -22,12 +22,13 @@ export default function HeroPost({
   return (
     <Box variant="styles.container">
       <ImageHeader title={title} coverImage={coverImage} />
-      <Box sx={{ py: 5 }}>
+      <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
         <Heading as="h3">
           <Link href={`/news/${slug}`} passHref>
             <Uilink dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
         </Heading>
+
         <Text
           sx={{
             p: 1,
@@ -37,10 +38,7 @@ export default function HeroPost({
         >
           <Date dateString={date} />
         </Text>
-        <Box
-          sx={{ maxWidth: "40em" }}
-          dangerouslySetInnerHTML={{ __html: excerpt }}
-        />
+        <Box dangerouslySetInnerHTML={{ __html: excerpt }} />
       </Box>
     </Box>
   );

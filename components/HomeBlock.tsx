@@ -51,9 +51,11 @@ export const HomeBlock = ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        textAlign: "center",
-        padding: 5,
+        p: 5,
         width: ["100%", null, "50%"],
+        h2: {
+          textAlign: "center",
+        },
       }}
     >
       <PostBody content={content} />

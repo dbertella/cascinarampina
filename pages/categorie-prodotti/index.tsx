@@ -1,33 +1,21 @@
-import { AllProducts } from "components/all-products";
-import { ImageHeader } from "components/image-header";
-import Layout from "components/layout";
 import { LinkToSingle } from "components/LinkToSingle";
-import { getProductCategories } from "lib";
+import { Page, PageProps } from "components/page";
+import { getPageByUri, getProductCategories } from "lib";
 import { CateogryListItem } from "lib/types";
-import { sample } from "lodash";
 import Head from "next/head";
-import Link from "next/link";
-import { Button, Grid } from "theme-ui";
+import { Grid } from "theme-ui";
 
 const ProductCategories = ({
+  data,
   productCategories,
-}: {
+}: PageProps & {
   productCategories: { edges: CateogryListItem[] };
 }) => {
   return (
-    <Layout>
+    <Page data={data}>
       <Head>
         <title>Categorie di prodotti | Azienda Agricola Cascina Rampina</title>
-        <meta
-          property="og:image"
-          content={productCategories.edges[0].node.image?.sourceUrl}
-          key="feature-image"
-        />
       </Head>
-      <ImageHeader
-        title="I nostri prodotti"
-        coverImage={sample(productCategories.edges)?.node?.image}
-      />
       <Grid
         columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
         gap={3}
@@ -43,22 +31,16 @@ const ProductCategories = ({
           />
         ))}
       </Grid>
-      <AllProducts>
-        <Link href="/prodotti" passHref>
-          <Button variant="secondary" sx={{ zIndex: 1 }}>
-            Guarda tutti i prodotti
-          </Button>
-        </Link>
-      </AllProducts>
-    </Layout>
+    </Page>
   );
 };
 
 export default ProductCategories;
 
 export async function getStaticProps() {
+  const data = await getPageByUri("prodotti");
   const { productCategories } = await getProductCategories();
   return {
-    props: { productCategories },
+    props: { data, productCategories },
   };
 }
