@@ -3,8 +3,8 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
-      '"Encode Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: '"Encode Sans", sans-serif',
+      '"Asap", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: '"Asap", sans-serif',
     monospace: "Menlo, monospace",
     cascinarampina: "Cascinarampina, cursive",
   },
