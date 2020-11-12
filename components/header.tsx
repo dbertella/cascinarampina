@@ -6,7 +6,8 @@ import React, { useState } from "react";
 const mobileLinksStyle = {
   fontSize: [3, null, 2],
   my: [2, null, 0],
-  p: 2,
+  py: [1, 2],
+  px: 2,
 };
 
 export default function Header() {
