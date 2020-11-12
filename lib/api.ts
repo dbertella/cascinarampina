@@ -189,6 +189,16 @@ export async function getPageByUri(slug: string) {
         page(id: $id, idType: $idType) {
           ...PageFields
           content
+          pageElements {
+            pageGallery {
+              image {
+                sourceUrl(size: GALLERY_SIZE)
+                thumb: sourceUrl(size: THUMBNAIL)
+                srcSet
+                altText
+              }
+            }
+          }
         }
         posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
           edges {
