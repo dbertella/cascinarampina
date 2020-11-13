@@ -1,12 +1,49 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
 import Link from "next/link";
-import { Flex, Image, NavLink, MenuButton, Box } from "theme-ui";
+import { Flex, Image, NavLink, MenuButton, jsx, Box } from "theme-ui";
+import { ReactNode, useState } from "react";
+import { useRouter } from "next/router";
 
-import React, { useState } from "react";
+const MenuLink = ({
+  href,
+  children,
+  ...rest
+}: {
+  href: string;
+  children: ReactNode;
+}) => {
+  const router = useRouter();
 
-const mobileLinksStyle = {
-  fontSize: [3, null, 2],
-  my: [2, null, 0],
-  p: 2,
+  if (router.pathname === href) {
+    return (
+      <NavLink
+        sx={{
+          fontSize: [3, null, 2],
+          p: 2,
+          color: "primary",
+        }}
+        {...rest}
+      >
+        {children}
+      </NavLink>
+    );
+  }
+
+  return (
+    <Link href={href} passHref>
+      <NavLink
+        sx={{
+          fontSize: [3, null, 2],
+          p: 2,
+          color: "text",
+        }}
+        {...rest}
+      >
+        {children}
+      </NavLink>
+    </Link>
+  );
 };
 
 export default function Header() {
@@ -29,63 +66,43 @@ export default function Header() {
         alignItems: "center",
       }}
     >
-      <Flex sx={{ justifyContent: "center", px: 2, zIndex: 3 }}>
-        <Link href="/">
-          <a aria-label="Logo Cascina Rampina">
-            <Image
-              src="/images/logo.png"
-              alt="Azienda Agricola Cascina Rampina"
-            />
-          </a>
-        </Link>
+      <Flex sx={{ justifyContent: "center", zIndex: 3 }}>
+        <MenuLink href="/" aria-label="Logo Cascina Rampina" sx={{ py: 0 }}>
+          <Image
+            src="/images/logo.png"
+            alt="Azienda Agricola Cascina Rampina"
+          />
+        </MenuLink>
       </Flex>
       <Box
-        as="nav"
         sx={{
-          justifyContent: "center",
           display: [isActive ? "flex" : "none", null, "flex"],
           position: ["fixed", null, "static"],
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0,
+          bottom: -90,
+          py: [90, null, 0],
           bg: ["background", null, "transparent"],
-          zIndex: 2,
           flexDirection: ["column", null, "row"],
           alignItems: "center",
+          justifyContent: "center",
+          zIndex: 2,
         }}
       >
-        <Link href="/" passHref>
-          <NavLink sx={mobileLinksStyle}>Home</NavLink>
-        </Link>
-        <Link href="/dove-siamo" passHref>
-          <NavLink sx={mobileLinksStyle}>Dove Siamo</NavLink>
-        </Link>
-        <Link href="/chi-siamo" passHref>
-          <NavLink sx={mobileLinksStyle}>Chi Siamo</NavLink>
-        </Link>
-        <Link href="/cosa-facciamo" passHref>
-          <NavLink sx={mobileLinksStyle}>Cosa Facciamo</NavLink>
-        </Link>
-        <Link href="/contatti" passHref>
-          <NavLink sx={mobileLinksStyle}>Contatti</NavLink>
-        </Link>
-        <Link href="/categorie-prodotti" passHref>
-          <NavLink sx={mobileLinksStyle}>Prodotti</NavLink>
-        </Link>
-        <Link href="/faq" passHref>
-          <NavLink sx={mobileLinksStyle}>FAQ</NavLink>
-        </Link>
-
-        <Link href="/news" passHref>
-          <NavLink sx={mobileLinksStyle}>News</NavLink>
-        </Link>
+        <MenuLink href="/">Home</MenuLink>
+        <MenuLink href="/dove-siamo">Dove Siamo</MenuLink>
+        <MenuLink href="/chi-siamo">Chi Siamo</MenuLink>
+        <MenuLink href="/cosa-facciamo">Cosa Facciamo</MenuLink>
+        <MenuLink href="/contatti">Contatti</MenuLink>
+        <MenuLink href="/categorie-prodotti">Prodotti</MenuLink>
+        <MenuLink href="/news">News</MenuLink>
       </Box>
       <MenuButton
         aria-label="Toggle Menu"
         onClick={toggleMenu}
         sx={{
-          display: ["block", null, "none"],
+          display: ["flex", null, "none"],
           backgroundColor: "mutedTransparent",
           mx: 2,
           zIndex: 3,
