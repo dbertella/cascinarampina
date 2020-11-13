@@ -9,7 +9,8 @@ const sx = {
     textAlign: "center",
   },
   ".wp-block-gallery": {
-    m: 0,
+    my: 0,
+    mx: [0, null, -60, -192],
     ul: {
       display: "flex",
       flexWrap: "wrap",
