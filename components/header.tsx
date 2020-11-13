@@ -1,8 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import Link from "next/link";
-import { Flex, Image, NavLink, MenuButton, jsx } from "theme-ui";
-import Div100vh from "react-div-100vh";
+import { Flex, Image, NavLink, MenuButton, jsx, Box } from "theme-ui";
 import { ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -15,13 +14,27 @@ const MenuLink = ({
 }) => {
   const router = useRouter();
 
+  if (router.pathname === href) {
+    return (
+      <NavLink
+        sx={{
+          fontSize: [3, null, 2],
+          p: 2,
+          color: "primary",
+        }}
+      >
+        {children}
+      </NavLink>
+    );
+  }
+
   return (
     <Link href={href} passHref>
       <NavLink
         sx={{
           fontSize: [3, null, 2],
           p: 2,
-          color: router.pathname === href ? "primary" : "text",
+          color: "text",
         }}
       >
         {children}
@@ -60,19 +73,19 @@ export default function Header() {
           </a>
         </Link>
       </Flex>
-      <Div100vh
+      <Box
         sx={{
           display: [isActive ? "flex" : "none", null, "flex"],
           position: ["fixed", null, "static"],
           top: 0,
           left: 0,
           right: 0,
-          pt: [90, null, 0],
+          bottom: -90,
+          py: [90, null, 0],
           bg: ["background", null, "transparent"],
           flexDirection: ["column", null, "row"],
           alignItems: "center",
-          justifyContent: ["space-evenly", null, "center"],
-          height: [null, null, "auto !important"],
+          justifyContent: "center",
           zIndex: 2,
         }}
       >
@@ -83,14 +96,13 @@ export default function Header() {
         <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/categorie-prodotti">Prodotti</MenuLink>
         <MenuLink href="/news">News</MenuLink>
-      </Div100vh>
+      </Box>
       <MenuButton
         aria-label="Toggle Menu"
         onClick={toggleMenu}
         sx={{
-          display: ["block", null, "none"],
+          display: ["flex", null, "none"],
           backgroundColor: "mutedTransparent",
-          px: "2px",
           mx: 2,
           zIndex: 3,
           ":hover": {
