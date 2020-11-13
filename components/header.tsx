@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 const MenuLink = ({
   href,
   children,
+  ...rest
 }: {
   href: string;
   children: ReactNode;
@@ -22,6 +23,7 @@ const MenuLink = ({
           p: 2,
           color: "primary",
         }}
+        {...rest}
       >
         {children}
       </NavLink>
@@ -36,6 +38,7 @@ const MenuLink = ({
           p: 2,
           color: "text",
         }}
+        {...rest}
       >
         {children}
       </NavLink>
@@ -63,15 +66,13 @@ export default function Header() {
         alignItems: "center",
       }}
     >
-      <Flex sx={{ justifyContent: "center", px: 2, zIndex: 3 }}>
-        <Link href="/">
-          <a aria-label="Logo Cascina Rampina">
-            <Image
-              src="/images/logo.png"
-              alt="Azienda Agricola Cascina Rampina"
-            />
-          </a>
-        </Link>
+      <Flex sx={{ justifyContent: "center", zIndex: 3 }}>
+        <MenuLink href="/" aria-label="Logo Cascina Rampina" sx={{ py: 0 }}>
+          <Image
+            src="/images/logo.png"
+            alt="Azienda Agricola Cascina Rampina"
+          />
+        </MenuLink>
       </Flex>
       <Box
         sx={{
