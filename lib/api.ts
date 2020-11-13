@@ -247,7 +247,7 @@ export async function getPageAndChildrensByUri(slug: string) {
         page(id: $id, idType: $idType) {
           ...PageFields
           content
-          children {
+          children(where: {orderby: {field: TITLE, order: ASC}}) {
             nodes {
               slug
               ... on Page {
