@@ -40,6 +40,16 @@ export type PageSingle = {
       srcSet: string;
     };
   };
+  pageElements?: {
+    pageGallery: {
+      image: {
+        sourceUrl: string;
+        thumb: string;
+        srcSet: string;
+        altText: string;
+      };
+    }[];
+  };
   children?: {
     nodes: {
       slug: string;

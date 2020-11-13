@@ -47,6 +47,7 @@ export async function getStaticProps() {
         ({ image }: { image: MediaImage & { thumb: string } }) => ({
           original: image.sourceUrl,
           thumbnail: image.thumb,
+          srcSet: image.srcSet,
         })
       ),
     },
