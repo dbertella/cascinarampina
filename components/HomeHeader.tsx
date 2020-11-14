@@ -44,6 +44,7 @@ export function HomeHeader({ coverImage }: Props) {
           textAlign: "center",
           maxWidth: 500,
           color: "background",
+          wordSpacing: ["-0.3em", "-0.4em", "-0.5em"],
         }}
       >
         <Stroke
@@ -57,8 +58,12 @@ export function HomeHeader({ coverImage }: Props) {
             height: "140%",
           }}
         />
-        <Text sx={{ fontSize: [4, 5, 6] }}>Cascina Rampina</Text>
-        <Text sx={{ fontSize: [3, 4, 5] }}>Azienda Agricola</Text>
+        <Text sx={{ fontSize: [4, 5, 6] }}>
+          Cascina Rampina
+        </Text>
+        <Text sx={{ fontSize: [2, 3, 4], wordSpacing: "-0.3em", mt: 1 }}>
+          Azienda Agricola
+        </Text>
       </Heading>
     </Flex>
   );

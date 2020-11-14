@@ -64,6 +64,10 @@ export default function Header() {
         flexFlow: ["row", null, "column"],
         justifyContent: "space-between",
         alignItems: "center",
+        position: ["sticky", null, "static"],
+        top: 0,
+        bg: "background",
+        zIndex: 5,
       }}
     >
       <Flex sx={{ justifyContent: "center", zIndex: 3 }}>
@@ -71,6 +75,9 @@ export default function Header() {
           <Image
             src="/images/logo.png"
             alt="Azienda Agricola Cascina Rampina"
+            sx={{
+              width: [150, null, 300],
+            }}
           />
         </MenuLink>
       </Flex>
@@ -105,6 +112,8 @@ export default function Header() {
         sx={{
           display: ["flex", null, "none"],
           backgroundColor: "mutedTransparent",
+          width: 37,
+          height: 37,
           mx: 2,
           zIndex: 3,
           ":hover": {

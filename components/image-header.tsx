@@ -45,6 +45,7 @@ export function ImageHeader({ title, coverImage }: Props) {
           textAlign: "center",
           maxWidth: 500,
           color: "background",
+          wordSpacing: "-0.5em",
         }}
       >
         <Stroke
