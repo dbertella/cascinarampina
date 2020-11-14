@@ -72,6 +72,8 @@ export default function Header() {
             alt="Azienda Agricola Cascina Rampina"
             sx={{
               width: [150, null, 230],
+              height: [39, null, 60],
+
             }}
           />
         </MenuLink>
