@@ -7,6 +7,11 @@ export async function getHomePage() {
         title
         slug
         date
+        seo {
+          canonical
+          title
+          metaDesc
+        }
         featuredImage {
           node {
             sourceUrl(size: LARGE)

@@ -2,20 +2,28 @@ import { MediaImage } from "types";
 import { Flex, Heading, Image } from "theme-ui";
 import { PLACEHOLDER_IMAGE } from "lib";
 import { Stroke } from "components/icons/Stroke";
+import { ReactNode } from "react";
 
 type Props = {
-  title: string;
+  title?: string;
   coverImage?: MediaImage;
+  children?: ReactNode;
+  height?: string | number | (string | null | number)[];
 };
 
-export function ImageHeader({ title, coverImage }: Props) {
+export function ImageHeader({
+  title,
+  coverImage,
+  height = 300,
+  children,
+}: Props) {
   return (
     <Flex
       sx={{
         position: "relative",
         justifyContent: "center",
         alignItems: "center",
-        height: 300,
+        height,
         overflow: "hidden",
       }}
     >
@@ -37,29 +45,27 @@ export function ImageHeader({ title, coverImage }: Props) {
         sx={{
           position: "relative",
           py: 1,
-          px: 3,
-          m: 4,
-          fontSize: [4, 5, 6],
+          px: 5,
+          maxWidth: 600,
           textTransform: "uppercase",
           fontFamily: "cascinarampina",
           textAlign: "center",
-          maxWidth: 500,
           color: "background",
-          wordSpacing: "-0.5em",
+          wordSpacing: ["-0.3em", "-0.4em", "-0.5em"],
         }}
       >
         <Stroke
           sx={{
             fill: "primary",
             position: "absolute",
-            top: "-20%",
-            left: "-20%",
+            top: "50%",
+            left: "50%",
+            width: "100%",
+            transform: "translate(-50%, -50%)",
             zIndex: -1,
-            width: "140%",
-            height: "140%",
           }}
         />
-        {title}
+        {children ?? title}
       </Heading>
     </Flex>
   );

@@ -112,6 +112,11 @@ export async function getPostAndMorePosts(slug: string) {
         excerpt
         slug
         date
+        seo {
+          canonical
+          title
+          metaDesc
+        }
         featuredImage {
           node {
             sourceUrl(size: LARGE)
@@ -178,6 +183,11 @@ export async function getPageByUri(slug: string) {
         title
         slug
         date
+        seo {
+          canonical
+          title
+          metaDesc
+        }
         featuredImage {
           node {
             sourceUrl(size: LARGE)
@@ -236,6 +246,11 @@ export async function getPageAndChildrensByUri(slug: string) {
         title
         slug
         date
+        seo {
+          canonical
+          title
+          metaDesc
+        }
         featuredImage {
           node {
             sourceUrl(size: LARGE)

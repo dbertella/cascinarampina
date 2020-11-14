@@ -5,6 +5,11 @@ import { Flex, Image, NavLink, MenuButton, jsx, Box } from "theme-ui";
 import { ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 
+const navStyle = {
+  fontSize: 3,
+  p: [2, null, null, 3],
+};
+
 const MenuLink = ({
   href,
   children,
@@ -17,14 +22,7 @@ const MenuLink = ({
 
   if (router.pathname === href) {
     return (
-      <NavLink
-        sx={{
-          fontSize: 3,
-          p: 2,
-          color: "primary",
-        }}
-        {...rest}
-      >
+      <NavLink sx={{ ...navStyle, color: "primary" }} {...rest}>
         {children}
       </NavLink>
     );
@@ -32,14 +30,7 @@ const MenuLink = ({
 
   return (
     <Link href={href} passHref>
-      <NavLink
-        sx={{
-          fontSize: 3,
-          p: 2,
-          color: "text",
-        }}
-        {...rest}
-      >
+      <NavLink sx={navStyle} {...rest}>
         {children}
       </NavLink>
     </Link>
@@ -66,17 +57,21 @@ export default function Header() {
         alignItems: "center",
         position: ["sticky", null, "static"],
         top: 0,
-        bg: "background",
+        bg: "white",
         zIndex: 5,
       }}
     >
       <Flex sx={{ justifyContent: "center", zIndex: 3 }}>
-        <MenuLink href="/" aria-label="Logo Cascina Rampina" sx={{ py: 0 }}>
+        <MenuLink
+          href="/"
+          aria-label="Logo Cascina Rampina"
+          sx={{ display: "flex" }}
+        >
           <Image
-            src="/images/logo.png"
+            src="/images/logo.svg"
             alt="Azienda Agricola Cascina Rampina"
             sx={{
-              width: [150, null, 300],
+              width: [150, null, 230],
             }}
           />
         </MenuLink>

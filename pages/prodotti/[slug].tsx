@@ -37,12 +37,13 @@ export default function Product({
       ) : (
         <>
           <Head>
-            <title>{product.name} | Azienda Agricola Cascina Rampina</title>
+            <title>{product.seo.title} | Cascina Rampina</title>
             <meta
               property="og:image"
               content={product.image?.sourceUrl}
               key="feature-image"
             />
+            <meta name="description" content={product.seo.metaDesc} />
           </Head>
           <ImageHeader
             title={product.name}
@@ -58,7 +59,12 @@ export default function Product({
             variant="styles.container"
             py={5}
           >
-            <Flex sx={{ justifyContent: ["center", "flex-end"], alignItems: "start" }}>
+            <Flex
+              sx={{
+                justifyContent: ["center", "flex-end"],
+                alignItems: "start",
+              }}
+            >
               <Image
                 src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE}
                 srcSet={product.image?.srcSet}
@@ -69,7 +75,7 @@ export default function Product({
                 sx={{
                   flexWrap: "wrap",
                   flexDirection: ["column", null, "row"],
-                  fontSize: 1,
+                  fontSize: 2,
                 }}
               >
                 <Categories categories={product.productCategories} />
@@ -94,7 +100,7 @@ export default function Product({
                 </Flex>
               </Flex>
               <PostBody content={product.shortDescription} />
-              <Text sx={{ color: "lightGrey", fontSize: 1 }}>
+              <Text sx={{ color: "lightGrey", fontSize: 2 }}>
                 <PostBody content={product.description} />
               </Text>
               <Flex sx={{ alignItems: "center" }}>

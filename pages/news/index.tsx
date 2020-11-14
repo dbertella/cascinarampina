@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { Box, jsx } from "theme-ui";
+import { jsx } from "theme-ui";
 import Head from "next/head";
 import { getAllPostsForHome } from "lib/api";
 import MoreStories from "components/more-stories";
@@ -13,19 +13,17 @@ export default function Home({ allPosts: { edges } }: any) {
   return (
     <Layout>
       <Head>
-        <title>Novità | Azienda Agricola Cascina Rampina</title>
+        <title>Novità | Cascina Rampina</title>
       </Head>
-      <Box variant="styles.container">
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage?.node}
-            date={heroPost.date}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-          />
-        )}
-      </Box>
+      {heroPost && (
+        <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.featuredImage?.node}
+          date={heroPost.date}
+          slug={heroPost.slug}
+          excerpt={heroPost.excerpt}
+        />
+      )}
       {morePosts.length > 0 && <MoreStories posts={morePosts} />}
     </Layout>
   );

@@ -2,7 +2,6 @@ import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
 import { getPageByUri, getProductCategories } from "lib";
 import { CateogryListItem } from "lib/types";
-import Head from "next/head";
 import { Grid } from "theme-ui";
 
 const ProductCategories = ({
@@ -13,9 +12,6 @@ const ProductCategories = ({
 }) => {
   return (
     <Page data={data}>
-      <Head>
-        <title>Categorie di prodotti | Azienda Agricola Cascina Rampina</title>
-      </Head>
       <Grid
         columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
         gap={3}

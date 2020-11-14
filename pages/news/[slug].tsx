@@ -24,12 +24,13 @@ export default function Post({ post, posts }: any) {
       ) : (
         <>
           <Head>
-            <title>{post.title} | Azienda Agricola Cascina Rampina</title>
+            <title>{post.seo.title} | Cascina Rampina</title>
             <meta
               property="og:image"
               content={post.featuredImage?.node?.sourceUrl}
               key="feature-image"
             />
+            <meta name="description" content={post.seo.metaDesc} />
           </Head>
           <ImageHeader
             title={post.title}

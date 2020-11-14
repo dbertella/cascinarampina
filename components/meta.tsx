@@ -13,7 +13,7 @@ export default function Meta() {
         href="/manifest.webmanifest"
         crossOrigin="anonymous"
       />
-      <meta name="theme-color" content="#95c11f" />
+      <meta name="theme-color" content="#97BF0D" />
       <link
         rel="apple-touch-icon"
         sizes="48x48"
@@ -56,7 +56,7 @@ export default function Meta() {
       />
       <meta
         name="description"
-        content="Azienda Agricola Cascina Rampina a Monticello Brianza LC"
+        content="Cascina Rampina è un progetto di agricoltura sostenibile. Vendiamo frutta e verdura bio in Brianza. Consegne a domicilio 🚛 Scopri i nostri prodotti."
       />
 
       <meta

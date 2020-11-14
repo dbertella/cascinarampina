@@ -30,7 +30,7 @@ export default function Product({
         <>
           <Head>
             <title>
-              {productCategory.name} | Azienda Agricola Cascina Rampina
+              {productCategory.name} | Cascina Rampina
             </title>
             <meta
               property="og:image"

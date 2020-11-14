@@ -1,3 +1,10 @@
+
+type Seo = {
+  canonical: string;
+  title: string;
+  metaDesc: string;
+};
+
 export type PostListItem = {
   title: string;
   excerpt: string;
@@ -27,6 +34,7 @@ export type PostList = {
 
 export type PostSingle = PostListItem & {
   content: string;
+  seo: Seo;
 };
 
 export type PageSingle = {
@@ -34,6 +42,7 @@ export type PageSingle = {
   slug: string;
   date: string;
   content: string;
+  seo: Seo;
   featuredImage: {
     node: {
       sourceUrl: string;
@@ -85,6 +94,7 @@ export type ProductSingle = {
   price: string;
   onSale: boolean;
   type: string;
+  seo: Seo;
   productCategories: {
     edges: CateogryListItem[];
   };

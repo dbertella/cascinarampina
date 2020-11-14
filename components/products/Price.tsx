@@ -19,7 +19,7 @@ export const ProductPrice = ({
       </Text>
     );
   }
-  return <Text sx={{ fontSize: 3, fontFamily: "monospace" }}>{price}</Text>;
+  return <Text sx={{ fontSize: 4, fontFamily: "monospace" }}>{price}</Text>;
 };
 type ProductPrice = {
   price: string;

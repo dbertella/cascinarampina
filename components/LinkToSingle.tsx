@@ -41,7 +41,6 @@ export const LinkToSingle = ({
           py: 1,
           px: 2,
           width: "100%",
-          textTransform: "uppercase",
           bg: "backgroundTransparent",
           color: "text",
         }}

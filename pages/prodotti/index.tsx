@@ -17,7 +17,7 @@ const Products = ({
   return (
     <Layout>
       <Head>
-        <title>Prodotti | Azienda Agricola Cascina Rampina</title>
+        <title>Prodotti | Cascina Rampina</title>
         <meta
           property="og:image"
           content={products.edges[0].node.image?.sourceUrl}

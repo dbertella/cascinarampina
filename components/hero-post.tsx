@@ -20,9 +20,12 @@ export default function HeroPost({
   slug,
 }: Props) {
   return (
-    <Box variant="styles.container">
-      <ImageHeader title={title} coverImage={coverImage} />
-      <Box sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}>
+    <Box>
+      <ImageHeader title="News" coverImage={coverImage} />
+      <Box
+        sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}
+        variant="styles.container"
+      >
         <Heading as="h3">
           <Link href={`/news/${slug}`} passHref>
             <Uilink dangerouslySetInnerHTML={{ __html: title }} />
