@@ -19,7 +19,7 @@ const MenuLink = ({
     return (
       <NavLink
         sx={{
-          fontSize: [3, null, 2],
+          fontSize: 3,
           p: 2,
           color: "primary",
         }}
@@ -34,7 +34,7 @@ const MenuLink = ({
     <Link href={href} passHref>
       <NavLink
         sx={{
-          fontSize: [3, null, 2],
+          fontSize: 3,
           p: 2,
           color: "text",
         }}
