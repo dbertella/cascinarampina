@@ -18,7 +18,7 @@ type HomeProps = {
 };
 
 const Home: FC<PageProps & HomeProps> = ({ blocks, gallery, ...rest }) => (
-  <Page headerSize={[400, null, 600]} {...rest}>
+  <Page home {...rest}>
     {blocks.map(({ image, text, url, ctaText }, index) => (
       <HomeBlock
         key={url}

@@ -180,5 +180,19 @@ export default {
     audio: {
       width: "100%",
     },
+    blockquote: {
+      fontSize: [2, null, 3],
+      position: "relative",
+      mx: 0,
+      px: 4,
+      "&:before": {
+        content: "url(/icons/check.svg)",
+        width: 20,
+        height: 20,
+        position: "absolute",
+        left: 0,
+        top: "2px",
+      },
+    },
   },
 };

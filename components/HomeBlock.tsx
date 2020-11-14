@@ -58,7 +58,9 @@ export const HomeBlock = ({
       <PostBody content={content} />
       {ctaText && (
         <NextLink href={href} passHref>
-          <Button variant="outline">{ctaText}</Button>
+          <Button sx={{ mt: 2, mb: 3 }} variant="outline">
+            {ctaText}
+          </Button>
         </NextLink>
       )}
     </Flex>

@@ -6,13 +6,14 @@ import MoreStories from "components/more-stories";
 import Layout from "components/layout";
 import PostBody from "components/post-body";
 import { ImageHeader } from "components/image-header";
+import { HomeHeader } from "components/HomeHeader";
 import { PageSingle, PostList } from "lib/types";
 import { FC } from "react";
 import { MediaImage } from "types";
 import { ImageGallery } from "./ImageGallery";
 
 export type PageProps = {
-  headerSize?: number | Array<number | string | null>;
+  home?: boolean;
   data: {
     page: PageSingle;
     posts: PostList;
@@ -20,7 +21,7 @@ export type PageProps = {
 };
 
 export const Page: FC<PageProps> = ({
-  headerSize,
+  home,
   data: {
     page,
     posts: { edges },
@@ -34,6 +35,12 @@ export const Page: FC<PageProps> = ({
       srcSet: image.srcSet,
     })
   );
+
+  const pageHeader = home ? (
+    <HomeHeader coverImage={page.featuredImage?.node} />
+  ) : (
+    <ImageHeader title={page.title} coverImage={page.featuredImage?.node} />
+  );
   return (
     <Layout>
       <Head>
@@ -45,11 +52,7 @@ export const Page: FC<PageProps> = ({
         />
       </Head>
 
-      <ImageHeader
-        title={page.title}
-        coverImage={page.featuredImage?.node}
-        height={headerSize}
-      />
+      {pageHeader}
       <Box variant="styles.container">
         <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
           <PostBody content={page.content} />

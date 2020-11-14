@@ -94,8 +94,9 @@ export default function Header() {
         <MenuLink href="/dove-siamo">Dove Siamo</MenuLink>
         <MenuLink href="/chi-siamo">Chi Siamo</MenuLink>
         <MenuLink href="/cosa-facciamo">Cosa Facciamo</MenuLink>
-        <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/categorie-prodotti">Prodotti</MenuLink>
+        <MenuLink href="/faq">FAQ</MenuLink>
+        <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/news">News</MenuLink>
       </Box>
       <MenuButton

@@ -1,21 +1,20 @@
 import { MediaImage } from "types";
-import { Flex, Heading, Image } from "theme-ui";
+import { Flex, Heading, Image, Text } from "theme-ui";
 import { PLACEHOLDER_IMAGE } from "lib";
 import { Stroke } from "components/icons/Stroke";
 
 type Props = {
-  title: string;
   coverImage?: MediaImage;
 };
 
-export function ImageHeader({ title, coverImage }: Props) {
+export function HomeHeader({ coverImage }: Props) {
   return (
     <Flex
       sx={{
         position: "relative",
         justifyContent: "center",
-        alignItems: "center",
-        height: 300,
+        alignItems: "flex-start",
+        height: [400, null, 600],
         overflow: "hidden",
       }}
     >
@@ -38,8 +37,8 @@ export function ImageHeader({ title, coverImage }: Props) {
           position: "relative",
           py: 1,
           px: 3,
-          m: 4,
-          fontSize: [4, 5, 6],
+          my: 5,
+          mx: 4,
           textTransform: "uppercase",
           fontFamily: "cascinarampina",
           textAlign: "center",
@@ -58,7 +57,8 @@ export function ImageHeader({ title, coverImage }: Props) {
             height: "140%",
           }}
         />
-        {title}
+        <Text sx={{ fontSize: [4, 5, 6] }}>Cascina Rampina</Text>
+        <Text sx={{ fontSize: [3, 4, 5] }}>Azienda Agricola</Text>
       </Heading>
     </Flex>
   );
