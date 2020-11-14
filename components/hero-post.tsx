@@ -22,7 +22,7 @@ export default function HeroPost({
   return (
     <Box variant="styles.container">
       <ImageHeader title={title} coverImage={coverImage} />
-      <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
+      <Box sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}>
         <Heading as="h3">
           <Link href={`/news/${slug}`} passHref>
             <Uilink dangerouslySetInnerHTML={{ __html: title }} />

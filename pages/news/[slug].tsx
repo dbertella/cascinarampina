@@ -36,7 +36,7 @@ export default function Post({ post, posts }: any) {
             coverImage={post.featuredImage?.node}
           />
           <Box as="article" variant="styles.container">
-            <Box sx={{ maxWidth: "40em", my: [3, 4, 5], mx: "auto" }}>
+            <Box sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}>
               <PostBody content={post.content} />
             </Box>
           </Box>
