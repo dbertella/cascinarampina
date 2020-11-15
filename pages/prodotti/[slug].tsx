@@ -37,19 +37,23 @@ export default function Product({
       ) : (
         <>
           <Head>
-            <title>{product.seo.title} | Cascina Rampina</title>
+            <title>{product.seo.title}</title>
             <meta
               property="og:image"
               content={product.image?.sourceUrl}
               key="feature-image"
             />
-            <meta name="description" content={product.seo.metaDesc} />
+            {product.seo.metaDesc && (
+              <meta name="description" content={product.seo.metaDesc} />
+            )}
           </Head>
           <ImageHeader
             title={product.name}
             coverImage={
               product.image ??
-              product.productCategories.edges.map((cat) => cat.node.image)[0]
+              product.productCategories?.edges?.map(
+                (cat) => cat.node.image
+              )?.[0]
             }
           />
 
@@ -115,7 +119,7 @@ export default function Product({
               {/* <Button onClick={() => console.log(product)}>Aggiungi</Button> */}
             </Box>
           </Grid>
-          {product.related.edges.length > 0 && (
+          {product.related?.edges?.length > 0 && (
             <MoreProducts
               products={product.related.edges}
               title="Ti potrebbe interessare"

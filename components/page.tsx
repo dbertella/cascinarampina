@@ -44,13 +44,15 @@ export const Page: FC<PageProps> = ({
   return (
     <Layout>
       <Head>
-        <title>{page.seo.title} | Cascina Rampina</title>
+        <title>{page.seo.title}</title>
         <meta
           property="og:image"
           content={page.featuredImage?.node?.sourceUrl}
           key="feature-image"
         />
-        <meta name="description" content={page.seo.metaDesc} />
+        {page.seo.metaDesc && (
+          <meta name="description" content={page.seo.metaDesc} />
+        )}
       </Head>
 
       {pageHeader}
