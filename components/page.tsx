@@ -9,8 +9,7 @@ import { ImageHeader } from "components/image-header";
 import { HomeHeader } from "components/HomeHeader";
 import { PageSingle, PostList } from "lib/types";
 import { FC } from "react";
-import { MediaImage } from "types";
-import { ImageGallery } from "./ImageGallery";
+import { ImageGallery, ReactImageGalleryItem } from "./ImageGallery";
 
 export type PageProps = {
   home?: boolean;
@@ -18,6 +17,7 @@ export type PageProps = {
     page: PageSingle;
     posts: PostList;
   };
+  gallery?: ReactImageGalleryItem[];
 };
 
 export const Page: FC<PageProps> = ({
@@ -26,16 +26,9 @@ export const Page: FC<PageProps> = ({
     page,
     posts: { edges },
   },
+  gallery,
   children,
 }) => {
-  const gallery = page.pageElements?.pageGallery?.map(
-    ({ image }: { image: MediaImage & { thumb: string } }) => ({
-      original: image.sourceUrl,
-      thumbnail: image.thumb,
-      srcSet: image.srcSet,
-    })
-  );
-
   const pageHeader = home ? (
     <HomeHeader coverImage={page.featuredImage?.node} />
   ) : (

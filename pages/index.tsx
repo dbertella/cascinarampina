@@ -3,7 +3,7 @@ import { Page, PageProps } from "components/page";
 import { getHomePage } from "lib";
 import { FC } from "react";
 import { MediaImage } from "types";
-import { ImageGallery, ReactImageGalleryItem } from "components/ImageGallery";
+import { ReactImageGalleryItem } from "components/ImageGallery";
 
 type HomeBlock = {
   image: MediaImage;
@@ -17,7 +17,7 @@ type HomeProps = {
   gallery: ReactImageGalleryItem[];
 };
 
-const Home: FC<PageProps & HomeProps> = ({ blocks, gallery, ...rest }) => (
+const Home: FC<PageProps & HomeProps> = ({ blocks, ...rest }) => (
   <Page home {...rest}>
     {blocks.map(({ image, text, url, ctaText }, index) => (
       <HomeBlock
@@ -29,8 +29,6 @@ const Home: FC<PageProps & HomeProps> = ({ blocks, gallery, ...rest }) => (
         even={index % 2 === 0}
       />
     ))}
-
-    <ImageGallery gallery={gallery} />
   </Page>
 );
 

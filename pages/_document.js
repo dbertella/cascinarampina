@@ -3,7 +3,7 @@ import { InitializeColorMode } from "theme-ui";
 import { GA_TRACKING_ID } from "lib";
 
 export default class extends Document {
-  static async getInitialProps(ctx: any) {
+  static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
