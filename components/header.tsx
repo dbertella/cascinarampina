@@ -73,7 +73,6 @@ export default function Header() {
             sx={{
               width: [150, null, 230],
               height: [39, null, 60],
-
             }}
           />
         </MenuLink>
@@ -103,21 +102,25 @@ export default function Header() {
         <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/news">News</MenuLink>
       </Box>
-      <MenuButton
-        aria-label="Toggle Menu"
-        onClick={toggleMenu}
+      <Flex
         sx={{
           display: ["flex", null, "none"],
-          backgroundColor: "mutedTransparent",
-          width: 37,
-          height: 37,
-          mx: 2,
+          alignItems: "center",
           zIndex: 3,
-          ":hover": {
-            backgroundColor: "mutedTransparent",
-          },
         }}
-      />
+      >
+        Menu
+        <MenuButton
+          aria-label="Toggle Menu"
+          onClick={toggleMenu}
+          sx={{
+            backgroundColor: "mutedTransparent",
+            width: 37,
+            height: 37,
+            mx: 2,
+          }}
+        />
+      </Flex>
     </Flex>
   );
 }
