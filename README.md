@@ -1,3 +1,5 @@
+![Cascina Rampina Website](./preview.png "Cascina Rampina Website")
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## How to run the project locally
