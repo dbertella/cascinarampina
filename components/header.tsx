@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import Link from "next/link";
-import { Flex, Image, NavLink, MenuButton, jsx, Box } from "theme-ui";
+import { Flex, Image, NavLink, MenuButton, jsx, Box, Text } from "theme-ui";
 import { ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -84,8 +84,8 @@ export default function Header() {
           top: 0,
           left: 0,
           right: 0,
-          bottom: -90,
-          py: [90, null, 0],
+          bottom: -50,
+          pb: [50, null, 0],
           bg: ["background", null, "transparent"],
           flexDirection: ["column", null, "row"],
           alignItems: "center",
@@ -104,22 +104,34 @@ export default function Header() {
       </Box>
       <Flex
         sx={{
+          position: "relative",
           display: ["flex", null, "none"],
           alignItems: "center",
+          flexDirection: "column",
           zIndex: 3,
         }}
       >
-        Menu
         <MenuButton
           aria-label="Toggle Menu"
           onClick={toggleMenu}
           sx={{
-            backgroundColor: "mutedTransparent",
             width: 37,
             height: 37,
             mx: 2,
+            pb: 3,
           }}
         />
+        <Text
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            fontSize: 0,
+            fontWeight: 700,
+            pointerEvents: "none",
+          }}
+        >
+          MENU
+        </Text>
       </Flex>
     </Flex>
   );
