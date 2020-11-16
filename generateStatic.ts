@@ -1,8 +1,8 @@
-const fs = require("fs");
-const globby = require("globby");
-const path = require("path");
+import * as fs from "fs";
+import * as path from "path";
+import globby from "globby";
 
-const lambdaPagesFilePath = path.join(__dirname, '.', 'lib', 'pages.json');
+const lambdaPagesFilePath = path.join(__dirname, ".", "lib", "pages.json");
 
 (async () => {
   const pages = await globby([

@@ -12,6 +12,21 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Install node & typescript to build static map locally
+
+```bash
+npm i -g typescript
+npm i -g ts-node
+```
+
+Pay attention to the globally installed typescript (can be in peerDependencies?).
+
+To execute:
+
+```bash
+yarn static-map
+```
+
 ## Powered by Worppress
 
 I'm using wordpress as an headless CMS using [WPGraphQL](https://github.com/wp-graphql) plugin, to have a graphql server instead of plain rest apis
