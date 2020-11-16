@@ -1,10 +1,10 @@
-import { fetchAPI } from "lib/api";
-import { CateogryListItem } from "lib/types";
+import { fetchAPI } from "lib";
+import { CategoryListItem } from "lib/types";
 
 export async function getProducts() {
   const data: {
     products: {
-      edges: CateogryListItem[];
+      edges: CategoryListItem[];
     };
   } = await fetchAPI(
     `

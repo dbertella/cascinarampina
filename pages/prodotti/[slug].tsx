@@ -46,6 +46,7 @@ export default function Product({
             {product.seo.metaDesc && (
               <meta name="description" content={product.seo.metaDesc} />
             )}
+            <link rel="canonical" href={product.seo.canonical} />
           </Head>
           <ImageHeader
             title={product.name}

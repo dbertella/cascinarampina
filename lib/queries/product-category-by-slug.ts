@@ -1,9 +1,9 @@
-import { fetchAPI } from "lib/api";
-import { CateogryListItem } from "lib/types";
+import { fetchAPI } from "lib";
+import { CategorySingle } from "lib/types";
 
 export async function getProductCategory(slug: string) {
   const data: {
-    productCategory: CateogryListItem;
+    productCategory: CategorySingle;
   } = await fetchAPI(
     `
     fragment ProductFields on Product {
@@ -75,6 +75,8 @@ export async function getProductCategory(slug: string) {
       },
     }
   );
+
+  data.productCategory.canonical = `${process.env.SITE_URL}/categorie-prodotti/${slug}`;
 
   return data;
 }

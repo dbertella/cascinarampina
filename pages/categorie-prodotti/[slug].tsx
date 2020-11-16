@@ -7,14 +7,14 @@ import Head from "next/head";
 import { Box } from "theme-ui";
 import { getAllProductCategoriesWithSlug, getProductCategory } from "lib";
 import { GetStaticProps } from "next";
-import { CateogrySingle } from "lib/types";
+import { CategorySingle } from "lib/types";
 import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
 
 export default function Product({
   productCategory,
 }: {
-  productCategory: CateogrySingle;
+  productCategory: CategorySingle;
 }) {
   const router = useRouter();
 
@@ -29,14 +29,13 @@ export default function Product({
       ) : (
         <>
           <Head>
-            <title>
-              {productCategory.name} | Cascina Rampina
-            </title>
+            <title>{productCategory.name} | Cascina Rampina</title>
             <meta
               property="og:image"
               content={productCategory.image?.sourceUrl}
               key="feature-image"
             />
+            <link rel="canonical" href={productCategory.canonical} />
           </Head>
           <ImageHeader
             title={productCategory.name}

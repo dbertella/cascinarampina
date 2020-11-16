@@ -1,4 +1,3 @@
-
 type Seo = {
   canonical: string;
   title: string;
@@ -96,7 +95,7 @@ export type ProductSingle = {
   type: string;
   seo: Seo;
   productCategories: {
-    edges: CateogryListItem[];
+    edges: CategoryListItem[];
   };
   related: {
     edges: {
@@ -105,11 +104,12 @@ export type ProductSingle = {
   };
 };
 
-export type CateogrySingle = {
+export type CategorySingle = {
   id: string;
   name: string;
   slug: string;
   description: string;
+  canonical: string;
   image: {
     id: string;
     sourceUrl: string;
@@ -122,7 +122,7 @@ export type CateogrySingle = {
   };
 };
 
-export type CateogryListItem = {
+export type CategoryListItem = {
   node: {
     id: string;
     name: string;

@@ -27,15 +27,16 @@ type WithSlug = {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
-  const news = await getAllPostsWithSlug().then((all) =>
-    all.edges.map(({ node }: WithSlug) => `/news/${node.slug}`)
+  const news = (await getAllPostsWithSlug()).edges.map(
+    ({ node }: WithSlug) => `/news/${node.slug}`
   );
-  const productCategories = await getAllProductCategoriesWithSlug().then(
-    (all) =>
-      all.edges.map(({ node }: WithSlug) => `/categorie-prodotti/${node.slug}`)
+
+  const productCategories = (await getAllProductCategoriesWithSlug()).edges.map(
+    ({ node }: WithSlug) => `/categorie-prodotti/${node.slug}`
   );
-  const products = await getAllProductsWithSlug().then((all) =>
-    all.edges.map(({ node }: WithSlug) => `/prodotti/${node.slug}`)
+
+  const products = (await getAllProductsWithSlug()).edges.map(
+    ({ node }: WithSlug) => `/prodotti/${node.slug}`
   );
 
   const sitemap = createSitemap(

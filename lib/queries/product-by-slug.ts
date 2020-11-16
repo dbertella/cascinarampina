@@ -1,4 +1,4 @@
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "lib";
 import { ProductSingle } from "lib/types";
 
 export async function getProductBySlug(slug: string) {
@@ -99,6 +99,11 @@ export async function getProductBySlug(slug: string) {
       },
     }
   );
+
+  console.log("canonical pre:", data.product.seo.canonical);
+
+  data.product.seo.canonical =
+    data.product.seo.canonical || `${process.env.SITE_URL}/prodotti/${slug}`;
 
   return data;
 }

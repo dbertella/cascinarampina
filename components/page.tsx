@@ -46,6 +46,8 @@ export const Page: FC<PageProps> = ({
         {page.seo.metaDesc && (
           <meta name="description" content={page.seo.metaDesc} />
         )}
+
+        <link rel="canonical" href={page.seo.canonical} />
       </Head>
 
       {pageHeader}

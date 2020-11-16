@@ -1,6 +1,6 @@
 import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
-import { getPageAndChildrensByUri } from "lib/api";
+import { getPageAndChildrensByUri } from "lib";
 import { Grid } from "theme-ui";
 
 const CosaFacciamo = (props: PageProps) => {

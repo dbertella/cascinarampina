@@ -1,14 +1,14 @@
 import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
 import { getPageByUri, getProductCategories } from "lib";
-import { CateogryListItem } from "lib/types";
+import { CategoryListItem } from "lib/types";
 import { Grid } from "theme-ui";
 
 const ProductCategories = ({
   data,
   productCategories,
 }: PageProps & {
-  productCategories: { edges: CateogryListItem[] };
+  productCategories: { edges: CategoryListItem[] };
 }) => {
   return (
     <Page data={data}>

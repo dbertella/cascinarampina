@@ -5,3 +5,5 @@ export * from "./queries/product-category-by-slug";
 export * from "./queries/product-categories";
 export * from "./queries/products";
 export * from "./queries/home";
+export * from "./queries/news";
+export * from "./queries/page-by-slug";

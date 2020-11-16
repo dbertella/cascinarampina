@@ -1,5 +1,5 @@
 import { Page, PageProps } from "components/page";
-import { getPageByUri } from "lib/api";
+import { getPageByUri } from "lib";
 
 const Faq = (props: PageProps) => <Page {...props} />
 export default Faq;

@@ -3,7 +3,7 @@ import { ImageHeader } from "components/image-header";
 import Layout from "components/layout";
 import { LinkToSingle } from "components/LinkToSingle";
 import { getProducts } from "lib";
-import { CateogryListItem } from "lib/types";
+import { CategoryListItem } from "lib/types";
 import { sample } from "lodash";
 import Head from "next/head";
 import Link from "next/link";
@@ -11,8 +11,10 @@ import { Button, Grid } from "theme-ui";
 
 const Products = ({
   products,
+  canonical,
 }: {
-  products: { edges: CateogryListItem[] };
+  products: { edges: CategoryListItem[] };
+  canonical: string;
 }) => {
   return (
     <Layout>
@@ -23,6 +25,7 @@ const Products = ({
           content={products.edges[0].node.image?.sourceUrl}
           key="feature-image"
         />
+        <link rel="canonical" href={canonical} />
       </Head>
       <ImageHeader
         title="Tutti i prodotti"
@@ -58,7 +61,8 @@ export default Products;
 
 export async function getStaticProps() {
   const { products } = await getProducts();
+  const canonical = `${process.env.SITE_URL}/prodotti`;
   return {
-    props: { products },
+    props: { products, canonical },
   };
 }

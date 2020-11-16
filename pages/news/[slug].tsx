@@ -33,6 +33,7 @@ export default function Post({ post, posts }: any) {
             {post.seo.metaDesc && (
               <meta name="description" content={post.seo.metaDesc} />
             )}
+            <link rel="canonical" href={post.seo.canonical} />
           </Head>
           <ImageHeader
             title={post.title}

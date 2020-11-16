@@ -1,4 +1,4 @@
-import { fetchAPI } from "lib/api";
+import { fetchAPI } from "lib";
 
 export async function getHomePage() {
   const data = await fetchAPI(
@@ -70,6 +70,9 @@ export async function getHomePage() {
       },
     }
   );
+
+  data.page.seo.canonical =
+    data.page.seo.canonical || `${process.env.SITE_URL}`;
 
   return data;
 }

@@ -1,13 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { CateogryListItem } from "lib/types";
+import { CategoryListItem } from "lib/types";
 import Link from "next/link";
 import { jsx, Link as UiLink } from "theme-ui";
 
 export default function Categories({
   categories,
 }: {
-  categories: { edges: CateogryListItem[] };
+  categories: { edges: CategoryListItem[] };
 }) {
   return (
     <span>

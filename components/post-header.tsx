@@ -7,13 +7,13 @@ import PostTitle from "./post-title";
 import Categories from "./categories";
 import { MediaImage } from "types";
 import { Fragment } from "react";
-import { CateogryListItem } from "lib/types";
+import { CategoryListItem } from "lib/types";
 
 type Props = {
   title: string;
   coverImage?: MediaImage;
   date: string;
-  categories: { edges: CateogryListItem[] };
+  categories: { edges: CategoryListItem[] };
 };
 
 export default function PostHeader({
