@@ -5,7 +5,7 @@ const Faq = (props: PageProps) => <Page {...props} />
 export default Faq;
 
 export async function getStaticProps() {
-  const data = await getPageByUri("faq");
+  const data = await getPageByUri("come-ordinare");
   return {
     props: { data },
   };

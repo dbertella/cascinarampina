@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
-import { Box, Flex, Grid, Link, NavLink, Text } from "theme-ui";
-import NextLink from "next/link";
+import { Box, Grid, Link, Text } from "theme-ui";
 
 export default function Footer() {
   return (
@@ -12,14 +11,14 @@ export default function Footer() {
       <Grid
         as="footer"
         variant="styles.container"
-        columns={["auto", "1fr 1fr", "1fr 1fr 1fr 1fr"]}
+        columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
         gap={3}
         sx={{
           fontSize: 1,
         }}
       >
         <Box>
-          <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>
+          <Text sx={{ fontSize: 3, fontWeight: 700, mb: 2 }}>
             © {dayjs().get("year")} AZ. Agricola Cascina Rampina di Mauri
             Fabrizio
           </Text>
@@ -34,7 +33,7 @@ export default function Footer() {
           </Link>
         </Box>
         <Box>
-          <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>
+          <Text sx={{ fontSize: 3, fontWeight: 700, mb: 2 }}>
             Orari di apertura del nostro punto vendita:
           </Text>
           <Text>
@@ -44,20 +43,8 @@ export default function Footer() {
             <strong>Sabato</strong> dalle 9 alle 17
           </Text>
         </Box>
-        <Flex sx={{ flexDirection: "column" }}>
-          <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>Link Utili:</Text>
-          <NextLink href="/faq" passHref>
-            <NavLink>FAQ</NavLink>
-          </NextLink>
-          <NextLink href="/contatti" passHref>
-            <NavLink>Contatti</NavLink>
-          </NextLink>
-          <NextLink href="/news" passHref>
-            <NavLink>News</NavLink>
-          </NextLink>
-        </Flex>
         <Box>
-          <Text sx={{ fontSize: 2, fontWeight: 700, mb: 2 }}>Seguici:</Text>
+          <Text sx={{ fontSize: 3, fontWeight: 700, mb: 2 }}>Seguici:</Text>
           <Text>
             <Link
               href="https://www.facebook.com/cascinarampina/"
@@ -75,7 +62,7 @@ export default function Footer() {
               Instagram
             </Link>
           </Text>
-          <Text>Powered by ❤️</Text>
+          <Text>Made with ❤️</Text>
         </Box>
       </Grid>
     </Box>

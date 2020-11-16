@@ -98,7 +98,7 @@ export default function Header() {
         <MenuLink href="/chi-siamo">Chi Siamo</MenuLink>
         <MenuLink href="/cosa-facciamo">Cosa Facciamo</MenuLink>
         <MenuLink href="/categorie-prodotti">Prodotti</MenuLink>
-        <MenuLink href="/faq">FAQ</MenuLink>
+        <MenuLink href="/come-ordinare">Come Ordinare</MenuLink>
         <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/news">News</MenuLink>
       </Box>
