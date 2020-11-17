@@ -100,8 +100,6 @@ export async function getProductBySlug(slug: string) {
     }
   );
 
-  console.log("canonical pre:", data.product.seo.canonical);
-
   data.product.seo.canonical =
     data.product.seo.canonical || `${process.env.SITE_URL}/prodotti/${slug}`;
 

@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
 import { Box, Grid, Link, Text } from "theme-ui";
+import { Fb } from "./icons/Fb";
+import { Ig } from "./icons/Ig";
 
 export default function Footer() {
   return (
@@ -45,21 +47,20 @@ export default function Footer() {
         </Box>
         <Box>
           <Text sx={{ fontSize: 3, fontWeight: 700, mb: 2 }}>Seguici:</Text>
-          <Text>
+          <Text sx={{ fontSize: 4 }}>
             <Link
               href="https://www.facebook.com/cascinarampina/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Facebook
+              <Fb aria-label="Facebook" sx={{ fill: "text", mr: 3 }} />
             </Link>
-            <span> • </span>
             <Link
               href="https://www.instagram.com/cascinarampina/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              <Ig aria-label="Instagram" sx={{ fill: "text" }} />
             </Link>
           </Text>
           <Text>Made with ❤️</Text>

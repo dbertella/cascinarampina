@@ -10,7 +10,7 @@ const sx = {
   },
   ".wp-block-gallery": {
     my: 0,
-    mx: [0, null, -60, -192],
+    mx: [0, null, -35],
     ul: {
       display: "flex",
       flexWrap: "wrap",
@@ -40,7 +40,7 @@ const sx = {
       right: 0,
       p: 1,
       fontSize: 0,
-      bg: "mutedTransparent",
+      bg: "muted",
     },
     "@media screen and (max-width: 48em)": {
       li: {
