@@ -4,7 +4,7 @@ import { ProductSingle } from "lib";
 export async function getProductBySlug(slug: string) {
   const data: { product: ProductSingle } = await fetchAPI(
     `
-      fragment ProductListFields on Product {
+      fragment ProductFields on Product {
         name
         slug
         seo {
@@ -45,88 +45,51 @@ export async function getProductBySlug(slug: string) {
           id
         }
       }
-      
-      fragment ProductSingle on Product {
-        id
-        averageRating
-        description
-        shortDescription
-        type
-        productTypes {
-          edges {
-            node {
-              name
-              slug
-            }
-          }
-        }
-        productTags {
-          edges {
-            cursor
-            node {
-              name
-              slug
-            }
-          }
-        }
-        related(first: 5) {
-          edges {
-            node {
-              ...ProductListFields
-            }
-          }
-        }
-        productCategories {
-          edges {
-            node {
-              name
-              slug
-              image {
-                sourceUrl(size: LARGE)
-                srcSet
-              }
-            }
-          }
-        }
-        name
-        slug
-        image {
-          sourceUrl(size: LARGE)
-          srcSet
-        }
-        ... on SimpleProduct {
-          onSale
-          price
-          id
-        }
-        ... on VariableProduct {
-          onSale
-          price
-          id
-        }
-        ... on ExternalProduct {
-          onSale
-          price
-          id
-          externalUrl
-        }
-        ... on GroupProduct {
-          products {
-            nodes {
-              ... on SimpleProduct {
-                id
-                price
-                onSale
-              }
-            }
-          }
-          id
-        }
-      }
-      
+
       query Product($id: ID!) {
         product(id: $id, idType: SLUG) {
-          ...ProductSingle
+          id
+          averageRating
+          description
+          shortDescription
+          type
+          ...ProductFields
+          productTypes {
+            edges {
+              node {
+                name
+                slug
+              }
+            }
+          }
+          productTags {
+            edges {
+              cursor
+              node {
+                name
+                slug
+              }
+            }
+          }
+          related(first: 5) {
+            edges {
+              node {
+                ...ProductFields
+              }
+            }
+          }
+          productCategories {
+            edges {
+              node {
+                name
+                slug
+                image {
+                  sourceUrl(size: LARGE)
+                  srcSet
+                }
+              }
+            }
+          }
         }
       }
     `,
