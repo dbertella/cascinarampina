@@ -7,7 +7,7 @@ import PostTitle from "./post-title";
 import Categories from "./categories";
 import { MediaImage } from "types";
 import { Fragment } from "react";
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 
 type Props = {
   title: string;

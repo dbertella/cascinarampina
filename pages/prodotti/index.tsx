@@ -3,7 +3,7 @@ import { ImageHeader } from "components/image-header";
 import Layout from "components/layout";
 import { LinkToSingle } from "components/LinkToSingle";
 import { getProducts } from "lib";
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 import { sample } from "lodash";
 import Head from "next/head";
 import Link from "next/link";

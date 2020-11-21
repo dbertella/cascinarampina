@@ -7,7 +7,7 @@ import Head from "next/head";
 import { Box, Flex, Grid, Image, Text, Link as UiLink } from "theme-ui";
 import { getAllProductsWithSlug, getProductBySlug } from "lib";
 import { GetStaticProps } from "next";
-import { ProductSingle } from "lib/types";
+import { ProductSingle } from "lib";
 import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
 import Categories from "components/categories";

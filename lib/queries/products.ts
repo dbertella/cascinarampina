@@ -1,14 +1,13 @@
 import { fetchAPI } from "lib";
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 
 export async function getProducts() {
   const data: {
     products: {
       edges: CategoryListItem[];
     };
-  } = await fetchAPI(
-    `
-    fragment ProductFields on Product {
+  } = await fetchAPI(`
+    fragment ProductListFields on Product {
       name
       slug
       seo {
@@ -54,20 +53,19 @@ export async function getProducts() {
         edges {
           cursor
           node {
-            ...ProductFields
+            ...ProductListFields
           }
         }
       }
     }
-    `
-  );
+  `);
 
   return data;
 }
 
 export async function getAllProductsWithSlug() {
   const data = await fetchAPI(`
-    {
+    query AllProducts {
       products(first: 10000) {
         edges {
           node {

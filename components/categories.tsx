@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 import Link from "next/link";
 import { jsx, Link as UiLink } from "theme-ui";
 
