@@ -1,7 +1,7 @@
 import { Grid, Box, Heading } from "theme-ui";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-import { ProductListItem } from "lib/types";
+import { ProductListItem } from "lib";
 import { ProductPreview } from "./product-preview";
 import { VeggieBox } from "../icons/VeggieBox";
 

@@ -1,5 +1,5 @@
 import { fetchAPI } from "lib";
-import { PostList, PostSingle } from "lib/types";
+import { PostList, PostSingle } from "lib";
 
 export async function getAllPostsWithSlug() {
   const data = await fetchAPI(`

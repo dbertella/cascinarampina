@@ -1,5 +1,5 @@
 import { fetchAPI } from "lib";
-import { CategorySingle } from "lib/types";
+import { CategorySingle } from "lib";
 
 export async function getProductCategory(slug: string) {
   const data: {

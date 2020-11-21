@@ -6,7 +6,7 @@ import { getAllPostsForHome } from "lib";
 import MoreStories from "components/more-stories";
 import HeroPost from "components/hero-post";
 import Layout from "components/layout";
-import { PostList } from "lib/types";
+import { PostList } from "lib";
 
 export default function Home({
   allPosts: { edges },

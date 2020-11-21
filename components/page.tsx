@@ -7,7 +7,7 @@ import Layout from "components/layout";
 import PostBody from "components/post-body";
 import { ImageHeader } from "components/image-header";
 import { HomeHeader } from "components/HomeHeader";
-import { PageSingle, PostList } from "lib/types";
+import { PageSingle, PostList } from "lib";
 import { FC } from "react";
 import { ImageGallery, ReactImageGalleryItem } from "./ImageGallery";
 

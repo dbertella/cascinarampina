@@ -1,5 +1,5 @@
 import { fetchAPI } from "lib";
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 
 export async function getProducts() {
   const data: {

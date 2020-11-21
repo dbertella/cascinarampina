@@ -7,7 +7,7 @@ import Head from "next/head";
 import { Box } from "theme-ui";
 import { getAllProductCategoriesWithSlug, getProductCategory } from "lib";
 import { GetStaticProps } from "next";
-import { CategorySingle } from "lib/types";
+import { CategorySingle } from "lib";
 import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
 

@@ -1,5 +1,5 @@
 import { fetchAPI } from "lib";
-import { ProductSingle } from "lib/types";
+import { ProductSingle } from "lib";
 
 export async function getProductBySlug(slug: string) {
   const data: { product: ProductSingle } = await fetchAPI(

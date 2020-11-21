@@ -1,7 +1,7 @@
 import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
 import { getPageByUri, getProductCategories } from "lib";
-import { CategoryListItem } from "lib/types";
+import { CategoryListItem } from "lib";
 import { Grid } from "theme-ui";
 
 const ProductCategories = ({
