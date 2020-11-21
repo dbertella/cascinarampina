@@ -35,3 +35,4 @@ yarn-error.log*
 
 graphql.schema.json
 codegen.yml
+export type Maybe<T> = T | null;
