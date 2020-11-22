@@ -1,4 +1,4 @@
-const API_URL = `${process.env.WORDPRESS_API_URL}`;
+const API_URL = `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}`;
 
 export async function fetchAPI(query: string, options?: { variables: object }) {
   const headers = { "Content-Type": "application/json" };
@@ -9,6 +9,11 @@ export async function fetchAPI(query: string, options?: { variables: object }) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
+  const session = process.browser ? localStorage.getItem("woo-session") : null;
+  if (session) {
+    console.log(session);
+    headers["woocommerce-session"] = `Session ${session}`;
+  }
   const { variables } = options ?? {};
 
   const res = await fetch(API_URL, {
@@ -45,4 +50,3 @@ export async function getPreviewPost(id: string, idType = "DATABASE_ID") {
   );
   return data.post;
 }
-
