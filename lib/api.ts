@@ -1,5 +1,10 @@
 const API_URL = `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}`;
 
+const WooKey = {
+  LocalStorage: "woo-session",
+  HeaderKey: "woocommerce-session",
+};
+
 export async function fetchAPI(query: string, options?: { variables: object }) {
   const headers = { "Content-Type": "application/json" };
 
@@ -9,10 +14,11 @@ export async function fetchAPI(query: string, options?: { variables: object }) {
     ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
-  const session = process.browser ? localStorage.getItem("woo-session") : null;
+  const session = process.browser
+    ? localStorage.getItem(WooKey.LocalStorage)
+    : null;
   if (session) {
-    console.log(session);
-    headers["woocommerce-session"] = `Session ${session}`;
+    headers[WooKey.HeaderKey] = `Session ${session}`;
   }
   const { variables } = options ?? {};
 
@@ -24,6 +30,13 @@ export async function fetchAPI(query: string, options?: { variables: object }) {
       variables,
     }),
   });
+
+  if (process.browser && res.headers.get(WooKey.HeaderKey)) {
+    localStorage.setItem(
+      WooKey.LocalStorage,
+      res.headers.get(WooKey.HeaderKey) as string
+    );
+  }
 
   const json = await res.json();
   if (json.errors) {

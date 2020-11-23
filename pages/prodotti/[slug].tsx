@@ -21,33 +21,6 @@ import { PLACEHOLDER_IMAGE } from "lib";
 import Link from "next/link";
 import { useQuery, useMutation, useQueryCache } from "react-query";
 import { v4 } from "uuid";
-import { useEffect } from "react";
-
-const useWooSession = () => {
-  const { data, refetch } = useQuery(
-    ["SET_SESSION"],
-    () => fetch("/api/woo-session").then((r) => r.json()),
-    {
-      enabled: false,
-    }
-  );
-  useEffect(() => {
-    const session = localStorage.getItem("woo-session");
-    console.log(session, data?.session);
-    if (session) {
-      // Remove session data if session destroyed.
-      if ("false" === session) {
-        console.log("false");
-        localStorage.removeItem("woo-session");
-        refetch();
-      }
-    } else if (data?.session) {
-      localStorage.setItem("woo-session", data?.session);
-    } else {
-      refetch();
-    }
-  }, [data]);
-};
 
 export default function Product({
   product,
@@ -62,20 +35,20 @@ export default function Product({
 
   const queryCache = useQueryCache();
 
-  const [addProductToCart] = useMutation(addToCart, {
-    onSuccess: () => {
-      queryCache.refetchQueries(["GET_CART"]);
-    },
-  });
+  const [addProductToCart, { isLoading: mutIsLoading }] = useMutation(
+    addToCart,
+    {
+      onSuccess: () => {
+        queryCache.refetchQueries(["GET_CART"]);
+      },
+    }
+  );
 
-  useWooSession();
-
-  const { data /** isLoading, error */ } = useQuery(["GET_CART"], getCart);
+  const { data, isFetching } = useQuery(["GET_CART"], getCart);
 
   if (!router.isFallback && !product?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  // console.log(product);
   return (
     <Layout>
       {router.isFallback ? (
@@ -103,6 +76,7 @@ export default function Product({
               )?.[0]
             }
           />
+          {isFetching && "Loading ..."}
           TOTALE: {data?.cart?.total}
           <br />
           CONTENTUTO CARRELLO: {JSON.stringify(data?.cart?.contents?.nodes)}
@@ -172,8 +146,9 @@ export default function Product({
                     productId: product.databaseId,
                   })
                 }
+                disabled={mutIsLoading}
               >
-                Aggiungi
+                {mutIsLoading ? "Aggiungendo ..." : "Aggiungi"}
               </Button>
             </Box>
           </Grid>
