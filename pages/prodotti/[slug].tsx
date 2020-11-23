@@ -4,8 +4,13 @@ import PostBody from "components/post-body";
 import Layout from "components/layout";
 import PostTitle from "components/post-title";
 import Head from "next/head";
-import { Box, Flex, Grid, Image, Text, Link as UiLink } from "theme-ui";
-import { getAllProductsWithSlug, getProductBySlug } from "lib";
+import { Box, Flex, Grid, Image, Text, Link as UiLink, Button } from "theme-ui";
+import {
+  addToCart,
+  getAllProductsWithSlug,
+  getCart,
+  getProductBySlug,
+} from "lib";
 import { GetStaticProps } from "next";
 import { ProductSingle } from "lib";
 import { MoreProducts } from "components/products/more-products";
@@ -14,6 +19,35 @@ import Categories from "components/categories";
 import { ProductPrice } from "components/products/Price";
 import { PLACEHOLDER_IMAGE } from "lib";
 import Link from "next/link";
+import { useQuery, useMutation, useQueryCache } from "react-query";
+import { v4 } from "uuid";
+import { useEffect } from "react";
+
+const useWooSession = () => {
+  const { data, refetch } = useQuery(
+    ["SET_SESSION"],
+    () => fetch("/api/woo-session").then((r) => r.json()),
+    {
+      enabled: false,
+    }
+  );
+  useEffect(() => {
+    const session = localStorage.getItem("woo-session");
+    console.log(session, data?.session);
+    if (session) {
+      // Remove session data if session destroyed.
+      if ("false" === session) {
+        console.log("false");
+        localStorage.removeItem("woo-session");
+        refetch();
+      }
+    } else if (data?.session) {
+      localStorage.setItem("woo-session", data?.session);
+    } else {
+      refetch();
+    }
+  }, [data]);
+};
 
 export default function Product({
   product,
@@ -26,10 +60,22 @@ export default function Product({
 }) {
   const router = useRouter();
 
+  const queryCache = useQueryCache();
+
+  const [addProductToCart] = useMutation(addToCart, {
+    onSuccess: () => {
+      queryCache.refetchQueries(["GET_CART"]);
+    },
+  });
+
+  useWooSession();
+
+  const { data /** isLoading, error */ } = useQuery(["GET_CART"], getCart);
+
   if (!router.isFallback && !product?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-
+  // console.log(product);
   return (
     <Layout>
       {router.isFallback ? (
@@ -57,7 +103,9 @@ export default function Product({
               )?.[0]
             }
           />
-
+          TOTALE: {data?.cart?.total}
+          <br />
+          CONTENTUTO CARRELLO: {JSON.stringify(data?.cart?.contents?.nodes)}
           <Grid
             as="article"
             columns={["auto", "1fr 2fr"]}
@@ -117,7 +165,16 @@ export default function Product({
                 />
               </Flex>
               <Box pt={2} />
-              {/* <Button onClick={() => console.log(product)}>Aggiungi</Button> */}
+              <Button
+                onClick={() =>
+                  addProductToCart({
+                    clientMutationId: v4(),
+                    productId: product.databaseId,
+                  })
+                }
+              >
+                Aggiungi
+              </Button>
             </Box>
           </Grid>
           {product.related?.edges?.length > 0 && (

@@ -74,25 +74,20 @@ export type PageSingle = {
 };
 
 export type ProductListItem = {
-  id: string;
+  id: number;
   name: string;
   slug: string;
   price: string;
   image: MediaImage;
 };
 
-export type ProductSingle = {
-  id: string;
-  name: string;
-  productId: string;
+export type ProductSingle = ProductListItem & {
   averageRating: string;
-  slug: string;
   description: string;
   shortDescription: string;
-  image: MediaImage;
-  price: string;
   onSale: boolean;
   type: string;
+  databaseId: number;
   seo: Seo;
   productCategories: {
     edges: CategoryListItem[];

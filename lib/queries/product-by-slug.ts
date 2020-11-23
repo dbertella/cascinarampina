@@ -7,6 +7,7 @@ export async function getProductBySlug(slug: string) {
       fragment ProductFields on Product {
         name
         slug
+        databaseId
         seo {
           canonical
           title
@@ -54,6 +55,17 @@ export async function getProductBySlug(slug: string) {
           shortDescription
           type
           ...ProductFields
+          productElements {
+            productGallery {
+              image {
+                id
+                sourceUrl
+                srcSet
+                altText
+                title
+              }
+            }
+          }
           productTypes {
             edges {
               node {
