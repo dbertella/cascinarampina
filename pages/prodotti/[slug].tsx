@@ -21,24 +21,32 @@ import { PLACEHOLDER_IMAGE } from "lib";
 import Link from "next/link";
 import { useQuery, useMutation, useQueryCache } from "react-query";
 import { v4 } from "uuid";
+import { useEffect } from "react";
 
 const useWooSession = () => {
-  const { data } = useQuery(["SET_SESSION"], () =>
-    fetch("/api/woo-session").then((r) => r.json())
-  );
-
-  const session = data?.session;
-  console.log(session);
-  if (session) {
-    // Remove session data if session destroyed.
-    if ("false" === session) {
-      localStorage.removeItem("woo-session");
-
-      // Update session new data if changed.
-    } else if (localStorage.getItem("woo-session") !== session) {
-      localStorage.setItem("woo-session", session);
+  const { data, refetch } = useQuery(
+    ["SET_SESSION"],
+    () => fetch("/api/woo-session").then((r) => r.json()),
+    {
+      enabled: false,
     }
-  }
+  );
+  useEffect(() => {
+    const session = localStorage.getItem("woo-session");
+    console.log(session, data?.session);
+    if (session) {
+      // Remove session data if session destroyed.
+      if ("false" === session) {
+        console.log("false");
+        localStorage.removeItem("woo-session");
+        refetch();
+      }
+    } else if (data?.session) {
+      localStorage.setItem("woo-session", data?.session);
+    } else {
+      refetch();
+    }
+  }, [data]);
 };
 
 export default function Product({
