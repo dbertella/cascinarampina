@@ -54,6 +54,15 @@ export async function getProductBySlug(slug: string) {
           shortDescription
           type
           ...ProductFields
+          galleryImages {
+            nodes {
+              id
+              sourceUrl
+              srcSet
+              altText
+              title
+            }
+          }
           productTypes {
             edges {
               node {

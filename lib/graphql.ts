@@ -8387,7 +8387,6 @@ export type Product = {
   parent?: Maybe<Product>;
   /** Connection between the Product type and the productCategory type */
   productCategories?: Maybe<ProductToProductCategoryConnection>;
-  productElements?: Maybe<Product_Productelements>;
   /** Connection between the Product type and the productTag type */
   productTags?: Maybe<ProductToProductTagConnection>;
   /** Connection between the Product type and the productType type */
@@ -10359,8 +10358,6 @@ export type VariableProduct = Node & Product & NodeWithComments & NodeWithConten
    * @deprecated 
    */
   productCategories?: Maybe<ProductToProductCategoryConnection>;
-  /** @deprecated  */
-  productElements?: Maybe<Product_Productelements>;
   /**
    * Connection between the Product type and the productTag type
    * @deprecated 
@@ -10978,24 +10975,6 @@ export type ProductToProductCategoryConnectionEdge = {
    * @deprecated 
    */
   node?: Maybe<ProductCategory>;
-};
-
-/** Field Group */
-export type Product_Productelements = {
-  __typename?: 'Product_Productelements';
-  /** @deprecated  */
-  fieldGroupName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  productGallery?: Maybe<Array<Maybe<Product_Productelements_ProductGallery>>>;
-};
-
-/** Field Group */
-export type Product_Productelements_ProductGallery = {
-  __typename?: 'Product_Productelements_productGallery';
-  /** @deprecated  */
-  fieldGroupName?: Maybe<Scalars['String']>;
-  /** @deprecated  */
-  image?: Maybe<MediaItem>;
 };
 
 /** Arguments for filtering the ProductToProductTagConnection connection */
@@ -16205,8 +16184,6 @@ export type ExternalProduct = Node & Product & NodeWithComments & NodeWithConten
    * @deprecated 
    */
   productCategories?: Maybe<ProductToProductCategoryConnection>;
-  /** @deprecated  */
-  productElements?: Maybe<Product_Productelements>;
   /**
    * Connection between the Product type and the productTag type
    * @deprecated 
@@ -16853,8 +16830,6 @@ export type GroupProduct = Node & Product & NodeWithComments & NodeWithContentEd
    * @deprecated 
    */
   productCategories?: Maybe<ProductToProductCategoryConnection>;
-  /** @deprecated  */
-  productElements?: Maybe<Product_Productelements>;
   /**
    * Connection between the Product type and the productTag type
    * @deprecated 
@@ -19649,8 +19624,6 @@ export type SimpleProduct = Node & Product & NodeWithComments & NodeWithContentE
    * @deprecated 
    */
   productCategories?: Maybe<ProductToProductCategoryConnection>;
-  /** @deprecated  */
-  productElements?: Maybe<Product_Productelements>;
   /**
    * Connection between the Product type and the productTag type
    * @deprecated 
