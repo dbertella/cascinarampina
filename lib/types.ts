@@ -90,6 +90,9 @@ export type ProductSingle = {
   description: string;
   shortDescription: string;
   image: MediaImage;
+  galleryImages: {
+    nodes: MediaImage[];
+  };
   price: string;
   onSale: boolean;
   type: string;
@@ -131,6 +134,9 @@ export type CategoryListItem = {
       id: string;
       sourceUrl: string;
       srcSet: string;
+    };
+    galleryImages: {
+      nodes: MediaImage[];
     };
     products: {
       edges: {

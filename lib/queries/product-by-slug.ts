@@ -16,6 +16,15 @@ export async function getProductBySlug(slug: string) {
           sourceUrl(size: LARGE)
           srcSet
         }
+        galleryImages {
+          nodes {
+            id
+            sourceUrl(size: LARGE)
+            srcSet
+            altText
+            title
+          }
+        }
         ... on SimpleProduct {
           onSale
           price
@@ -54,15 +63,6 @@ export async function getProductBySlug(slug: string) {
           shortDescription
           type
           ...ProductFields
-          galleryImages {
-            nodes {
-              id
-              sourceUrl
-              srcSet
-              altText
-              title
-            }
-          }
           productTypes {
             edges {
               node {

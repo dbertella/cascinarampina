@@ -1,4 +1,7 @@
-import ReactImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
+import ReactImageGallery, {
+  ReactImageGalleryItem,
+  ReactImageGalleryProps,
+} from "react-image-gallery";
 import { Box } from "theme-ui";
 import "react-image-gallery/styles/css/image-gallery.css";
 import theme from "styles/theme";
@@ -10,7 +13,7 @@ export const ImageGallery = ({
   ...rest
 }: {
   gallery: ReactImageGalleryItem[];
-}) => (
+} & Omit<ReactImageGalleryProps, "items">) => (
   <Box
     mt={5}
     sx={{

@@ -14,6 +14,7 @@ import Categories from "components/categories";
 import { ProductPrice } from "components/products/Price";
 import { PLACEHOLDER_IMAGE } from "lib";
 import Link from "next/link";
+import { ImageGallery } from "components/ImageGallery";
 
 export default function Product({
   product,
@@ -70,10 +71,17 @@ export default function Product({
                 alignItems: "start",
               }}
             >
-              <Image
-                src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE}
-                srcSet={product.image?.srcSet}
-              />
+              {product.galleryImages ? (
+                <ImageGallery
+                  gallery={product.galleryImages.nodes}
+                  showThumbnails={false}
+                />
+              ) : (
+                <Image
+                  src={product.image?.sourceUrl ?? PLACEHOLDER_IMAGE}
+                  srcSet={product.image?.srcSet}
+                />
+              )}
             </Flex>
             <Box>
               <Flex

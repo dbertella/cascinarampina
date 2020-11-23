@@ -7,8 +7,10 @@ export const LinkToSingle = ({
   image,
   title,
   href,
+  galleryImages,
 }: {
   image?: MediaImage;
+  galleryImages?: { nodes: MediaImage[] };
   title: string;
   href: string;
 }) => (
@@ -21,6 +23,9 @@ export const LinkToSingle = ({
         alignItems: "flex-end",
         textDecoration: "none",
         height: 300,
+        "&:hover .hover-img": {
+          display: "block",
+        },
       }}
     >
       <Image
@@ -32,9 +37,29 @@ export const LinkToSingle = ({
           objectFit: "cover",
           verticalAlign: "bottom",
         }}
-        src={image?.sourceUrl ?? PLACEHOLDER_IMAGE}
-        srcSet={image?.srcSet}
+        src={
+          galleryImages?.nodes?.[0]?.sourceUrl ??
+          image?.sourceUrl ??
+          PLACEHOLDER_IMAGE
+        }
+        srcSet={galleryImages?.nodes?.[0]?.srcSet ?? image?.srcSet}
       />
+      {galleryImages && (
+        <Image
+          sx={{
+            position: "absolute",
+            zIndex: -1,
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+            verticalAlign: "bottom",
+            display: "none",
+          }}
+          className="hover-img"
+          src={galleryImages?.nodes?.[1]?.sourceUrl}
+          srcSet={galleryImages?.nodes?.[1]?.srcSet}
+        />
+      )}
       <Text
         sx={{
           fontSize: 3,

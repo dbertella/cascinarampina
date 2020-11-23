@@ -19,6 +19,15 @@ export async function getProducts() {
         sourceUrl(size: LARGE)
         srcSet
       }
+      galleryImages {
+        nodes {
+          id
+          sourceUrl(size: LARGE)
+          srcSet
+          altText
+          title
+        }
+      }
       ... on SimpleProduct {
         onSale
         price
