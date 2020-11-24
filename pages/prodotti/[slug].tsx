@@ -71,9 +71,12 @@ export default function Product({
                 alignItems: "start",
               }}
             >
-              {product.galleryImages ? (
+              {product.galleryImages.nodes.length > 0 ? (
                 <ImageGallery
-                  gallery={product.galleryImages.nodes}
+                  gallery={product.galleryImages.nodes.map((img) => ({
+                    ...img,
+                    original: img.sourceUrl,
+                  }))}
                   showThumbnails={false}
                 />
               ) : (
