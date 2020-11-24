@@ -37,17 +37,14 @@ const Products = ({
         variant="styles.container"
         my={3}
       >
-        {products.edges.map(
-          ({ node: { slug, image, galleryImages, name } }) => (
-            <LinkToSingle
-              key={slug}
-              href={`/prodotti/${slug}`}
-              image={image}
-              galleryImages={galleryImages}
-              title={name}
-            />
-          )
-        )}
+        {products.edges.map(({ node: { slug, image, name } }) => (
+          <LinkToSingle
+            key={slug}
+            href={`/prodotti/${slug}`}
+            image={image}
+            title={name}
+          />
+        ))}
       </Grid>
       <AllProducts>
         <Link href="/categorie-prodotti" passHref>
