@@ -9,8 +9,8 @@ const CestiNatale: FC<PageProps> = (props) => (
 export default CestiNatale;
 
 export async function getStaticProps() {
-  const data = await getPageByUri("regali-natale-2020");
-  console.info("regali-natale-2020 done");
+  const data = await getPageByUri("regali-natale");
+  console.info("regali-natale done");
   return {
     props: { data },
   };
