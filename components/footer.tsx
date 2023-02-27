@@ -39,10 +39,13 @@ export default function Footer() {
             Orari di apertura del nostro punto vendita:
           </Text>
           <Text>
-            <strong>Martedì</strong> dalle 14 alle 19
+            <strong>Martedì</strong> dalle 9 alle 19
           </Text>
           <Text>
-            <strong>Sabato</strong> dalle 9 alle 17
+            <strong>Venerdì</strong> dalle 9 alle 19
+          </Text>
+          <Text>
+            <strong>Sabato</strong> dalle 9 alle 19
           </Text>
         </Box>
         <Box>
