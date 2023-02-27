@@ -9,6 +9,7 @@ const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
 
 export function AllProducts({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Flex
       sx={{
@@ -22,11 +23,11 @@ export function AllProducts({ children }: { children: ReactNode }) {
       }}
       ref={ref}
     >
-      <DynamicComponentWithNoSSR parentRef={ref}>
+      <AnyComponent parentRef={ref}>
         {(index: number) => (
           <Carrot sx={{ fill: index === 7 ? "secondary" : "background" }} />
         )}
-      </DynamicComponentWithNoSSR>
+      </AnyComponent>
 
       {children}
     </Flex>

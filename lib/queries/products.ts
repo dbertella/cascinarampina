@@ -10,11 +10,6 @@ export async function getProducts() {
     fragment ProductListFields on Product {
       name
       slug
-      seo {
-        canonical
-        title
-        metaDesc
-      }
       image {
         sourceUrl(size: LARGE)
         srcSet

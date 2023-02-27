@@ -5,13 +5,14 @@ import { FC } from "react";
 import Header from "./header";
 
 const Layout: FC = ({ children }) => {
+  const AnyComponent = CookieConsent as any;
   return (
     <>
-      <CookieConsent buttonText="Ho Capito">
+      <AnyComponent buttonText="Ho Capito">
         Questo sito utilizza cookie tecnici ed analitici, anche di terze parti,
         necessari al funzionamento del sito ed al miglioramento dell’esperienza
         di navigazione dell’utente.
-      </CookieConsent>
+      </AnyComponent>
       <Meta />
       <Header />
       <main>{children}</main>

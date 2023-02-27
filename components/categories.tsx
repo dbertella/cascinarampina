@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { CategoryListItem } from "lib";
 import Link from "next/link";
-import { jsx, Link as UiLink } from "theme-ui";
+import { jsx, Link as UiLink, Box } from "theme-ui";
 
 export default function Categories({
   categories,
@@ -11,7 +11,9 @@ export default function Categories({
 }) {
   return (
     <span>
-      <span sx={{ mr: 1, color: "lightGrey" }}>Categoria:</span>
+      <Box as="span" sx={{ mr: 1, color: "lightGrey" }}>
+        Categoria:
+      </Box>
       {(categories?.edges ?? []).map((category) => (
         <Link
           key={category.node.slug}

@@ -17,6 +17,7 @@ export function MoreProducts({
   title?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Box
       sx={{
@@ -27,11 +28,11 @@ export function MoreProducts({
       }}
       ref={ref}
     >
-      <DynamicComponentWithNoSSR parentRef={ref}>
+      <AnyComponent parentRef={ref}>
         {(index: number) => (
           <VeggieBox sx={{ fill: index === 7 ? "secondary" : "background" }} />
         )}
-      </DynamicComponentWithNoSSR>
+      </AnyComponent>
 
       <Box
         as="section"

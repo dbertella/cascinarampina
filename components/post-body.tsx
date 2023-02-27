@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import theme from "styles/theme";
-import { jsx } from "theme-ui";
+import { Box, jsx } from "theme-ui";
 
 const sx = {
   ...theme.styles,
@@ -66,5 +66,5 @@ type Props = {
 };
 
 export default function PostBody({ content }: Props) {
-  return <div sx={sx} dangerouslySetInnerHTML={{ __html: content }} />;
+  return <Box sx={sx} dangerouslySetInnerHTML={{ __html: content }} />;
 }

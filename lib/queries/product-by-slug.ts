@@ -7,11 +7,6 @@ export async function getProductBySlug(slug: string) {
       fragment ProductFields on Product {
         name
         slug
-        seo {
-          canonical
-          title
-          metaDesc
-        }
         image {
           sourceUrl(size: LARGE)
           srcSet
@@ -109,8 +104,10 @@ export async function getProductBySlug(slug: string) {
     }
   );
 
-  data.product.seo.canonical =
-    data.product.seo.canonical || `${process.env.SITE_URL}/prodotti/${slug}`;
-
+  data.product.seo = {
+    title: data.product.name,
+    metaDesc: "",
+    canonical: `${process.env.SITE_URL}/prodotti/${slug}`,
+  };
   return data;
 }

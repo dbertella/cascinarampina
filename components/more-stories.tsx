@@ -10,6 +10,7 @@ const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
 
 export default function MoreStories({ posts, title }: any) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Box
       sx={{
@@ -20,11 +21,11 @@ export default function MoreStories({ posts, title }: any) {
       }}
       ref={ref}
     >
-      <DynamicComponentWithNoSSR parentRef={ref}>
+      <AnyComponent parentRef={ref}>
         {(index: number) => (
           <Apple sx={{ fill: index === 7 ? "primary" : "background" }} />
         )}
-      </DynamicComponentWithNoSSR>
+      </AnyComponent>
 
       <Box
         as="section"
