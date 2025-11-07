@@ -47,7 +47,7 @@ const Products = ({
         ))}
       </Grid>
       <AllProducts>
-        <Link href="/categorie-prodotti" passHref>
+        <Link href="/categorie-prodotti" legacyBehavior>
           <Button variant="secondary" sx={{ zIndex: 1 }}>
             Guarda le categorie prodotti
           </Button>

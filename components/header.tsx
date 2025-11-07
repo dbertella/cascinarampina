@@ -29,7 +29,7 @@ const MenuLink = ({
   }
 
   return (
-    <Link href={href} passHref>
+    <Link href={href} legacyBehavior>
       <NavLink sx={navStyle} {...rest}>
         {children}
       </NavLink>

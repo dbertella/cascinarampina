@@ -52,7 +52,8 @@ export default function Post({ post, posts }: any) {
 }
 
 export async function getStaticProps({ params }: any) {
-  const data = await getPostAndMorePosts(params.slug);
+  const resolvedParams = await params;
+  const data = await getPostAndMorePosts(resolvedParams.slug);
 
   return {
     props: {

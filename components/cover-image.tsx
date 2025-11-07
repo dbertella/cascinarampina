@@ -1,3 +1,4 @@
+// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { PLACEHOLDER_IMAGE } from "lib";
 import Link from "next/link";
 import { Image } from "theme-ui";

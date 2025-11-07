@@ -33,7 +33,7 @@ export function ProductPreview({ title, coverImage, price, slug }: Props) {
         />
       </Box>
 
-      <Link href={`/prodotti/${slug}`} passHref>
+      <Link href={`/prodotti/${slug}`} legacyBehavior>
         <UiLink
           sx={{ color: "text" }}
           dangerouslySetInnerHTML={{ __html: title }}

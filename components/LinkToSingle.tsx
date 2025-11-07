@@ -14,7 +14,7 @@ export const LinkToSingle = ({
   title: string;
   href: string;
 }) => (
-  <NextLink href={href} passHref>
+  <NextLink href={href} legacyBehavior>
     <Link
       sx={{
         position: "relative",

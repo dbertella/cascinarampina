@@ -22,7 +22,7 @@ export const HomeBlock = ({
       flexDirection: ["column", null, even ? "row-reverse" : "row"],
     }}
   >
-    <NextLink href={href} passHref>
+    <NextLink href={href} legacyBehavior>
       <Link
         sx={{
           position: "relative",
@@ -57,7 +57,7 @@ export const HomeBlock = ({
     >
       <PostBody content={content} />
       {ctaText && (
-        <NextLink href={href} passHref>
+        <NextLink href={href} legacyBehavior>
           <Button sx={{ mt: 2, mb: 3 }} variant="outline">
             {ctaText}
           </Button>

@@ -27,7 +27,7 @@ export default function HeroPost({
         variant="styles.container"
       >
         <Heading as="h3">
-          <Link href={`/news/${slug}`} passHref>
+          <Link href={`/news/${slug}`} legacyBehavior>
             <Uilink dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
         </Heading>

@@ -27,6 +27,7 @@ type WithSlug = {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
+  const headers = await req.headers;
   const news = (await getAllPostsWithSlug()).edges.map(
     ({ node }: WithSlug) => `/news/${node.slug}`
   );
@@ -41,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
 
   const sitemap = createSitemap(
     [...pages, ...products, ...productCategories, ...news],
-    req.headers.host
+    headers.host
   );
 
   res.setHeader("Content-Type", "text/xml");

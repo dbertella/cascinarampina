@@ -18,10 +18,10 @@ export default function Categories({
         <Link
           key={category.node.slug}
           href={`/categorie-prodotti/${category.node.slug}`}
-          sx={{ ml: 3 }}
-          passHref
+          legacyBehavior
         >
-          <UiLink>{category.node.name}</UiLink>
+          {/* @ts-expect-error - theme-ui v0.3.x types incompatible with React 18 */}
+          <UiLink sx={{ ml: 3 }}>{category.node.name}</UiLink>
         </Link>
       ))}
     </span>

@@ -57,7 +57,8 @@ export default function Product({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const { productCategory } = await getProductCategory(params.slug);
+  const resolvedParams = await params;
+  const { productCategory } = await getProductCategory(resolvedParams.slug);
 
   return {
     props: {

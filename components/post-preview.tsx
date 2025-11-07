@@ -63,7 +63,7 @@ export default function PostPreview({
       </Box>
 
       <Styled.h3>
-        <Link href={`/news/${slug}`} passHref>
+        <Link href={`/news/${slug}`} legacyBehavior>
           <UiLink
             sx={{ color: "text" }}
             dangerouslySetInnerHTML={{ __html: title }}
@@ -73,7 +73,7 @@ export default function PostPreview({
 
       <Text sx={{ flex: 1 }} dangerouslySetInnerHTML={{ __html: excerpt }} />
       <Flex sx={{ justifyContent: "flex-end" }}>
-        <Link href={`/news/${slug}`} passHref>
+        <Link href={`/news/${slug}`} legacyBehavior>
           <Button variant="outline">Leggi di più</Button>
         </Link>
       </Flex>

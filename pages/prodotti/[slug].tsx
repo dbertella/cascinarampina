@@ -1,3 +1,4 @@
+// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import PostBody from "components/post-body";
@@ -99,18 +100,18 @@ export default function Product({
                 <Flex sx={{ flexWrap: "wrap" }}>
                   <Text sx={{ mr: 2, color: "lightGrey" }}>Vai a:</Text>
                   {prev && (
-                    <Link href={`/prodotti/${prev}`} passHref>
+                    <Link href={`/prodotti/${prev}`} legacyBehavior>
                       <UiLink>Prodotto Precedente</UiLink>
                     </Link>
                   )}
                   <Box pr={2} />
                   {next && (
-                    <Link href={`/prodotti/${next}`} passHref>
+                    <Link href={`/prodotti/${next}`} legacyBehavior>
                       <UiLink>Prodotto Successivo</UiLink>
                     </Link>
                   )}
                   <Box pr={2} />
-                  <Link href="/prodotti" passHref>
+                  <Link href="/prodotti" legacyBehavior>
                     <UiLink>Tutti i prodotti</UiLink>
                   </Link>
                 </Flex>
@@ -149,7 +150,8 @@ type Products = {
   };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { product } = await getProductBySlug(`${params?.slug}`);
+  const resolvedParams = await params;
+  const { product } = await getProductBySlug(`${resolvedParams?.slug}`);
   const allProducts = await getAllProductsWithSlug();
 
   const currentIndex = allProducts.edges.findIndex(
