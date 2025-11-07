@@ -1,0 +1,145 @@
+.header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  z-index: 5;
+  box-shadow: 0 0 25px var(--color-primary-transparent);
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.logoLink {
+  display: flex;
+}
+
+.logo {
+  width: 150px;
+  height: 39px;
+}
+
+.nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+  padding-bottom: 50px;
+  background-color: var(--color-background);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.navOpen {
+  display: flex;
+}
+
+.navLink {
+  font-size: var(--font-size-3);
+  padding: var(--space-2);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: var(--color-primary);
+}
+
+.menuButtonContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.menuButton {
+  width: 37px;
+  height: 37px;
+  margin: 0 var(--space-2);
+  padding-bottom: var(--space-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  position: relative;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  left: 0;
+}
+
+.menuIcon::before {
+  top: -8px;
+}
+
+.menuIcon::after {
+  bottom: -8px;
+}
+
+.menuText {
+  position: absolute;
+  bottom: 0;
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-bold);
+  pointer-events: none;
+}
+
+@media (min-width: 48em) {
+  .header {
+    flex-flow: column;
+    position: static;
+  }
+
+  .nav {
+    display: flex;
+    position: static;
+    bottom: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+    flex-direction: row;
+  }
+
+  .logo {
+    width: 230px;
+    height: 60px;
+  }
+
+  .navLink {
+    padding: var(--space-3);
+  }
+
+  .menuButtonContainer {
+    display: none;
+  }
+}
+

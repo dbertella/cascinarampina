@@ -1,14 +1,7 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import Link from "next/link";
-import { Flex, Image, NavLink, MenuButton, jsx, Box, Text } from "theme-ui";
-import { ReactNode, useState } from "react";
+import { Link } from "./ui";
+import { ReactNode, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
-const navStyle = {
-  fontSize: 3,
-  p: [2, null, null, 3],
-};
+import styles from "./header.module.css";
 
 const MenuLink = ({
   href,
@@ -17,22 +10,28 @@ const MenuLink = ({
 }: {
   href: string;
   children: ReactNode;
+  [key: string]: any;
 }) => {
   const router = useRouter();
+  const [isActive, setIsActive] = useState(false);
 
-  if (router.pathname === href) {
+  useEffect(() => {
+    setIsActive(router.pathname === href);
+  }, [router.pathname, href]);
+
+  const className = isActive ? `${styles.navLink} ${styles.active}` : styles.navLink;
+
+  if (isActive) {
     return (
-      <NavLink sx={{ ...navStyle, color: "primary" }} {...rest}>
+      <a className={className} {...rest}>
         {children}
-      </NavLink>
+      </a>
     );
   }
 
   return (
-    <Link href={href} legacyBehavior>
-      <NavLink sx={navStyle} {...rest}>
-        {children}
-      </NavLink>
+    <Link href={href} className={className} {...rest}>
+      {children}
     </Link>
   );
 };
@@ -49,50 +48,21 @@ export default function Header() {
   };
 
   return (
-    <Flex
-      sx={{
-        boxShadow: (t) => `0 0 25px ${t.colors.primaryTransparent}`,
-        flexFlow: ["row", null, "column"],
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: ["sticky", null, "static"],
-        top: 0,
-        bg: "white",
-        zIndex: 5,
-      }}
-    >
-      <Flex sx={{ justifyContent: "center", zIndex: 3 }}>
+    <div className={styles.header}>
+      <div className={styles.logoContainer}>
         <MenuLink
           href="/"
           aria-label="Logo Cascina Rampina"
-          sx={{ display: "flex" }}
+          className={styles.logoLink}
         >
-          <Image
+          <img
             src="/images/logo.svg"
             alt="Azienda Agricola Cascina Rampina"
-            sx={{
-              width: [150, null, 230],
-              height: [39, null, 60],
-            }}
+            className={styles.logo}
           />
         </MenuLink>
-      </Flex>
-      <Box
-        sx={{
-          display: [isActive ? "flex" : "none", null, "flex"],
-          position: ["fixed", null, "static"],
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: -50,
-          pb: [50, null, 0],
-          bg: ["background", null, "transparent"],
-          flexDirection: ["column", null, "row"],
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 2,
-        }}
-      >
+      </div>
+      <nav className={`${styles.nav} ${isActive ? styles.navOpen : ''}`}>
         <MenuLink href="/">Home</MenuLink>
         <MenuLink href="/dove-siamo">Dove Siamo</MenuLink>
         <MenuLink href="/chi-siamo">Chi Siamo</MenuLink>
@@ -101,38 +71,17 @@ export default function Header() {
         <MenuLink href="/come-ordinare">Come Ordinare</MenuLink>
         <MenuLink href="/contatti">Contatti</MenuLink>
         <MenuLink href="/news">News</MenuLink>
-      </Box>
-      <Flex
-        sx={{
-          position: "relative",
-          display: ["flex", null, "none"],
-          alignItems: "center",
-          flexDirection: "column",
-          zIndex: 3,
-        }}
-      >
-        <MenuButton
+      </nav>
+      <div className={styles.menuButtonContainer}>
+        <button
+          className={styles.menuButton}
           aria-label="Toggle Menu"
           onClick={toggleMenu}
-          sx={{
-            width: 37,
-            height: 37,
-            mx: 2,
-            pb: 3,
-          }}
-        />
-        <Text
-          sx={{
-            position: "absolute",
-            bottom: 0,
-            fontSize: 0,
-            fontWeight: 700,
-            pointerEvents: "none",
-          }}
         >
-          MENU
-        </Text>
-      </Flex>
-    </Flex>
+          <span className={styles.menuIcon}></span>
+          <span className={styles.menuText}>MENU</span>
+        </button>
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,10 @@
+.title {
+  margin-bottom: var(--space-1);
+}
+
+.meta {
+  font-size: var(--font-size-0);
+  color: var(--color-muted);
+  margin-bottom: var(--space-1);
+}
+

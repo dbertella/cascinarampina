@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: var(--breakpoint-1)) {
+  .container.row {
+    flex-direction: row;
+  }
+
+  .container.rowReverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.imageLink {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  height: 500px;
+  width: 100%;
+}
+
+@media screen and (min-width: var(--breakpoint-1)) {
+  .imageLink {
+    width: 50%;
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: var(--space-3);
+  width: 100%;
+}
+
+@media screen and (min-width: var(--breakpoint-1)) {
+  .content {
+    padding: var(--space-5);
+    width: 50%;
+  }
+}
+
+.button {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+

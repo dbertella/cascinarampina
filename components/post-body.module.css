@@ -1,0 +1,70 @@
+/* Base typography styles are in variables.css */
+
+.postBody :global(.aligncenter) {
+  text-align: center;
+}
+
+.postBody :global(.wp-block-gallery) {
+  margin: 0;
+}
+
+.postBody :global(.wp-block-gallery ul) {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+}
+
+.postBody :global(.wp-block-gallery li) {
+  flex: 1 1 33%;
+}
+
+.postBody :global(.wp-block-gallery img) {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.postBody :global(.wp-block-gallery figure) {
+  margin: var(--space-1);
+  height: 300px;
+  position: relative;
+}
+
+.postBody :global(.wp-block-gallery figcaption) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-1);
+  font-size: var(--font-size-0);
+  background-color: var(--color-muted);
+}
+
+@media screen and (max-width: 48em) {
+  .postBody :global(.wp-block-gallery) {
+    margin-left: -35px;
+    margin-right: -35px;
+  }
+
+  .postBody :global(.wp-block-gallery li) {
+    flex: 1 1 50%;
+  }
+}
+
+@media (max-width: 30em) {
+  .postBody :global(.wp-block-gallery ul) {
+    display: block;
+  }
+
+  .postBody :global(.wp-block-gallery figure) {
+    height: auto;
+  }
+
+  .postBody :global(.wp-block-gallery li) {
+    flex: 1 1 100%;
+  }
+}
+

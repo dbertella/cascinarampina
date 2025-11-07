@@ -1,0 +1,34 @@
+.title {
+  font-size: var(--font-size-4);
+  white-space: nowrap;
+  display: block;
+}
+
+.subtitle {
+  font-size: var(--font-size-2);
+  white-space: nowrap;
+  word-spacing: -0.3em;
+  margin-top: var(--space-1);
+  display: block;
+}
+
+@media (min-width: 48em) {
+  .title {
+    font-size: var(--font-size-5);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-3);
+  }
+}
+
+@media (min-width: 64em) {
+  .title {
+    font-size: var(--font-size-7);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-5);
+  }
+}
+

@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "theme-ui";
+import { Text } from "../ui";
+import styles from "./Price.module.css";
 
 export const ProductPrice = ({
   onSale,
@@ -12,14 +12,14 @@ export const ProductPrice = ({
       <Text>{price}</Text>
     ) : (
       <Text>
-        <Text as="span" sx={{ color: "lightGrey", ml: 2 }}>
+        <Text as="span" className={styles.regularPrice}>
           {regularPrice}
         </Text>
         {price}
       </Text>
     );
   }
-  return <Text sx={{ fontSize: 4, fontFamily: "monospace" }}>{price}</Text>;
+  return <Text className={styles.price}>{price}</Text>;
 };
 type ProductPrice = {
   price: string;

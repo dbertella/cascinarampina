@@ -1,7 +1,7 @@
 import CoverImage from "../cover-image";
-import Link from "next/link";
 import { MediaImage } from "types";
-import { Card, Link as UiLink, Text, Box } from "theme-ui";
+import { Card, Link, Text, Box } from "components/ui";
+import styles from "./product-preview.module.css";
 
 type Props = {
   title: string;
@@ -13,17 +13,8 @@ type Props = {
 export function ProductPreview({ title, coverImage, price, slug }: Props) {
   return (
     <Card>
-      <Box sx={{ position: "relative", width: "fit-content", m: "auto" }}>
-        <Text
-          sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            p: 1,
-            fontSize: 0,
-            bg: "muted",
-          }}
-        >
+      <Box className={styles.imageContainer}>
+        <Text className={styles.priceBadge}>
           {price}
         </Text>
         <CoverImage
@@ -33,12 +24,11 @@ export function ProductPreview({ title, coverImage, price, slug }: Props) {
         />
       </Box>
 
-      <Link href={`/prodotti/${slug}`} legacyBehavior>
-        <UiLink
-          sx={{ color: "text" }}
-          dangerouslySetInnerHTML={{ __html: title }}
-        ></UiLink>
-      </Link>
+      <Link
+        href={`/prodotti/${slug}`}
+        className={styles.titleLink}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
     </Card>
   );
 }

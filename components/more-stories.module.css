@@ -1,0 +1,24 @@
+.container {
+  background-color: var(--color-muted);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+}
+
+.heading {
+  margin-bottom: var(--space-3);
+}
+
+.icon {
+  fill: var(--color-background);
+}
+
+.iconActive {
+  fill: var(--color-primary);
+}

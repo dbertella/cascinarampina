@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--header-height, 300px);
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.heading {
+  position: relative;
+  padding: var(--space-1) var(--space-5);
+  max-width: 600px;
+  text-transform: uppercase;
+  font-family: var(--font-cascinarampina);
+  text-align: center;
+  color: var(--color-background);
+  word-spacing: -0.3em;
+}
+
+.stroke {
+  fill: var(--color-primary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+@media (min-width: 48em) {
+  .heading {
+    word-spacing: -0.4em;
+  }
+}
+
+@media (min-width: 64em) {
+  .heading {
+    word-spacing: -0.5em;
+  }
+}
+

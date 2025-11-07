@@ -1,8 +1,8 @@
 import Date from "./date";
-import Link from "next/link";
 import { MediaImage } from "types";
 import { ImageHeader } from "./image-header";
-import { Box, Heading, Link as Uilink, Text } from "theme-ui";
+import { Box, Heading, Link, Text } from "./ui";
+import styles from "./hero-post.module.css";
 
 type Props = {
   title: string;
@@ -22,23 +22,16 @@ export default function HeroPost({
   return (
     <Box>
       <ImageHeader title="News" coverImage={coverImage} />
-      <Box
-        sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}
-        variant="styles.container"
-      >
+      <Box className={styles.container}>
         <Heading as="h3">
-          <Link href={`/news/${slug}`} legacyBehavior>
-            <Uilink dangerouslySetInnerHTML={{ __html: title }} />
-          </Link>
+          <Link
+            href={`/news/${slug}`}
+            className={styles.titleLink}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
         </Heading>
 
-        <Text
-          sx={{
-            p: 1,
-            fontSize: 0,
-            color: "darkGrey",
-          }}
-        >
+        <Text className={styles.date}>
           <Date dateString={date} />
         </Text>
         <Box dangerouslySetInnerHTML={{ __html: excerpt }} />

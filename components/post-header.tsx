@@ -1,6 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { Box, jsx } from "theme-ui";
+import { Box } from "./ui";
 import Date from "./date";
 import CoverImage from "./cover-image";
 import PostTitle from "./post-title";
@@ -8,6 +6,7 @@ import Categories from "./categories";
 import { MediaImage } from "types";
 import { Fragment } from "react";
 import { CategoryListItem } from "lib";
+import styles from "./post-header.module.css";
 
 type Props = {
   title: string;
@@ -24,14 +23,8 @@ export default function PostHeader({
 }: Props) {
   return (
     <Fragment>
-      <PostTitle sx={{ mb: 1 }}>{title}</PostTitle>
-      <Box
-        sx={{
-          fontSize: 0,
-          color: "muted",
-          mb: 1,
-        }}
-      >
+      <PostTitle className={styles.title}>{title}</PostTitle>
+      <Box className={styles.meta}>
         Pubblicato <Date dateString={date} />
         <Categories categories={categories} />
       </Box>

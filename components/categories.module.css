@@ -1,0 +1,15 @@
+.label {
+  margin-right: var(--space-1);
+  color: var(--color-light-grey);
+}
+
+.link {
+  margin-left: var(--space-3);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+

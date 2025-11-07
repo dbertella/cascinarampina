@@ -1,13 +1,12 @@
-// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { PLACEHOLDER_IMAGE } from "lib";
-import Link from "next/link";
-import { Image } from "theme-ui";
 import { MediaImage } from "types";
+import { Link } from "./ui";
 
 type Props = {
   title: string;
   coverImage?: MediaImage;
   href?: string;
+  [key: string]: any;
 };
 
 export default function CoverImage({
@@ -17,7 +16,7 @@ export default function CoverImage({
   ...rest
 }: Props) {
   const image = (
-    <Image
+    <img
       src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
       alt={title}
       srcSet={coverImage?.srcSet}
@@ -25,8 +24,8 @@ export default function CoverImage({
     />
   );
   return href ? (
-    <Link href={href}>
-      <a aria-label={title}>{image}</a>
+    <Link href={href} aria-label={title}>
+      {image}
     </Link>
   ) : (
     image

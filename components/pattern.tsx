@@ -1,6 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
 import {
   Fragment,
   MutableRefObject,
@@ -8,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Box } from "theme-ui";
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
@@ -35,8 +31,8 @@ export const Pattern = ({ index, parentSize, children }: PatternProps) => {
   );
   const rotate = getRandomInt(-45, 45);
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         width: size,
         height: size,
         position: "absolute",
@@ -47,7 +43,7 @@ export const Pattern = ({ index, parentSize, children }: PatternProps) => {
       }}
     >
       {children(index)}
-    </Box>
+    </div>
   );
 };
 
@@ -62,7 +58,10 @@ const Patterns = ({
     width: 0,
     height: 0,
   });
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     function handleResize() {
       const size = parentRef.current?.getBoundingClientRect();
       setParentSize({
@@ -73,7 +72,13 @@ const Patterns = ({
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [parentRef]);
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted || parentSize.width === 0 || parentSize.height === 0) {
+    return null;
+  }
+
   return (
     <Fragment>
       {patterns.map((key) => (

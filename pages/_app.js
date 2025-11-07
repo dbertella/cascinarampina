@@ -2,8 +2,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as gtag from 'lib/gtag'
-import { ThemeProvider } from "theme-ui";
-import theme from "styles/theme";
 import "styles/global.css";
 
 function MyApp({ Component, pageProps }) {
@@ -18,11 +16,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-  return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;

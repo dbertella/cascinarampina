@@ -1,9 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import { FC } from "react";
+import { FC, SVGProps } from "react";
 
-export const Ig: FC = (props) => (
+export const Ig: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     stroke="currentColor"
     fill="currentColor"

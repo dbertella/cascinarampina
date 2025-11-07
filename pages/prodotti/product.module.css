@@ -1,0 +1,61 @@
+.articleGrid {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+@media screen and (min-width: var(--breakpoint-0)) {
+  .imageContainer {
+    justify-content: flex-end;
+  }
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-size: var(--font-size-2);
+}
+
+@media screen and (min-width: var(--breakpoint-1)) {
+  .categoriesContainer {
+    flex-direction: row;
+  }
+}
+
+.navigationContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navigationLabel {
+  margin-right: var(--space-2);
+  color: var(--color-light-grey);
+}
+
+.spacer {
+  padding-right: var(--space-3);
+}
+
+.spacerSmall {
+  padding-right: var(--space-2);
+}
+
+.description {
+  color: var(--color-light-grey);
+  font-size: var(--font-size-2);
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+}
+
+.priceLabel {
+  margin-right: var(--space-1);
+}

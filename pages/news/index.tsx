@@ -1,6 +1,4 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
+
 import Head from "next/head";
 import { getAllPostsForHome } from "lib";
 import MoreStories from "components/more-stories";

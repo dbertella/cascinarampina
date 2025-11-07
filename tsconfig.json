@@ -22,14 +22,12 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "incremental": true,
-    "jsxImportSource": "react"
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",

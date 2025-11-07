@@ -1,8 +1,8 @@
 import { PLACEHOLDER_IMAGE } from "lib";
-import { Image, Link, Flex, Button } from "theme-ui";
-import NextLink from "next/link";
+import { Image, Link, Flex, Button } from "./ui";
 import { MediaImage } from "types";
 import PostBody from "components/post-body";
+import styles from "./home-block.module.css";
 
 export const HomeBlock = ({
   image,
@@ -17,51 +17,22 @@ export const HomeBlock = ({
   even: boolean;
   ctaText?: string;
 }) => (
-  <Flex
-    sx={{
-      flexDirection: ["column", null, even ? "row-reverse" : "row"],
-    }}
-  >
-    <NextLink href={href} legacyBehavior>
-      <Link
-        sx={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-end",
-          textDecoration: "none",
-          height: 500,
-          width: ["100%", null, "50%"],
-        }}
-      >
-        <Image
-          sx={{
-            height: "100%",
-            width: "100%",
-            objectFit: "cover",
-            verticalAlign: "bottom",
-          }}
-          src={image?.sourceUrl ?? PLACEHOLDER_IMAGE}
-          srcSet={image?.srcSet}
-        />
-      </Link>
-    </NextLink>
-    <Flex
-      sx={{
-        justifyContent: "center",
-        alignItems: "flex-start",
-        flexDirection: "column",
-        p: [3, null, 5],
-        width: ["100%", null, "50%"],
-      }}
-    >
+  <Flex className={`${styles.container} ${even ? styles.rowReverse : styles.row}`}>
+    <Link href={href} className={styles.imageLink}>
+      <Image
+        className={styles.image}
+        src={image?.sourceUrl ?? PLACEHOLDER_IMAGE}
+        srcSet={image?.srcSet}
+      />
+    </Link>
+    <Flex className={styles.content}>
       <PostBody content={content} />
       {ctaText && (
-        <NextLink href={href} legacyBehavior>
-          <Button sx={{ mt: 2, mb: 3 }} variant="outline">
+        <Link href={href}>
+          <Button className={styles.button} variant="outline">
             {ctaText}
           </Button>
-        </NextLink>
+        </Link>
       )}
     </Flex>
   </Flex>

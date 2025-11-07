@@ -1,0 +1,43 @@
+.link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  height: 300px;
+}
+
+.link:hover .hoverImage {
+  display: block;
+}
+
+.image {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.hoverImage {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  display: none;
+}
+
+.title {
+  font-size: var(--font-size-3);
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  width: 100%;
+  background-color: var(--color-background-transparent);
+  color: var(--color-text);
+}
+

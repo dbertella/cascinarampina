@@ -1,19 +1,16 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import Date from "./date";
 import CoverImage from "./cover-image";
-import Link from "next/link";
 import { MediaImage } from "types";
 import {
   Card,
   Styled,
-  Link as UiLink,
+  Link,
   Text,
   Box,
-  jsx,
   Button,
   Flex,
-} from "theme-ui";
+} from "./ui";
+import styles from "./post-preview.module.css";
 
 type Props = {
   title: string;
@@ -31,49 +28,30 @@ export default function PostPreview({
   slug,
 }: Props) {
   return (
-    <Card sx={{ display: "flex", flexDirection: "column" }}>
-      <Box
-        sx={{ position: "relative", height: [150, null, 200], m: -3, mb: 1 }}
-      >
-        <Text
-          sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            p: 1,
-            fontSize: 0,
-            bg: "muted",
-            zIndex: 1,
-          }}
-        >
+    <Card className={styles.card}>
+      <Box className={styles.imageContainer}>
+        <Text className={styles.dateBadge}>
           <Date dateString={date} />
         </Text>
         <CoverImage
           title={title}
           coverImage={coverImage}
           href={`/news/${slug}`}
-          sx={{
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            objectFit: "cover",
-            verticalAlign: "bottom",
-          }}
+          className={styles.coverImage}
         />
       </Box>
 
       <Styled.h3>
-        <Link href={`/news/${slug}`} legacyBehavior>
-          <UiLink
-            sx={{ color: "text" }}
-            dangerouslySetInnerHTML={{ __html: title }}
-          ></UiLink>
-        </Link>
+        <Link
+          href={`/news/${slug}`}
+          className={styles.titleLink}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
       </Styled.h3>
 
-      <Text sx={{ flex: 1 }} dangerouslySetInnerHTML={{ __html: excerpt }} />
-      <Flex sx={{ justifyContent: "flex-end" }}>
-        <Link href={`/news/${slug}`} legacyBehavior>
+      <Text className={styles.excerpt} dangerouslySetInnerHTML={{ __html: excerpt }} />
+      <Flex className={styles.buttonContainer}>
+        <Link href={`/news/${slug}`}>
           <Button variant="outline">Leggi di più</Button>
         </Link>
       </Flex>

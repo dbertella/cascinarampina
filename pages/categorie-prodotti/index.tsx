@@ -1,8 +1,10 @@
+// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
 import { getPageByUri, getProductCategories } from "lib";
 import { CategoryListItem } from "lib";
-import { Grid } from "theme-ui";
+import { Grid } from "components/ui";
+import styles from "./index.module.css";
 
 const ProductCategories = ({
   data,
@@ -16,7 +18,7 @@ const ProductCategories = ({
         columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]}
         gap={3}
         variant="styles.container"
-        my={3}
+        className={styles.grid}
       >
         {productCategories.edges.map(({ node: { slug, image, name } }) => (
           <LinkToSingle

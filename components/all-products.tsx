@@ -1,7 +1,8 @@
-import { Flex } from "theme-ui";
+import { Flex } from "./ui";
 import dynamic from "next/dynamic";
 import { ReactNode, useRef } from "react";
 import { Carrot } from "./icons/Carrot";
+import styles from "./all-products.module.css";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
   ssr: false,
@@ -12,20 +13,12 @@ export function AllProducts({ children }: { children: ReactNode }) {
   const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Flex
-      sx={{
-        bg: "muted",
-        py: 4,
-        position: "relative",
-        overflow: "hidden",
-        height: 300,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className={styles.container}
       ref={ref}
     >
       <AnyComponent parentRef={ref}>
         {(index: number) => (
-          <Carrot sx={{ fill: index === 7 ? "secondary" : "background" }} />
+          <Carrot className={index === 7 ? styles.iconActive : styles.icon} />
         )}
       </AnyComponent>
 

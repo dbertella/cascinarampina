@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Turbopack config (empty for now - webpack will be used for GraphQL)
+  turbopack: {},
   webpack(config, { dir }) {
     // Add GraphQL loader
     config.module.rules.push({

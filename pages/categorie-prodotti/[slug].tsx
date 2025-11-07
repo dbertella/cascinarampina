@@ -1,15 +1,17 @@
+// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import PostBody from "components/post-body";
 import Layout from "components/layout";
 import PostTitle from "components/post-title";
 import Head from "next/head";
-import { Box } from "theme-ui";
+import { Box } from "components/ui";
 import { getAllProductCategoriesWithSlug, getProductCategory } from "lib";
 import { GetStaticProps } from "next";
 import { CategorySingle } from "lib";
 import { MoreProducts } from "components/products/more-products";
 import { ImageHeader } from "components/image-header";
+import styles from "./category.module.css";
 
 export default function Product({
   productCategory,
@@ -43,7 +45,7 @@ export default function Product({
           />
 
           <Box as="article" variant="styles.container">
-            <Box sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}>
+            <Box className={styles.content}>
               <PostBody content={productCategory.description} />
             </Box>
           </Box>

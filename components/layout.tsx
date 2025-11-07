@@ -1,10 +1,10 @@
 import CookieConsent from "react-cookie-consent";
 import Footer from "./footer";
 import Meta from "./meta";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import Header from "./header";
 
-const Layout: FC = ({ children }) => {
+const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   const AnyComponent = CookieConsent as any;
   return (
     <>

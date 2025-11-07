@@ -1,14 +1,14 @@
 import { MediaImage } from "types";
-import { Flex, Heading, Image } from "theme-ui";
 import { PLACEHOLDER_IMAGE } from "lib";
 import { Stroke } from "components/icons/Stroke";
 import { ReactNode } from "react";
+import styles from "./image-header.module.css";
 
 type Props = {
   title?: string;
   coverImage?: MediaImage;
   children?: ReactNode;
-  height?: string | number | (string | null | number)[];
+  height?: string | number;
 };
 
 export function ImageHeader({
@@ -17,56 +17,23 @@ export function ImageHeader({
   height = 300,
   children,
 }: Props) {
+  // Convert height to CSS custom property or use default
+  const heightValue = typeof height === 'number' ? `${height}px` : height;
+  const containerStyle = height !== 300 ? { '--header-height': heightValue } as React.CSSProperties : undefined;
+  
   return (
-    <Flex
-      sx={{
-        position: "relative",
-        justifyContent: "center",
-        alignItems: "center",
-        height,
-        overflow: "hidden",
-      }}
-    >
-      <Image
-        sx={{
-          position: "absolute",
-          zIndex: -1,
-          height: "100%",
-          width: "100%",
-          objectFit: "cover",
-          verticalAlign: "bottom",
-        }}
+    <div className={styles.container} style={containerStyle}>
+      <img
+        className={styles.image}
         src={coverImage?.sourceUrl ?? PLACEHOLDER_IMAGE}
         srcSet={coverImage?.srcSet}
+        alt={title || ""}
       />
 
-      <Heading
-        as="h1"
-        sx={{
-          position: "relative",
-          py: 1,
-          px: 5,
-          maxWidth: 600,
-          textTransform: "uppercase",
-          fontFamily: "cascinarampina",
-          textAlign: "center",
-          color: "background",
-          wordSpacing: ["-0.3em", "-0.4em", "-0.5em"],
-        }}
-      >
-        <Stroke
-          sx={{
-            fill: "primary",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            width: "100%",
-            transform: "translate(-50%, -50%)",
-            zIndex: -1,
-          }}
-        />
+      <h1 className={styles.heading}>
+        <Stroke className={styles.stroke} />
         {children ?? title}
-      </Heading>
-    </Flex>
+      </h1>
+    </div>
   );
 }

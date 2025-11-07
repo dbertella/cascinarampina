@@ -1,6 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { Box, jsx } from "theme-ui";
 import Head from "next/head";
 import MoreStories from "components/more-stories";
 import Layout from "components/layout";
@@ -8,8 +5,9 @@ import PostBody from "components/post-body";
 import { ImageHeader } from "components/image-header";
 import { HomeHeader } from "components/HomeHeader";
 import { PageSingle, PostList } from "lib";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { ImageGallery, ReactImageGalleryItem } from "./ImageGallery";
+import styles from "./page.module.css";
 
 export type PageProps = {
   home?: boolean;
@@ -18,6 +16,7 @@ export type PageProps = {
     posts: PostList;
   };
   gallery?: ReactImageGalleryItem[];
+  children?: ReactNode;
 };
 
 export const Page: FC<PageProps> = ({
@@ -51,13 +50,13 @@ export const Page: FC<PageProps> = ({
       </Head>
 
       {pageHeader}
-      <Box variant="styles.container">
-        <Box sx={{ maxWidth: "48em", my: [3, 4, 5], mx: "auto" }}>
+      <div className="container">
+        <div className={styles.content}>
           <PostBody content={page.content} />
-        </Box>
+        </div>
         {children}
         {gallery && <ImageGallery gallery={gallery} />}
-      </Box>
+      </div>
       {edges.length > 0 && (
         <MoreStories posts={edges} title="Cosa succede alla Rampina" />
       )}

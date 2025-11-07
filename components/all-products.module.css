@@ -1,0 +1,19 @@
+.container {
+  background-color: var(--color-muted);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  fill: var(--color-background);
+}
+
+.iconActive {
+  fill: var(--color-secondary);
+}

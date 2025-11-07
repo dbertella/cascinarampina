@@ -5,7 +5,7 @@ import PostBody from "components/post-body";
 import Layout from "components/layout";
 import PostTitle from "components/post-title";
 import Head from "next/head";
-import { Box, Flex, Grid, Image, Text, Link as UiLink } from "theme-ui";
+import { Box, Flex, Grid, Image, Text, Link } from "components/ui";
 import { getAllProductsWithSlug, getProductBySlug } from "lib";
 import { GetStaticProps } from "next";
 import { ProductSingle } from "lib";
@@ -14,8 +14,8 @@ import { ImageHeader } from "components/image-header";
 import Categories from "components/categories";
 import { ProductPrice } from "components/products/Price";
 import { PLACEHOLDER_IMAGE } from "lib";
-import Link from "next/link";
 import { ImageGallery } from "components/ImageGallery";
+import styles from "./product.module.css";
 
 export default function Product({
   product,
@@ -64,14 +64,9 @@ export default function Product({
             as="article"
             columns={["auto", "1fr 2fr"]}
             variant="styles.container"
-            py={5}
+            className={styles.articleGrid}
           >
-            <Flex
-              sx={{
-                justifyContent: ["center", "flex-end"],
-                alignItems: "start",
-              }}
-            >
+            <Flex className={styles.imageContainer}>
               {product.galleryImages.nodes.length > 0 ? (
                 <ImageGallery
                   gallery={product.galleryImages.nodes.map((img) => ({
@@ -88,40 +83,28 @@ export default function Product({
               )}
             </Flex>
             <Box>
-              <Flex
-                sx={{
-                  flexWrap: "wrap",
-                  flexDirection: ["column", null, "row"],
-                  fontSize: 2,
-                }}
-              >
+              <Flex className={styles.categoriesContainer}>
                 <Categories categories={product.productCategories} />
-                <Box pr={3} />
-                <Flex sx={{ flexWrap: "wrap" }}>
-                  <Text sx={{ mr: 2, color: "lightGrey" }}>Vai a:</Text>
+                <Box className={styles.spacer} />
+                <Flex className={styles.navigationContainer}>
+                  <Text className={styles.navigationLabel}>Vai a:</Text>
                   {prev && (
-                    <Link href={`/prodotti/${prev}`} legacyBehavior>
-                      <UiLink>Prodotto Precedente</UiLink>
-                    </Link>
+                    <Link href={`/prodotti/${prev}`}>Prodotto Precedente</Link>
                   )}
-                  <Box pr={2} />
+                  <Box className={styles.spacerSmall} />
                   {next && (
-                    <Link href={`/prodotti/${next}`} legacyBehavior>
-                      <UiLink>Prodotto Successivo</UiLink>
-                    </Link>
+                    <Link href={`/prodotti/${next}`}>Prodotto Successivo</Link>
                   )}
-                  <Box pr={2} />
-                  <Link href="/prodotti" legacyBehavior>
-                    <UiLink>Tutti i prodotti</UiLink>
-                  </Link>
+                  <Box className={styles.spacerSmall} />
+                  <Link href="/prodotti">Tutti i prodotti</Link>
                 </Flex>
               </Flex>
               <PostBody content={product.shortDescription} />
-              <Text sx={{ color: "lightGrey", fontSize: 2 }}>
+              <Text className={styles.description}>
                 <PostBody content={product.description} />
               </Text>
-              <Flex sx={{ alignItems: "center" }}>
-                <Text mr={1}>Prezzo:</Text>
+              <Flex className={styles.priceContainer}>
+                <Text className={styles.priceLabel}>Prezzo:</Text>
                 <ProductPrice
                   price={product.price}
                   type={product.type}

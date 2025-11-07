@@ -1,8 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
 import { CategoryListItem } from "lib";
-import Link from "next/link";
-import { jsx, Link as UiLink, Box } from "theme-ui";
+import {Link} from "components/ui/Link";
+import styles from "./categories.module.css";
 
 export default function Categories({
   categories,
@@ -11,17 +9,14 @@ export default function Categories({
 }) {
   return (
     <span>
-      <Box as="span" sx={{ mr: 1, color: "lightGrey" }}>
-        Categoria:
-      </Box>
+      <span className={styles.label}>Categoria:</span>
       {(categories?.edges ?? []).map((category) => (
         <Link
           key={category.node.slug}
           href={`/categorie-prodotti/${category.node.slug}`}
-          legacyBehavior
+          className={styles.link}
         >
-          {/* @ts-expect-error - theme-ui v0.3.x types incompatible with React 18 */}
-          <UiLink sx={{ ml: 3 }}>{category.node.name}</UiLink>
+          {category.node.name}
         </Link>
       ))}
     </span>

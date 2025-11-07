@@ -1,9 +1,10 @@
-import { Grid, Box, Heading } from "theme-ui";
+import { Grid, Box, Heading } from "components/ui";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { ProductListItem } from "lib";
 import { ProductPreview } from "./product-preview";
 import { VeggieBox } from "../icons/VeggieBox";
+import styles from "./more-products.module.css";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("../pattern"), {
   ssr: false,
@@ -20,26 +21,21 @@ export function MoreProducts({
   const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Box
-      sx={{
-        bg: "muted",
-        py: 4,
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className={styles.container}
       ref={ref}
     >
       <AnyComponent parentRef={ref}>
         {(index: number) => (
-          <VeggieBox sx={{ fill: index === 7 ? "secondary" : "background" }} />
+          <VeggieBox className={index === 7 ? styles.iconActive : styles.icon} />
         )}
       </AnyComponent>
 
       <Box
         as="section"
         variant="styles.container"
-        sx={{ position: "relative", zIndex: 1 }}
+        className={styles.section}
       >
-        <Heading as="h2" sx={{ mb: 3 }}>
+        <Heading as="h2" className={styles.heading}>
           {title}
         </Heading>
         <Grid

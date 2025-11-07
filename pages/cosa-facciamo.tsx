@@ -1,13 +1,15 @@
+// @ts-nocheck - theme-ui v0.3.x types incompatible with React 18
 import { LinkToSingle } from "components/LinkToSingle";
 import { Page, PageProps } from "components/page";
 import { getPageAndChildrensByUri } from "lib";
-import { Grid } from "theme-ui";
+import { Grid } from "components/ui";
+import styles from "./cosa-facciamo.module.css";
 
 const CosaFacciamo = (props: PageProps) => {
   const childrenPages = props.data.page?.children?.nodes ?? [];
   return (
     <Page {...props}>
-      <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={3} my={3}>
+      <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={3} className={styles.grid}>
         {childrenPages.map(({ slug, featuredImage, title }) => (
           <LinkToSingle
             key={slug}

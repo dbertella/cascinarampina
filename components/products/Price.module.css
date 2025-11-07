@@ -1,0 +1,10 @@
+.regularPrice {
+  color: var(--color-light-grey);
+  margin-left: var(--space-2);
+}
+
+.price {
+  font-size: var(--font-size-4);
+  font-family: monospace;
+}
+

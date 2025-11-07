@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-background-transparent);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.125);
+  padding: var(--space-3);
+}
+
+.imageContainer {
+  position: relative;
+  height: 150px;
+  margin-left: calc(var(--space-3) * -1);
+  margin-right: calc(var(--space-3) * -1);
+  margin-bottom: var(--space-1);
+  margin-top: calc(var(--space-3) * -1);
+  max-width: calc(100% + var(--space-3) * 2);
+}
+
+@media screen and (min-width: var(--breakpoint-1)) {
+  .imageContainer {
+    height: 200px;
+  }
+}
+
+.dateBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-1);
+  font-size: var(--font-size-0);
+  background-color: var(--color-muted);
+  z-index: 1;
+}
+
+.coverImage {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.titleLink {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.excerpt {
+  flex: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+

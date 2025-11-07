@@ -1,8 +1,9 @@
-import { Grid, Box, Heading } from "theme-ui";
+import { Grid, Box, Heading } from "./ui";
 import dynamic from "next/dynamic";
 import PostPreview from "./post-preview";
 import { useRef } from "react";
 import { Apple } from "./icons/Apple";
+import styles from "./more-stories.module.css";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("./pattern"), {
   ssr: false,
@@ -13,26 +14,21 @@ export default function MoreStories({ posts, title }: any) {
   const AnyComponent = DynamicComponentWithNoSSR as any;
   return (
     <Box
-      sx={{
-        bg: "muted",
-        py: 4,
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className={styles.container}
       ref={ref}
     >
       <AnyComponent parentRef={ref}>
         {(index: number) => (
-          <Apple sx={{ fill: index === 7 ? "primary" : "background" }} />
+          <Apple className={index === 7 ? styles.iconActive : styles.icon} />
         )}
       </AnyComponent>
 
       <Box
         as="section"
         variant="styles.container"
-        sx={{ position: "relative", zIndex: 1 }}
+        className={styles.section}
       >
-        <Heading as="h2" sx={{ mb: 3 }}>
+        <Heading as="h2" className={styles.heading}>
           {title}
         </Heading>
         <Grid columns={["auto", "1fr 1fr", "1fr 1fr 1fr"]} gap={3}>

@@ -1,0 +1,20 @@
+.imageContainer {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+
+.priceBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-1);
+  font-size: var(--font-size-0);
+  background-color: var(--color-muted);
+}
+
+.titleLink {
+  color: var(--color-text);
+  text-decoration: none;
+}
+

@@ -1,9 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import { FC } from "react";
+import { FC, SVGProps } from "react";
 
-export const Carrot: FC = (props) => (
+export const Carrot: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     viewBox="0 0 609 2039"
     fill="none"
