@@ -3,12 +3,12 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: var(--breakpoint-1)) {
-  .container.row {
+@media screen and (min-width: 64em) {
+  .container[data-direction="row"] {
     flex-direction: row;
   }
 
-  .container.rowReverse {
+  .container[data-direction="reverse"] {
     flex-direction: row-reverse;
   }
 }
@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: var(--breakpoint-1)) {
+@media screen and (min-width: 64em) {
   .imageLink {
     width: 50%;
   }
@@ -45,7 +45,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: var(--breakpoint-1)) {
+@media screen and (min-width: 64em) {
   .content {
     padding: var(--space-5);
     width: 50%;

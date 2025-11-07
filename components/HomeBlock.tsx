@@ -17,7 +17,7 @@ export const HomeBlock = ({
   even: boolean;
   ctaText?: string;
 }) => (
-  <Flex className={`${styles.container} ${even ? styles.rowReverse : styles.row}`}>
+  <Flex className={styles.container} data-direction={even ? "row" : "reverse"}>
     <Link href={href} className={styles.imageLink}>
       <Image
         className={styles.image}
